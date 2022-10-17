@@ -1,41 +1,41 @@
-<mxfile host="app.diagrams.net" modified="2022-10-17T17:00:02.787Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="BvWB7vDV915cXPwRSgSt" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-17T17:01:42.796Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="Y7HKvgD-0p2h7vUJxz2X" version="20.0.4" type="github">
   <diagram id="bIxn8ySBPyTkmqZ3WacC" name="Page-1">
-    <mxGraphModel dx="1587" dy="1797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="762" dy="817" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="31DlXudzvP8EBTWm8NWp-5" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=http://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png;" vertex="1" parent="1">
-          <mxGeometry x="146.57" y="820" width="118.86" height="40" as="geometry" />
+          <mxGeometry x="85.57" y="390" width="118.86" height="40" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-6" value="&lt;b id=&quot;docs-internal-guid-3a189e39-7fff-8395-a956-e8300f58da9e&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/YwrhEPsPFvxt8AtMyXyXzeR6SogB-HnAd_K1Jk7fgc10NKP73_LGmIZZKz2FDJ-mntNCXGZcRFlU23K0jg5wyskI5D92dXdQgeHkFXvm75kbhHPPoszpmnUXFir4GakTcK8L4S7W0IwjFfWjWm0O1ggopGxHExshTiwZg8xjZvagAii_9VUshBP5luyv&quot; height=&quot;56px;&quot; width=&quot;200px;&quot;&gt;&lt;/b&gt;" style="text;whiteSpace=wrap;html=1;fontSize=48;" vertex="1" parent="1">
-          <mxGeometry x="101" y="860" width="210" height="70" as="geometry" />
+          <mxGeometry x="39.99999999999999" y="440" width="210" height="70" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-7" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png;" vertex="1" parent="1">
-          <mxGeometry x="123.55" y="550" width="164.89" height="50" as="geometry" />
+          <mxGeometry x="61.839999999999996" y="200" width="164.89" height="50" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-8" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png;" vertex="1" parent="1">
-          <mxGeometry x="156.94" y="630" width="98.11" height="60" as="geometry" />
+          <mxGeometry x="95.22999999999999" y="280" width="98.11" height="60" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-9" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png;" vertex="1" parent="1">
-          <mxGeometry x="198" y="343" width="133.71" height="45" as="geometry" />
+          <mxGeometry x="136.29" y="43" width="133.71" height="45" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-10" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://lit.dev/images/logo.svg;" vertex="1" parent="1">
-          <mxGeometry x="392.71" y="340" width="85.1" height="40" as="geometry" />
+          <mxGeometry x="331" y="40" width="85.1" height="40" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-15" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png;" vertex="1" parent="1">
-          <mxGeometry x="541" y="520" width="185.71" height="50" as="geometry" />
+          <mxGeometry x="398.29" y="170" width="185.71" height="50" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=24;" edge="1" parent="1" source="31DlXudzvP8EBTWm8NWp-18" target="31DlXudzvP8EBTWm8NWp-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-18" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="301.71" y="398" width="120" height="60" as="geometry" />
+          <mxGeometry x="239.99999999999997" y="98" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=24;" edge="1" parent="1" source="31DlXudzvP8EBTWm8NWp-19" target="31DlXudzvP8EBTWm8NWp-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-19" value="Database" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="581" y="585" width="120" height="60" as="geometry" />
+          <mxGeometry x="438.29" y="235" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=24;" edge="1" parent="1" source="31DlXudzvP8EBTWm8NWp-20" target="31DlXudzvP8EBTWm8NWp-18">
           <mxGeometry relative="1" as="geometry" />
@@ -44,19 +44,22 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-20" value="Backend" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="301" y="585" width="120" height="60" as="geometry" />
+          <mxGeometry x="239.29" y="235" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-21" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&amp;amp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="175.99" y="600" width="60" height="30" as="geometry" />
+          <mxGeometry x="114.28" y="250" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=24;endArrow=none;endFill=0;" edge="1" parent="1" source="31DlXudzvP8EBTWm8NWp-22" target="31DlXudzvP8EBTWm8NWp-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-22" value="Server" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="301" y="830" width="120" height="60" as="geometry" />
+          <mxGeometry x="239.99999999999997" y="410" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="31DlXudzvP8EBTWm8NWp-23" value="eller" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
-          <mxGeometry x="331.71" y="353" width="60" height="30" as="geometry" />
+          <mxGeometry x="270" y="53" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="31DlXudzvP8EBTWm8NWp-32" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&amp;amp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="115" y="430" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
