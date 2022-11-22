@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-22T11:04:29.165Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="zAPjWA4RfbEOjinX6jsj" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-22T12:10:19.836Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="h7nkhI3lPFsbdKQKl3yW" version="20.5.3" type="github">
   <diagram name="Page-1" id="64c3da0e-402f-94eb-ee01-a36477274f13">
-    <mxGraphModel dx="1883" dy="936" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1239" dy="677" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -202,7 +202,7 @@
         <mxCell id="156" value="20 Sluttrapport" style="whiteSpace=wrap;rounded=1;fillColor=#12AAB5;strokeColor=none;shadow=1;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="1429.9999999999998" y="300.0000000000002" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="157" value="Lage MVP prototype" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="157" value="8 Lage MVP prototype" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="1229.9999999999998" y="400.0000000000002" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="158" value="3 Design dokumenter" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
@@ -304,16 +304,16 @@
         <mxCell id="179" value="1 Reverse proxy" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="829.9999999999998" y="399.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="180" value="Node.js" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="180" value="1 Node.js" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="830" y="479.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="181" value="Aksess for alle på&#xa;gruppen" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="181" value="2 Aksess for alle på&#xa;gruppen" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="829.9999999999998" y="559.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="182" value="Synkronisering med&#xa;github?" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="182" value="5 Synkronisering med&#xa;github?" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="830" y="639.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="183" value="Email server" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="183" value="3 Email server" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="830" y="719.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="189" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;rounded=0;fontColor=#000000;endArrow=none;endFill=0;strokeWidth=8;strokeColor=#23445D;" parent="1" source="177" target="179" edge="1">
@@ -415,7 +415,7 @@
             <mxPoint x="670" y="70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fB5pzrOFwzuXvPXbiBC5-232" value="MongoDB" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="fB5pzrOFwzuXvPXbiBC5-232" value="1 MongoDB" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="830" y="799.9999999999999" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fB5pzrOFwzuXvPXbiBC5-233" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;rounded=0;fontColor=#000000;endArrow=none;endFill=0;strokeWidth=8;strokeColor=#23445D;" parent="1" source="177" target="fB5pzrOFwzuXvPXbiBC5-232" edge="1">
@@ -440,7 +440,7 @@
         <mxCell id="fB5pzrOFwzuXvPXbiBC5-237" value="Testplan" style="whiteSpace=wrap;rounded=1;fillColor=#999999;strokeColor=none;shadow=1;fontColor=#FFFFFF;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="1429.9999999999998" y="1040.0000000000002" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="fB5pzrOFwzuXvPXbiBC5-238" value="Presentasjon" style="whiteSpace=wrap;rounded=1;fillColor=#12AAB5;strokeColor=none;shadow=1;fontColor=#FFFFFF;" parent="1" vertex="1">
+        <mxCell id="fB5pzrOFwzuXvPXbiBC5-238" value="5 Presentasjon" style="whiteSpace=wrap;rounded=1;fillColor=#12AAB5;strokeColor=none;shadow=1;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="1633.4999999999998" y="300.0000000000002" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fB5pzrOFwzuXvPXbiBC5-239" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontColor=#000000;endArrow=none;endFill=0;strokeWidth=8;strokeColor=#23445D;" parent="1" source="7" target="fB5pzrOFwzuXvPXbiBC5-238" edge="1">
