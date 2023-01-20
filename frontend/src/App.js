@@ -6,7 +6,7 @@ export default function App() {
   const [ error, setError ] = useState(null);
 
   useEffect(() => {
-    fetch(`http://api.solvann.eksempler.no:3000/`)
+    fetch(`https://datausa.io/api/data?drilldowns=Nation&measures=Population`)
     .then((response) => response.json())
     .then((actualData) => console.log(actualData))
     .catch((err) => {
