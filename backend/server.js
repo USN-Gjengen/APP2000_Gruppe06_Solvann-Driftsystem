@@ -1,12 +1,15 @@
 const express = require('express')
-const app = express()
-const port = 21613
+const cors = require('cors');
+const app = express();
+const port = 21613;
+app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.json({"working": true});
+  console.log("Request received");
 })
 
 app.listen(port, () => {
-    console.log("Heisann");
-  console.log(`Example app listening on port ${port}`)
+  console.log("Heisann");
+  console.log(`Example app listening on port ${port}`);
 })
