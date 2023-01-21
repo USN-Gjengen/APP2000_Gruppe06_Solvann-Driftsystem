@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { Login } from "./Login.jsx";
+import { Register } from "./Register.jsx";
+import './App.css';
 
 export default function App() {
-  const [ data, setData ] = useState(null);
-  const [ loading, setLoading ] = useState(true);
-  const [ error, setError ] = useState(null);
+  const [currentForm, setCurrentForm] = useState("login");
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+    }
 
   useEffect(() => {
     fetch(`https://datausa.io/api/data?drilldowns=Nation&measures=Population`)
@@ -14,5 +20,12 @@ export default function App() {
       });
   }, []);
 
-  return <div className="App">App</div>;
+
+  return ( 
+  <div className="App">
+    {
+      currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+    }
+  </div>
+  );
 }
