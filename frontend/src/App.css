@@ -1,12 +1,13 @@
 
 html {
+    font-family: Arial, Helvetica, sans-serif;;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background: #fff;
     background-repeat: no-repeat;
-    /*background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);*/
+    background-image: linear-gradient(79deg, #5439db, #65b6e9 48%, #b1f78b);
 }
 
 .App {
@@ -15,7 +16,7 @@ html {
     min-height: 100vh;
     align-items: center;
     justify-content: center; 
-    color: black;
+    color: white;
 }
 
 .auth-form-container, .login-form, .register-form {
@@ -25,16 +26,12 @@ html {
 
 @media screen and (min-width: 600px) {
     .auth-form-container {
-        padding: 5rem;
-        border: 1px solid black;
+        padding: 4rem 5rem 5rem 5rem;
+        border: 1px solid white;
         border-radius: 10px;
         margin: 0.5rem;
     
     }
-}
-
-h2 {
-    color: black;
 }
 
 label {
@@ -51,15 +48,15 @@ input {
 
 button {
     border: none;
-    background-color: rgb(201, 201, 201);
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
     color: #7439db;
 }
-    
+
 .link-btn {
     background: none;
-    color: black;
+    color: white;
     text-decoration: underline;
 }
