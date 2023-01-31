@@ -1,18 +1,22 @@
-import { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+import { Login } from "./Login.jsx";
+import { Register } from "./Register.jsx";
+import './App.css';
 
 export default function App() {
-  const [ data, setData ] = useState(null);
-  const [ loading, setLoading ] = useState(true);
-  const [ error, setError ] = useState(null);
+  const [currentForm, setCurrentForm] = useState("login");
 
-  useEffect(() => {
-    fetch(`http://api.solvann.eksempler.no/`)
-    .then((response) => response.json())
-    .then((actualData) => console.log(actualData))
-    .catch((err) => {
-      console.log(err.message);
-      });
-  }, []);
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
 
-  return <div className="App">App</div>;
+
+  return ( 
+  <div className="App">
+    {
+      currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+    }
+  </div>
+  );
 }
