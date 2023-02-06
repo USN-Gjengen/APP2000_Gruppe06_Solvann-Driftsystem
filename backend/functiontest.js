@@ -1,7 +1,7 @@
-import {getSolarValue} from './functions.js' ;
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import * as functions from './functions.js' ;
 
-getSolarValue();
-const app = express();
+
+functions.getSolarValue();
+functions.getWaterInflux();
+functions.getPowerPrice();
+functions.getGroupState();
