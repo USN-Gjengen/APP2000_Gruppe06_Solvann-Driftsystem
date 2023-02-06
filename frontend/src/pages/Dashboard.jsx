@@ -21,8 +21,12 @@ const Dashboard = () => {
       <button onClick={logoutHandler} className="LogoutBtn">
         Logout
       </button>
+      
 	  <hr/>
-      <div className="Dashboard">Dashboard</div>
+      <div className="Dashboard">
+          <h1 className="headerDash">Control Panel</h1> 
+           
+      </div>
     </>
   );
 };

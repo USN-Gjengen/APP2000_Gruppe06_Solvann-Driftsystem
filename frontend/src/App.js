@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard"
 
 function App() {
   return (
-    <div className="App">
+    <div className="Appen">
       <BrowserRouter>
         <Route exact path="/login" component={Login} />
 		<Route exact path="/" component={Dashboard} />
