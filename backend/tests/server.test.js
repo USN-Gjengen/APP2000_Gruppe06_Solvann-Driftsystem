@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const request = require("supertest");
-const app = require("../server");
+const server = require("../server");
 const fs = require('fs');
 
 let username = "";
@@ -31,8 +31,10 @@ describe("GET /", () => {
         //fetch('https://solvann.azurewebsites.net/api/Solar/')
         //    .then(res => res.json())
         //    .then(data => console.log(data));
-        const res = await request(app).get("/");
+        const res = await request(server).get("/");
         expect(res.statusCode).toBe(200);
         expect(res.body).toStrictEqual({"working" : true});
     });
   });
+
+server.close();

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=5000"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles"
   },
   "keywords": [],
   "author": "",

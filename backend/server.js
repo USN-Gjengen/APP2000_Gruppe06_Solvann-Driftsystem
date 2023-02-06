@@ -11,12 +11,10 @@ app.get('/', (req, res) => {
   console.log("Request received");
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log("Heisann");
   console.log(`Example app listening on port ${port}`);
-})
+});
 
 
-module.exports = app.listen(3000);
-
-
+module.exports = server;
