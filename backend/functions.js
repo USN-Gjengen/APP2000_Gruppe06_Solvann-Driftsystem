@@ -5,8 +5,8 @@ let password = "";
 
 try {
     const data = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
-    username = data.username;
-    password = data.password;
+    username = data.solvann.username;
+    password = data.solvann.password;
   } catch (err) {
     console.error(err);
   }
@@ -42,6 +42,7 @@ fetch('https://solvann.azurewebsites.net/api/GroupState/', {method:'GET',
         .then(res => res.json())
         .then(data => console.log(data));
 }
+
 function getTurbineStatus(){
     let headers = new Headers();
     
@@ -55,6 +56,20 @@ function getTurbineStatus(){
             .then(res => res.json())
             .then(data => console.log(data));
     }
+    //FIX PLZ
+    /*function setTurbineStatus(){
+        let headers = new Headers();
+        
+        headers.set('GroupId',username);
+        headers.set('GroupKey',password);
+        headers.append('Content-Type', 'text/json');
+        
+        fetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'PUT',
+                headers: headers
+               })
+                .then(res => res.json())
+                .then(data => console.log(data));
+        }*/
 
 export { getWaterInflux };
 export { getSolarValue }; 
