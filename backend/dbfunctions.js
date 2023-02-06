@@ -1,6 +1,6 @@
-import * as functions from './functions.js' ;
-import fs from 'fs';
-import mongoose from 'mongoose';
+const functions = require('./functions.js');
+const fs = require('fs');
+const mongoose = require('mongoose');
 
 let username = "";
 let password = "";
@@ -15,7 +15,7 @@ try {
 
 //addCat().catch(err => console.log(err));
 
-async function addCat(cat) {
+const addCat = async (cat) => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + username + ':' + password + '@eksempler.no:37191/?authMechanism=DEFAULT');
   const kittySchema = new mongoose.Schema({
@@ -24,7 +24,6 @@ async function addCat(cat) {
   const Kitten = mongoose.model('Kitten', kittySchema);
   const fluffy = new Kitten({ name: cat });
   await fluffy.save();
-  
 }
 
-export { addCat };
+exports.addCat = addCat;

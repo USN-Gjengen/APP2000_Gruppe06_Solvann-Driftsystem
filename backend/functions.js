@@ -1,4 +1,5 @@
-import fs from 'fs';
+const fs = require('fs');
+const fetch = require('node-fetch');
 
 let username = "";
 let password = "";
@@ -12,38 +13,38 @@ try {
   }
 
 
-function getSolarValue() { 
+  const getSolarValue = () => { 
     fetch('https://solvann.azurewebsites.net/api/Solar/')
     .then(res => res.json())
     .then(data => console.log(data));
 }
-function getWaterInflux() { 
+const getWaterInflux = () => { 
     fetch('https://solvann.azurewebsites.net/api/WaterInflux/')
     .then(res => res.json())
     .then(data => console.log(data));
 }
 
-function getPowerPrice(){ 
+const getPowerPrice = () => { 
     fetch('https://solvann.azurewebsites.net/api/PowerPrice')
     .then(res => res.json())
     .then(data => console.log(data));
 }
 
-function getGroupState(){
-let headers = new Headers();
+const getGroupState = () => { 
+    let headers = new Headers();
 
-headers.set('GroupId',username);
-headers.set('GroupKey',password);
-headers.append('Content-Type', 'text/json');
+    headers.set('GroupId',username);
+    headers.set('GroupKey',password);
+    headers.append('Content-Type', 'text/json');
 
-fetch('https://solvann.azurewebsites.net/api/GroupState/', {method:'GET',
-        headers: headers
-       })
+    fetch('https://solvann.azurewebsites.net/api/GroupState/', {method:'GET',
+            headers: headers
+        })
         .then(res => res.json())
         .then(data => console.log(data));
 }
 
-function getTurbineStatus(){
+const getTurbineStatus = () => { 
     let headers = new Headers();
     
     headers.set('GroupId',username);
@@ -71,9 +72,9 @@ function getTurbineStatus(){
                 .then(data => console.log(data));
         }*/
 
-export { getWaterInflux };
-export { getSolarValue }; 
-export { getPowerPrice };
-export { getGroupState };
-export { getTurbineStatus };
-//export { turnOnTurbine };
+exports.getWaterInflux = getWaterInflux;
+exports.getSolarValue = getSolarValue;
+exports.getPowerPrice = getPowerPrice;
+exports.getGroupState = getGroupState;
+exports.getTurbineStatus = getTurbineStatus;
+//exports.setTurbineStatus = setTurbineStatus;

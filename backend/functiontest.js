@@ -1,5 +1,5 @@
-import * as functions from './functions.js' ;
-import * as dbfunctions from './dbfunctions.js' ;
+const functions = require('./functions.js');
+const dbfunctions = require('./dbfunctions.js');
 
 //dbfunctions.addCat('Bjarne');
 //functions.getSolarValue();
