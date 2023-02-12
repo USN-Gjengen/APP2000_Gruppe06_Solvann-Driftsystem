@@ -1,14 +1,13 @@
 const functions = require('./functions.js');
-const fs = require('fs');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-let username = "";
-let password = "";
+let DB_USR = "";
+let DB_PWD = "";
 
 try {
-    const data = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
-    username = data.database.username;
-    password = data.database.password;
+    DB_USR = process.env.DATABASE_USERNAME;
+    DB_PWD = process.env.DATABASE_PASSWORD;
   } catch (err) {
     console.error(err);
   }
@@ -17,7 +16,7 @@ try {
 
 const addCat = async (cat) => {
   mongoose.set('strictQuery', true);
-  await mongoose.connect('mongodb://' + username + ':' + password + '@eksempler.no:37191/?authMechanism=DEFAULT');
+  await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   const kittySchema = new mongoose.Schema({
     name: String
   });

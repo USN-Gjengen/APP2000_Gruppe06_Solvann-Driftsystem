@@ -1,13 +1,12 @@
-const fs = require('fs');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-let username = "";
-let password = "";
+let SOLVANN_USR = "";
+let SOLVANN_PWD = "";
 
 try {
-    const data = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
-    username = data.solvann.username;
-    password = data.solvann.password;
+    SOLVANN_USR = process.env.SOLVANN_USERNAME;
+    SOLVANN_PWD = process.env.SOLVANN_PASSWORD;
   } catch (err) {
     console.error(err);
   }
@@ -33,8 +32,8 @@ const getPowerPrice = () => {
 const getGroupState = () => { 
     let headers = new Headers();
 
-    headers.set('GroupId',username);
-    headers.set('GroupKey',password);
+    headers.set('GroupId', SOLVANN_USR);
+    headers.set('GroupKey', SOLVANN_PWD);
     headers.append('Content-Type', 'text/json');
 
     fetch('https://solvann.azurewebsites.net/api/GroupState/', {method:'GET',
@@ -47,8 +46,8 @@ const getGroupState = () => {
 const getTurbineStatus = () => { 
     let headers = new Headers();
     
-    headers.set('GroupId',username);
-    headers.set('GroupKey',password);
+    headers.set('GroupId', SOLVANN_USR);
+    headers.set('GroupKey', SOLVANN_PWD);
     headers.append('Content-Type', 'text/json');
     
     fetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'GET',
@@ -61,8 +60,8 @@ const getTurbineStatus = () => {
     /*function setTurbineStatus(){
         let headers = new Headers();
         
-        headers.set('GroupId',username);
-        headers.set('GroupKey',password);
+        headers.set('GroupId', SOLVANN_USR);
+        headers.set('GroupKey', SOLVANN_PWD);
         headers.append('Content-Type', 'text/json');
         
         fetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'PUT',
