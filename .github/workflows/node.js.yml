@@ -29,11 +29,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
       env:
         DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
         DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
         SOLVANN_USERNAME: ${{secrets.SOLVANN_USERNAME}}
         SOLVANN_PASSWORD: ${{secrets.SOLVANN_PASSWORD}}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
