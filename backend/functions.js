@@ -30,7 +30,7 @@ const getPowerPrice = () => {
 }
 
 const getGroupState = () => { 
-    let headers = new Headers();
+    let headers = new fetch.Headers();
 
     headers.set('GroupId', SOLVANN_USR);
     headers.set('GroupKey', SOLVANN_PWD);
@@ -44,7 +44,7 @@ const getGroupState = () => {
 }
 
 const getTurbineStatus = () => { 
-    let headers = new Headers();
+    let headers = new fetch.Headers();
     
     headers.set('GroupId', SOLVANN_USR);
     headers.set('GroupKey', SOLVANN_PWD);
@@ -58,7 +58,7 @@ const getTurbineStatus = () => {
     }
     //FIX PLZ
     /*function setTurbineStatus(){
-        let headers = new Headers();
+        let headers = new fetch.Headers();
         
         headers.set('GroupId', SOLVANN_USR);
         headers.set('GroupKey', SOLVANN_PWD);
