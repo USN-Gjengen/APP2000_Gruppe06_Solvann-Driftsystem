@@ -56,24 +56,22 @@ const getTurbineStatus = () => {
             .then(res => res.json())
             .then(data => console.log(data));
     }
-    //FIX PLZ
-    /*function setTurbineStatus(){
-        let headers = new fetch.Headers();
+    
+const setTurbineStatus = (id, cap) => {
+    let headers = new fetch.Headers();
         
-        headers.set('GroupId', SOLVANN_USR);
-        headers.set('GroupKey', SOLVANN_PWD);
-        headers.append('Content-Type', 'text/json');
+    headers.set('GroupId', SOLVANN_USR);
+    headers.set('GroupKey', SOLVANN_PWD);
         
-        fetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'PUT',
-                headers: headers
-               })
-                .then(res => res.json())
-                .then(data => console.log(data));
-        }*/
+    fetch('https://solvann.azurewebsites.net/api/Turbines/' + id + '?capacityUsage=' + cap, {method:'PUT',
+        headers: headers
+        })
+        .then(res => console.log(res.status));
+    }
 
 exports.getWaterInflux = getWaterInflux;
 exports.getSolarValue = getSolarValue;
 exports.getPowerPrice = getPowerPrice;
 exports.getGroupState = getGroupState;
 exports.getTurbineStatus = getTurbineStatus;
-//exports.setTurbineStatus = setTurbineStatus;
+exports.setTurbineStatus = setTurbineStatus;
