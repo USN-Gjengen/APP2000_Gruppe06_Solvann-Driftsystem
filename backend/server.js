@@ -7,6 +7,7 @@ require('dotenv').config();
 const app = express();
 const port = 21613;
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({"working": true});
