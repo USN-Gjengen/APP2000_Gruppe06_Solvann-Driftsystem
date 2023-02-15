@@ -14,6 +14,25 @@ try {
 
 //addCat().catch(err => console.log(err));
 
+const powerSchema = new mongoose.Schema({
+  price: String,
+  date: String,
+  id: String
+});
+
+const logPowerPrice = async (n) => {
+  mongoose.set('strictQuery', true);
+  await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
+  
+  await functions.getPowerPrice().then(price => {console.log(price);
+    const PowerPrice = mongoose.model('PowerPrice', powerSchema);
+    const power = new PowerPrice({ price: price, date: Date.now(), id: n });
+    power.save();
+    });
+  //mongoose.connection.close();
+  
+}
+
 const addCat = async (cat) => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
@@ -26,3 +45,4 @@ const addCat = async (cat) => {
 }
 
 exports.addCat = addCat;
+exports.logPowerPrice = logPowerPrice;
