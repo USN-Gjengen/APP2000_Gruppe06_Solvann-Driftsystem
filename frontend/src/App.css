@@ -1,22 +1,46 @@
-.Dashboard {
-  color: #282c34;
+.dashboard {
   text-align: center;
   display: flex;
-  min-height: 100vh;
-  align-items: top;
-  justify-content: center; 
-  color: white; 
-}
-
-.headerDash {
-  margin: 20px;
-}
-
-.LogoutBtn {
-  background: #5439db;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282c34;
   color: white;
+}
+
+.dashboard-title {
+  margin-top: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem 0;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.btn:first-child {
+  margin-right: 20px;
+}
+
+.btn:last-child {
+  margin-left: 20px;
+}
+
+.turbine-status {
+  margin-top: 40px;
 }
