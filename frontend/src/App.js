@@ -13,9 +13,9 @@ class Dashboard extends React.Component {
   }
 
   handleTurbineOn = () => {
-    // Send a request to turn on the turbine to the backend using fetch
+   
     fetch("/api/turn-on-turbine", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
@@ -34,9 +34,9 @@ class Dashboard extends React.Component {
   };
 
   handleTurbineOff = () => {
-    // Send a request to turn off the turbine to the backend using fetch
-    fetch("/api/turn-off-turbine", {
-      method: "POST",
+    
+    fetch("solvann.eksempler.no/api/turbines/all", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
