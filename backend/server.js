@@ -13,6 +13,11 @@ app.get('/', (req, res) => {
   console.log("Request received");
 })
 
+app.put('/api/turbines/all', (req, res) => {
+  res.json({"working": true});
+  console.log(req.params['isTurbineOn']);
+})
+
 const server = app.listen(port, () => {
   console.log("Heisann");
   console.log(`Example app listening on port ${port}`);
