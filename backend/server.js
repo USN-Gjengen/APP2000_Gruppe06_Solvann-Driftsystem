@@ -14,8 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.put('/api/turbines/all', (req, res) => {
-  res.json({"working": true});
-  console.log(req.params['isTurbineOn']);
+  console.log(req.body);
 })
 
 const server = app.listen(port, () => {
