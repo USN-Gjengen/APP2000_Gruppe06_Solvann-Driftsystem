@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
   console.log("Request received");
 })
 
+app.get('/api/groupstates/last', (req, res) => {
+  res.json(dbfunctions.getAllGroupStates().slice(-1));
+  console.log("Request received");
+})
 app.put('/api/turbines/all', (req, res) => {
   if(req.body.isTurbineOn){
     functions.setAllTurbinesOn();

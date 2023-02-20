@@ -71,17 +71,34 @@ const groupStateSchema = new mongoose.Schema({
   waterLevel: String,
   environmentCost: String
 });
+const GroupState = mongoose.model('GroupState', groupStateSchema);
+
 const logGroupState = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   
   await functions.getGroupState().then(gs => {console.log(gs);
-    const GroupState = mongoose.model('GroupState', groupStateSchema);
+    
     const state = new GroupState({ money: gs.money, date: Date.now(), waterLevel: gs.waterLevel, environmentCost: gs.environmentCost});
     state.save();
     });
   //mongoose.connection.close();
 }
+
+const getAllGroupStates = async () => {
+  mongoose.set('strictQuery', true);
+  await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
+  const cursor = GroupState.find({  }).cursor();
+  var rv = [];
+  for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+    rv.push(doc);
+  }
+  console.log(rv); 
+  return rv;
+
+}
+
+
 
 const addCat = async (cat) => {
   mongoose.set('strictQuery', true);
@@ -99,3 +116,4 @@ exports.logPowerPrice = logPowerPrice;
 exports.logSolarValue = logSolarValue;
 exports.logWaterInflux = logWaterInflux;
 exports.logGroupState = logGroupState;
+exports.getAllGroupStates = getAllGroupStates;

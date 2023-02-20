@@ -23,10 +23,11 @@ gt();*/
 
 //var gt = functions.getTurbineStatus();
 //console.log(gt);
-//dbfunctions.logPowerPrice(5);
-//dbfunctions.logSolarValue(1);
-//dbfunctions.logWaterInflux(1);
-dbfunctions.logGroupState();
+//dbfunctions.logPowerPrice();
+//dbfunctions.logSolarValue();
+//dbfunctions.logWaterInflux();
+//dbfunctions.logGroupState();
+dbfunctions.getAllGroupStates();
 
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
