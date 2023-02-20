@@ -15,6 +15,11 @@ app.get('/', (req, res) => {
 })
 
 app.put('/api/turbines/all', (req, res) => {
+  if(req.body.isTurbineOn){
+    functions.setAllTurbinesOn();
+  }else{
+    functions.setAllTurbinesOff();
+  }
   console.log(req.body);
 })
 
