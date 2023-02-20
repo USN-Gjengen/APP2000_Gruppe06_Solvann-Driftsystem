@@ -30,14 +30,12 @@ app.put('/api/turbines/all', (req, res) => {
 
 if(process.env.NODE_ENV != "test"){
   cron.schedule('0 * * * * *', async () => {
-    console.log("Logging 1-min interval values");
     dbfunctions.logWaterInflux();
     dbfunctions.logSolarValue();
     dbfunctions.logPowerPrice();
   });
 
   cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
-    console.log("Logging 10-sec interval values");
     dbfunctions.logGroupState();
   });
 }
