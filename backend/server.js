@@ -1,6 +1,7 @@
 const functions = require('./functions.js');
 const dbfunctions = require('./dbfunctions.js');
 const express = require('express');
+const cron = require('node-cron');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -22,6 +23,13 @@ app.put('/api/turbines/all', (req, res) => {
   }
   console.log(req.body);
 })
+
+cron.schedule('0 * * * * *', async () => {
+  console.log("Logging Minute-Updated Values");
+  dbfunctions.logWaterInflux();
+  dbfunctions.logSolarValue();
+  dbfunctions.logPowerPrice();
+});
 
 const server = app.listen(port, () => {
   console.log("Heisann");
