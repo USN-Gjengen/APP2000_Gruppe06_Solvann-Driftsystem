@@ -6,9 +6,9 @@ const Prototype = () => {
     const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     const [logout, setLogout] = React.useState(false);
 
-    React.useEffect(()=>{
-		if(localStorage.getItem('auth')) history.push('/')
-	},[logout])
+    React.useEffect(() => {
+        if (!localStorage.getItem("auth")) history.push("/login");
+      }, [logout]);
     
     
     React.useEffect(() => {
