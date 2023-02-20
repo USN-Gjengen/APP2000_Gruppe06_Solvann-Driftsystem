@@ -5,6 +5,7 @@ const Prototype = () => {
     const history = useHistory();
     const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     const [logout, setLogout] = React.useState(false);
+    const [groupState, setGroupState] = React.useState({ group: [] });
 
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) history.push("/login");
@@ -47,6 +48,18 @@ const Prototype = () => {
             setLogout(true);
           };
 
+        const handleUpdate = async () => {
+          var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            },
+          });
+          var data = await response.json();
+          setGroupState(data);
+        };
+
+
       return (
         <div className="dashboard">
             <button onClick={logoutHandler} className="btn">
@@ -60,8 +73,14 @@ const Prototype = () => {
             <button className="btn" onClick={handleTurbineOff}>
               <span>Turn Off</span>
             </button>
+            <button className="btn" onClick={handleUpdate}>
+              <span>Update</span>
+            </button>
           </div>
           <p>The turbine is currently {isTurbineOn ? "on" : "off"}</p>
+          <p>Water level: {groupState.waterLevel} </p>
+          <p>Money: {groupState.money}</p>
+          <p>Environment Cost: {groupState.environmentCost}</p>
         </div>
       );
 };
