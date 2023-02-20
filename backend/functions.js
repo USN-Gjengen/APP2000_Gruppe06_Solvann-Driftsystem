@@ -50,7 +50,7 @@ const getTurbineStatus = async () => {
     headers.set('GroupKey', SOLVANN_PWD);
     headers.append('Content-Type', 'text/json');
     
-    const response = await fetchfetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'GET',
+    const response = await fetch('https://solvann.azurewebsites.net/api/Turbines/', {method:'GET',
             headers: headers
            })
            const data = await response.json();

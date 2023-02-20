@@ -9,11 +9,23 @@ const dbfunctions = require('./dbfunctions.js');
 //functions.setTurbineStatus("f39090e5-22bf-406f-ab96-7cd8b89180aa", 0);
 //functions.setTurbineStatus("ebe242ea-baea-4241-a158-763c429fd495", 0);
 //functions.setTurbineStatus("6381c1d6-b347-4afb-9b16-ba17ed239a95", 0);
-//functions.getGroupState();
-//functions.getTurbineStatus();
+
+const gs = async () => {
+    var state = await functions.getTurbineStatus();
+    console.log(state);
+}
+const gt = async () => {
+    var state = await functions.getGroupState();
+    console.log(state);
+}
+gs();
+gt();
+
+//var gt = functions.getTurbineStatus();
+//console.log(gt);
 //dbfunctions.logPowerPrice(5);
 //dbfunctions.logSolarValue(1);
-dbfunctions.logWaterInflux(1);
+//dbfunctions.logWaterInflux(1);
 
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
