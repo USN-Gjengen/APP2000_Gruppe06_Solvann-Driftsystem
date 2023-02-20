@@ -15,8 +15,8 @@ try {
 //addCat().catch(err => console.log(err));
 
 const powerSchema = new mongoose.Schema({
-  price: String,
-  date: String,
+  price: Number,
+  date: Date,
 });
 
 const logPowerPrice = async () => {
@@ -32,8 +32,8 @@ const logPowerPrice = async () => {
 }
 
 const solarSchema = new mongoose.Schema({
-  value: String,
-  date: String,
+  value: Number,
+  date: Date,
 });
 
 const logSolarValue = async () => {
@@ -49,8 +49,8 @@ const logSolarValue = async () => {
 }
 
 const waterInfluxSchema = new mongoose.Schema({
-  waterInflux: String,
-  date: String,
+  waterInflux: Number,
+  date: Date,
 });
 
 const logWaterInflux = async () => {
@@ -66,10 +66,10 @@ const logWaterInflux = async () => {
 }
 
 const groupStateSchema = new mongoose.Schema({
-  money: String,
-  date: String,
-  waterLevel: String,
-  environmentCost: String
+  money: Number,
+  date: Date,
+  waterLevel: Number,
+  environmentCost: Number
 });
 const GroupState = mongoose.model('GroupState', groupStateSchema);
 
