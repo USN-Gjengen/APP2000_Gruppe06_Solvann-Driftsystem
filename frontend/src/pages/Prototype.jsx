@@ -20,13 +20,6 @@ const Prototype = () => {
             },
             body: JSON.stringify({ isTurbineOn: isTurbineOn })
         })
-        .then(response => {
-            if (response.ok) {
-                this.setState({ isTurbineOn: isTurbineOn });
-            } else {
-                throw new Error("Failed to turn on the turbine");
-            }
-        })
         .catch(error => {
             console.error(error);
         });
