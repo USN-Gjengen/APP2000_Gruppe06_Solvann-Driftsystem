@@ -12,6 +12,9 @@ const dbfunctions = require('./dbfunctions.js');
 //functions.getGroupState();
 //functions.getTurbineStatus();
 //dbfunctions.logPowerPrice(5);
+//dbfunctions.logSolarValue(1);
+dbfunctions.logWaterInflux(1);
+
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
 
