@@ -10,7 +10,7 @@ const dbfunctions = require('./dbfunctions.js');
 //functions.setTurbineStatus("ebe242ea-baea-4241-a158-763c429fd495", 0);
 //functions.setTurbineStatus("6381c1d6-b347-4afb-9b16-ba17ed239a95", 0);
 
-const gs = async () => {
+/*const gs = async () => {
     var state = await functions.getTurbineStatus();
     console.log(state);
 }
@@ -19,13 +19,14 @@ const gt = async () => {
     console.log(state);
 }
 gs();
-gt();
+gt();*/
 
 //var gt = functions.getTurbineStatus();
 //console.log(gt);
 //dbfunctions.logPowerPrice(5);
 //dbfunctions.logSolarValue(1);
 //dbfunctions.logWaterInflux(1);
+dbfunctions.logGroupState();
 
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
