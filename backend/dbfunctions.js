@@ -77,8 +77,7 @@ const logGroupState = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   
-  await functions.getGroupState().then(gs => {console.log(gs);
-    
+  await functions.getGroupState().then(gs => {
     const state = new GroupState({ money: gs.money, date: Date.now(), waterLevel: gs.waterLevel, environmentCost: gs.environmentCost});
     state.save();
     });
@@ -93,7 +92,6 @@ const getAllGroupStates = async () => {
   for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
     rv.push(doc);
   }
-  console.log(rv); 
   return rv;
 
 }

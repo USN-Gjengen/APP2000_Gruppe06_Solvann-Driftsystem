@@ -15,8 +15,9 @@ app.get('/', (req, res) => {
   console.log("Request received");
 })
 
-app.get('/api/groupstates/last', (req, res) => {
-  res.json(dbfunctions.getAllGroupStates().slice(-1));
+app.get('/api/groupstates/last', async (req, res) => {
+  var states = await dbfunctions.getAllGroupStates();
+  res.json(states[states.length - 1]);
   console.log("Request received");
 })
 app.put('/api/turbines/all', (req, res) => {
@@ -25,15 +26,17 @@ app.put('/api/turbines/all', (req, res) => {
   }else{
     functions.setAllTurbinesOff();
   }
-  console.log(req.body);
 })
 
 if(process.env.NODE_ENV != "test"){
   cron.schedule('0 * * * * *', async () => {
-    console.log("Logging Minute-Updated Values");
     dbfunctions.logWaterInflux();
     dbfunctions.logSolarValue();
     dbfunctions.logPowerPrice();
+  });
+
+  cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
+    dbfunctions.logGroupState();
   });
 }
 
