@@ -91,12 +91,7 @@ const Login = () => {
 									<i className="fa fa-google" />
 								</a>
 							</div>
-							{/* <div className="flex-col-c p-t-155">
-                <span className="txt1 p-b-17">Or Sign Up Using</span>
-                <a href="#" className="txt2">
-                  Sign Up
-                </a>
-              </div> */}
+							
 						</form>
 					</div>
 				</div>
