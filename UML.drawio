@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-02-21T10:43:36.407Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="3dBzTx-XwVTBqs6yjWjG" version="20.8.20" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-02-21T11:05:51.264Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="bL6Kh4tptF5tYrUVzGto" version="20.8.20" type="github" pages="4">
   <diagram id="oaUFSGxLzFAOfT1aSlZE" name="ClassDiagram">
     <mxGraphModel dx="1194" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -318,8 +318,96 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="ZyzDVYhbf7l-Q2-uJV7F" name="Page-3">
-    <mxGraphModel dx="1194" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <diagram id="ZyzDVYhbf7l-Q2-uJV7F" name="Sekvensdiagram">
+    <mxGraphModel dx="954" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-1" value="Bruker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="100" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-2" value="System" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-3" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="205" y="360" as="sourcePoint" />
+            <mxPoint x="204.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-5" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="300" as="sourcePoint" />
+            <mxPoint x="499.5" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-6" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;targetShapes=umlLifeline;" vertex="1" parent="1">
+          <mxGeometry x="195" y="360" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-8" value="Solvann API" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-9" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0.45;exitY=0.2;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7wR6S7UgtLl63FDKQIDZ-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="290" as="sourcePoint" />
+            <mxPoint x="660" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-12" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="200" as="sourcePoint" />
+            <mxPoint x="490" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-13" value="Aktivere turbiner(mengde, Id)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;" vertex="1" connectable="0" parent="7wR6S7UgtLl63FDKQIDZ-12">
+          <mxGeometry x="-0.4483" y="1" relative="1" as="geometry">
+            <mxPoint x="50" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-14" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="200" as="sourcePoint" />
+            <mxPoint x="650" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-15" value="Sender forespørsel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;" vertex="1" connectable="0" parent="7wR6S7UgtLl63FDKQIDZ-14">
+          <mxGeometry x="-0.3286" y="-2" relative="1" as="geometry">
+            <mxPoint x="23" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-16" value="" style="endArrow=classic;html=1;rounded=0;fontSize=13;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="270" as="sourcePoint" />
+            <mxPoint x="510" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-17" value="Statusmelding" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;" vertex="1" connectable="0" parent="7wR6S7UgtLl63FDKQIDZ-16">
+          <mxGeometry x="0.1286" y="3" relative="1" as="geometry">
+            <mxPoint x="9" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-18" value="" style="endArrow=classic;html=1;rounded=0;fontSize=13;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="270" as="sourcePoint" />
+            <mxPoint x="210" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-19" value="Statusmelding" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;" vertex="1" connectable="0" parent="7wR6S7UgtLl63FDKQIDZ-18">
+          <mxGeometry x="0.1286" y="3" relative="1" as="geometry">
+            <mxPoint x="9" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-20" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;targetShapes=umlLifeline;" vertex="1" parent="1">
+          <mxGeometry x="650" y="300" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR6S7UgtLl63FDKQIDZ-21" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=3;targetShapes=umlLifeline;" vertex="1" parent="1">
+          <mxGeometry x="490" y="300" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="n2BzqRjZArauKHbbEgSL" name="Page-4">
+    <mxGraphModel dx="954" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
