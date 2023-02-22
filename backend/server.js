@@ -55,12 +55,15 @@ app.get('/api/SolarValue/last', async (req, res) => {
   res.json(states[states.length - 1]);
   console.log("Request received");
 })
+
 app.put('/api/turbines/all', (req, res) => {
   if(req.body.isTurbineOn){
     functions.setAllTurbinesOn();
   }else{
     functions.setAllTurbinesOff();
   }
+  
+  res.send();
 })
 
 if(process.env.NODE_ENV != "test"){
