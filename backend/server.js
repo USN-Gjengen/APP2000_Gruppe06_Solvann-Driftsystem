@@ -16,7 +16,42 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/groupstates/last', async (req, res) => {
-  var states = await dbfunctions.getAllGroupStates();
+  var states = await dbfunctions.getAll(dbfunctions.GroupState);
+  res.json(states[states.length - 1]);
+  console.log("Request received");
+})
+app.get('/api/groupstates/all', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.GroupState);
+  res.json(states);
+  console.log("Request received");
+})
+app.get('/api/PowerPrice/all', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
+  res.json(states);
+  console.log("Request received");
+})
+app.get('/api/PowerPrice/last', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
+  res.json(states[states.length - 1]);
+  console.log("Request received");
+})
+app.get('/api/WaterInflux/all', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.WaterInflux);
+  res.json(states);
+  console.log("Request received");
+})
+app.get('/api/WaterInflux/last', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.WaterInflux);
+  res.json(states[states.length - 1]);
+  console.log("Request received");
+})
+app.get('/api/SolarValue/all', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.SolarValue);
+  res.json(states);
+  console.log("Request received");
+})
+app.get('/api/SolarValue/last', async (req, res) => {
+  var states = await dbfunctions.getAll(dbfunctions.SolarValue);
   res.json(states[states.length - 1]);
   console.log("Request received");
 })
