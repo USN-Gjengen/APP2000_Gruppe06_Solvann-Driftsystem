@@ -122,7 +122,6 @@ exports.logPowerPrice = logPowerPrice;
 exports.logSolarValue = logSolarValue;
 exports.logWaterInflux = logWaterInflux;
 exports.logGroupState = logGroupState;
-exports.getAllGroupStates = getAllGroupStates;
 exports.getAll = getAll;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
