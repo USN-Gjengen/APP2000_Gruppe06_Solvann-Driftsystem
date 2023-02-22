@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="Appen">
       <BrowserRouter>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/Login" component={Login} />
         <Route exact path="/" component={Prototype} />
       </BrowserRouter>
     </div>
