@@ -9,7 +9,7 @@ const Prototype = () => {
 
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) history.push("/login");
-    }, [logout]);
+    }, [history, logout]);
     
     
     React.useEffect(() => {

@@ -16,7 +16,7 @@ const Login = () => {
 
 	React.useEffect(()=>{
 		if(localStorage.getItem('auth')) history.push('/')
-	},[])
+	})
 
 	const formSubmitter = e => {
 		e.preventDefault();
