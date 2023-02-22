@@ -18,13 +18,13 @@ const powerSchema = new mongoose.Schema({
   price: Number,
   date: Date,
 });
+const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
 const logPowerPrice = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   
   await functions.getPowerPrice().then(price => {console.log(price);
-    const PowerPrice = mongoose.model('PowerPrice', powerSchema);
     const power = new PowerPrice({ price: price, date: Date.now()});
     power.save();
     });
@@ -35,13 +35,13 @@ const solarSchema = new mongoose.Schema({
   value: Number,
   date: Date,
 });
+const SolarValue = mongoose.model('SolarValue', solarSchema);
 
 const logSolarValue = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   
   await functions.getSolarValue().then(value => {console.log(value);
-    const SolarValue = mongoose.model('SolarValue', solarSchema);
     const solar = new SolarValue({ value: value, date: Date.now()});
     solar.save();
     });
@@ -52,13 +52,13 @@ const waterInfluxSchema = new mongoose.Schema({
   waterInflux: Number,
   date: Date,
 });
+const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
 const logWaterInflux = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   
   await functions.getWaterInflux().then(waterInflux => {console.log(waterInflux);
-    const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
     const influx = new WaterInflux({ waterInflux: waterInflux, date: Date.now()});
     influx.save();
     });
@@ -84,7 +84,7 @@ const logGroupState = async () => {
   //mongoose.connection.close();
 }
 
-const getAllGroupStates = async () => {
+/*const getAllGroupStates = async () => {
   mongoose.set('strictQuery', true);
   await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
   const cursor = GroupState.find({  }).cursor();
@@ -93,10 +93,18 @@ const getAllGroupStates = async () => {
     rv.push(doc);
   }
   return rv;
+}*/
 
+const getAll = async (document) => {
+  mongoose.set('strictQuery', true);
+  await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
+  const cursor = document.find({  }).cursor();
+  var rv = [];
+  for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+    rv.push(doc);
+  }
+  return rv;
 }
-
-
 
 const addCat = async (cat) => {
   mongoose.set('strictQuery', true);
@@ -115,3 +123,8 @@ exports.logSolarValue = logSolarValue;
 exports.logWaterInflux = logWaterInflux;
 exports.logGroupState = logGroupState;
 exports.getAllGroupStates = getAllGroupStates;
+exports.getAll = getAll;
+exports.GroupState = GroupState;
+exports.PowerPrice = PowerPrice;
+exports.WaterInflux = WaterInflux;
+exports.SolarValue = SolarValue;
