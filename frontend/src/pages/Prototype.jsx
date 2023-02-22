@@ -1,15 +1,15 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Prototype = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     const [logout, setLogout] = React.useState(false);
     const [groupState, setGroupState] = React.useState({ group: [] });
 
     React.useEffect(() => {
-        if (!localStorage.getItem("auth")) history.push("/login");
-    }, [history, logout]);
+        if (!localStorage.getItem("auth")) navigate("/login");
+    }, [navigate, logout]);
     
     
     React.useEffect(() => {
