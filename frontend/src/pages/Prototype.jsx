@@ -92,7 +92,7 @@ const Prototype = () => {
           datasets: [
             {
               label: "Water level",
-              data: waterLevel,
+              data: [52, 43, 15, 65, 53, 43, 32],
               borderColor: "rgba(53, 162, 235)",
               backgroundColor: "rgba(53, 162, 235, 0.4)",
                 

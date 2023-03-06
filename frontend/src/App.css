@@ -94,8 +94,9 @@ li {
 }
 
 .cards {
-  background-color: white;
+  background-color: rgb(247, 247, 247);
   padding: 2px 16px;
+  border-radius: 1rem;
 }
 
 
