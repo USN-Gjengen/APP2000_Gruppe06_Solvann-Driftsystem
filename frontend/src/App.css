@@ -1,16 +1,45 @@
 .dashboard {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   background-color: #282c34;
   color: white;
 }
 
-.dashboard-title {
-  margin-top: 0;
+.header {
+  position: fixed;
+  height: 35px;
+  width: 100vw;
+  z-index: 2;
+}
+
+.nav {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+li {
+  list-style: none;
+}
+
+.center {
+  text-align: center;
+  display: flex;
+}
+
+.right {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+  text-align: left;
 }
 
 .button-container {

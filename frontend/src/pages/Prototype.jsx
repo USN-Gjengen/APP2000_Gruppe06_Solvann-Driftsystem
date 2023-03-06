@@ -55,11 +55,28 @@ const Prototype = () => {
 
 
     return (
+        
         <div className="dashboard">
-            <button onClick={logoutHandler} className="btn">
-                Logout
-            </button>
-          	<h1 className="dashboard-title">Dashboard</h1>
+            <div className="Header">  
+                <div className="nav">
+                    <div className="left">
+                        <li>
+                            <button onClick={logoutHandler} className="btn">Logout</button>
+                        </li>
+                    </div>
+                    <div className="center">
+                        <li>
+                            <h1 className="dashboard-title">Dashboard</h1>
+                        </li>
+                    </div>
+                    <div className="right">
+                        <li>
+                            <button className="btn">Profile</button>
+                        </li>
+                </div>
+            </div> 
+                
+            </div>
           	<div className="button-container">
 				<button className="btn" onClick={handleTurbineOn}>
 					<span>Turn On</span>
