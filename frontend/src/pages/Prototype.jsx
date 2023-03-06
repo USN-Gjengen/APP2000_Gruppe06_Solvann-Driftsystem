@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  } from 'chart.js';
+  import { Bar } from "react-chartjs-2";
+  
+ChartJS.register (CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Prototype = () => {
+
     const navigate = useNavigate();
     const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     const [logout, setLogout] = React.useState(false);
     const [groupState, setGroupState] = React.useState({ group: [] });
+
+
+   
 
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) navigate("/login");
@@ -54,8 +71,56 @@ const Prototype = () => {
     };
 
 
+    const [chartData, setChartData] = useState({
+        datasets: [],
+      });
+    const [chartOptions, setChartOptions] = useState({});
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    let waterLevel = [];
+    axios
+    .get("http://api.solvann.eksempler.no/api/groupstates/last") // get data from api
+    .then((res) => { 
+        console.log(res.data);
+        for (const dataObj of res.data.data) { // loop through data and create new array with only data
+            waterLevel.push(parseInt(dataObj.waterLevel));
+        }
+    })
+      useEffect(() => {
+        setChartData({
+          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          datasets: [
+            {
+              label: "Water level",
+              data: waterLevel,
+              borderColor: "rgba(53, 162, 235)",
+              backgroundColor: "rgba(53, 162, 235, 0.4)",
+                
+
+            }
+          ]
+      });
+      setChartOptions({
+        responsive: true,
+        plugins: {
+          Legend: {
+            position: "top"
+          },
+          title: {
+            display: true,
+            text: "Chart.js Bar Chart"
+          },
+        }
+      });
+    }, [waterLevel])
+   
+    
     return (
         
+    <html className='html-dashboard'>
+        
+        
+            
         <div className="dashboard">
             <div className="Header">  
                 <div className="nav">
@@ -75,6 +140,7 @@ const Prototype = () => {
                         </li>
                 </div>
             </div> 
+            
                 
             </div>
           	<div className="button-container">
@@ -89,11 +155,27 @@ const Prototype = () => {
 				</button>
         	</div>
 
-          	<p>The turbine is currently {isTurbineOn ? "on" : "off"}</p>
-			<p>Water level: {groupState.waterLevel} </p>
-			<p>Money: {groupState.money}</p>
-			<p>Environment Cost: {groupState.environmentCost}</p>
+            <div className='main-container'>
+                <div className='cards water-level-graph'>
+                    <h2>Water level Graph</h2>
+                    
+                <Bar options={chartOptions} data={chartData}/>
+                </div>
+                <div className='cards money-graph'>
+                    <h2>Money Graph</h2>
+
+                </div>
+
+            </div>
+            <div className="data">
+                <p>The turbine is currently {isTurbineOn ? "on" : "off"}</p>
+                <p>Water level: {groupState.waterLevel} </p>
+                <p>Money: {groupState.money}</p>
+                <p>Environment Cost: {groupState.environmentCost}</p>
+            </div>
         </div>
+            
+    </html>
     );
 };
 
