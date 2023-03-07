@@ -95,8 +95,6 @@ const Prototype = () => {
               data: [52, 43, 15, 65, 53, 43, 32],
               borderColor: "rgba(53, 162, 235)",
               backgroundColor: "rgba(53, 162, 235, 0.4)",
-                
-
             }
           ]
       });
@@ -108,7 +106,7 @@ const Prototype = () => {
           },
           title: {
             display: true,
-            text: "Chart.js Bar Chart"
+            text: "Water level Graph"
           },
         }
       });
@@ -157,8 +155,7 @@ const Prototype = () => {
 
             <div className='main-container'>
                 <div className='cards water-level-graph'>
-                    <h2>Water level Graph</h2>
-                    
+                                       
                 <Bar options={chartOptions} data={chartData}/>
                 </div>
                 <div className='cards money-graph'>
