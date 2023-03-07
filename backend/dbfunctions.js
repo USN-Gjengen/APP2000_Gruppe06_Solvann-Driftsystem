@@ -27,7 +27,6 @@ const logPowerPrice = async () => {
     const power = new PowerPrice({ price: price, date: Date.now()});
     power.save();
     });
-  //mongoose.connection.close();
 }
 
 const solarSchema = new mongoose.Schema({
@@ -44,7 +43,6 @@ const logSolarValue = async () => {
     const solar = new SolarValue({ value: value, date: Date.now()});
     solar.save();
     });
-  //mongoose.connection.close();
 }
 
 const waterInfluxSchema = new mongoose.Schema({
@@ -61,7 +59,6 @@ const logWaterInflux = async () => {
     const influx = new WaterInflux({ waterInflux: waterInflux, date: Date.now()});
     influx.save();
     });
-  //mongoose.connection.close();
 }
 
 const groupStateSchema = new mongoose.Schema({
@@ -80,7 +77,6 @@ const logGroupState = async () => {
     const state = new GroupState({ money: gs.money, date: Date.now(), waterLevel: gs.waterLevel, environmentCost: gs.environmentCost});
     state.save();
     });
-  //mongoose.connection.close();
 }
 
 /*const getAllGroupStates = async () => {

@@ -27,9 +27,6 @@ afterEach(async () => {
 
 describe("GET /", () => {
     it("should return {working : true}", async () => {
-        //fetch('https://solvann.azurewebsites.net/api/Solar/')
-        //    .then(res => res.json())
-        //    .then(data => console.log(data));
         const res = await request(server).get("/");
         expect(res.statusCode).toBe(200);
         expect(res.body).toStrictEqual({"working" : true});
