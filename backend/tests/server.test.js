@@ -18,7 +18,7 @@ beforeEach(async () => {
     mongoose.set('strictQuery', true);
     await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
 });
-  
+
 /* Closing database connection after each test. */
 afterEach(async () => {
     await mongoose.connection.close();
@@ -29,8 +29,8 @@ describe("GET /", () => {
     it("should return {working : true}", async () => {
         const res = await request(server).get("/");
         expect(res.statusCode).toBe(200);
-        expect(res.body).toStrictEqual({"working" : true});
+        expect(res.body).toStrictEqual({ "working": true });
     });
-  });
+});
 
 server.close();
