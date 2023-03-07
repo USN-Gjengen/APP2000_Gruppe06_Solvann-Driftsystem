@@ -15,6 +15,7 @@ try {
 
 /* Connecting to the database before each test. */
 beforeEach(async () => {
+    await mongoose.connection.close();
     mongoose.set('strictQuery', true);
     await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
 });

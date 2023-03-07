@@ -1,5 +1,6 @@
 const functions = require('./functions.js');
 const dbfunctions = require('./dbfunctions.js');
+const mongoose = dbfunctions.connect();
 const express = require('express');
 const cron = require('node-cron');
 const cors = require('cors');
@@ -9,6 +10,11 @@ const app = express();
 const port = 21613;
 app.use(cors());
 app.use(express.json());
+
+
+process.on('SIGINT', () => {
+	mongoose.connection.close();
+});
 
 app.get('/', (req, res) => {
 	res.json({ "working": true });
