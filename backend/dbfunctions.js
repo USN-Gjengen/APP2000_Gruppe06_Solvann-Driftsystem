@@ -6,11 +6,11 @@ let DB_USR = "";
 let DB_PWD = "";
 
 try {
-    DB_USR = process.env.DATABASE_USERNAME;
-    DB_PWD = process.env.DATABASE_PASSWORD;
-  } catch (err) {
-    console.error(err);
-  }
+	DB_USR = process.env.DATABASE_USERNAME;
+	DB_PWD = process.env.DATABASE_PASSWORD;
+} catch (err) {
+	console.error(err);
+}
 
 const connect = async () => {
     console.log("Connecting to database...");
@@ -23,70 +23,68 @@ const connect = async () => {
         case 1:
             console.log("Database successfully connected!");
             break;
-		case 2:
-			if(process.env.NODE_ENV != "test"){
-				console.log("Error! Database is still connecting");
-			}
-			break;
-		case 3:
-			if(process.env.NODE_ENV != "test"){
-				console.log("Error! Database is trying to disconnect");
-			}
-			break;
+		    case 2:
+			      if(process.env.NODE_ENV != "test"){
+				        console.log("Error! Database is still connecting");
+			      }
+			      break;
+		    case 3:
+			      if(process.env.NODE_ENV != "test"){
+				        console.log("Error! Database is trying to disconnect");
+			      }
+			      break;
     }
 
     return mongoose;
 } 
 
-//addCat().catch(err => console.log(err));
-
 const powerSchema = new mongoose.Schema({
-  price: Number,
-  date: Date,
+	price: Number,
+	date: Date,
 });
 const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
 const logPowerPrice = async () => {
-  await functions.getPowerPrice().then(price => {console.log(price);
+  await functions.getPowerPrice().then(price => {
+    console.log(price);
     const power = new PowerPrice({ price: price, date: Date.now()});
     power.save();
-    });
-  //mongoose.connection.close();
+  });
 }
 
 const solarSchema = new mongoose.Schema({
-  value: Number,
-  date: Date,
+	value: Number,
+	date: Date,
 });
 const SolarValue = mongoose.model('SolarValue', solarSchema);
 
 const logSolarValue = async () => {
-  await functions.getSolarValue().then(value => {console.log(value);
+  await functions.getSolarValue().then(value => {
+    console.log(value);
     const solar = new SolarValue({ value: value, date: Date.now()});
     solar.save();
-    });
-  //mongoose.connection.close();
+  });
 }
 
 const waterInfluxSchema = new mongoose.Schema({
-  waterInflux: Number,
-  date: Date,
+	waterInflux: Number,
+	date: Date,
 });
 const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
 const logWaterInflux = async () => {
-  await functions.getWaterInflux().then(waterInflux => {console.log(waterInflux);
+  await functions.getWaterInflux().then(waterInflux => {
+    console.log(waterInflux);
     const influx = new WaterInflux({ waterInflux: waterInflux, date: Date.now()});
     influx.save();
-    });
-  //mongoose.connection.close();
+  });
 }
 
 const groupStateSchema = new mongoose.Schema({
-  money: Number,
-  date: Date,
-  waterLevel: Number,
-  environmentCost: Number
+	money: Number,
+	date: Date,
+	waterLevel: Number,
+	environmentCost: Number
 });
 const GroupState = mongoose.model('GroupState', groupStateSchema);
 
@@ -116,16 +114,6 @@ const getAll = async (document) => {
   return rv;
 }
 
-const addCat = async (cat) => {
-  const kittySchema = new mongoose.Schema({
-    name: String
-  });
-  const Kitten = mongoose.model('Kitten', kittySchema);
-  const fluffy = new Kitten({ name: cat });
-  await fluffy.save();
-}
-
-exports.addCat = addCat;
 exports.connect = connect;
 exports.logPowerPrice = logPowerPrice;
 exports.logSolarValue = logSolarValue;
