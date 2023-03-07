@@ -12,7 +12,6 @@ try {
     console.error(err);
   }
 
-//addCat().catch(err => console.log(err));
 
 const powerSchema = new mongoose.Schema({
   price: Number,
@@ -106,18 +105,7 @@ const getAll = async (document) => {
   return rv;
 }
 
-const addCat = async (cat) => {
-  mongoose.set('strictQuery', true);
-  await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
-  const kittySchema = new mongoose.Schema({
-    name: String
-  });
-  const Kitten = mongoose.model('Kitten', kittySchema);
-  const fluffy = new Kitten({ name: cat });
-  await fluffy.save();
-}
 
-exports.addCat = addCat;
 exports.logPowerPrice = logPowerPrice;
 exports.logSolarValue = logSolarValue;
 exports.logWaterInflux = logWaterInflux;
