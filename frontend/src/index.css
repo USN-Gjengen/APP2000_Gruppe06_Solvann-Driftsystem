@@ -1,99 +1,95 @@
-
-  html {
-    font-family: Microsoft Sans Serif;
-    /* background color */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(79deg, #5439db, #65b6e9 48%, #b1f78b);
+html {
+	font-family: Microsoft Sans Serif;
+	/* background color */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(79deg, #5439db, #65b6e9 48%, #b1f78b);
 }
 
 .App {
-    text-align: center;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    color: white; 
+	text-align: center;
+	display: flex;
+	min-height: 100vh;
+	align-items: center;
+	justify-content: center;
+	color: white;
 }
 
 .login-form {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .login_container {
-  width: 100%;  
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 .wrap-login {
-  width: 300px;
-  padding: 40px;
-  background: transparent;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e6e6e6;
+	width: 300px;
+	padding: 40px;
+	background: transparent;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+	border: 1px solid #e6e6e6;
 }
 
-/* form */ 
+/* form */
 
 .form-title-login {
-  display: block;
-  font-size: 39px;
-  color: white;
-  line-height: 1.2;
-  text-align: center;
+	display: block;
+	font-size: 39px;
+	color: white;
+	line-height: 1.2;
+	text-align: center;
 }
 
 /* input */
 
 .label-input {
-  font-size: 18px;
-  color: white;
-  line-height: 1.8;
+	font-size: 18px;
+	color: white;
+	line-height: 1.8;
 }
 
 .input {
-  font-size: 16px;
-  color: black;
-  line-height: 1.2;
-  display: block;
-  width: 100%;
-  height: 55px;
-  border:none;
-  border-radius: 0.5rem;
+	font-size: 16px;
+	color: black;
+	line-height: 1.2;
+	display: block;
+	width: 100%;
+	height: 55px;
+	border: none;
+	border-radius: 0.5rem;
 }
 
 /* forgot password */
 
 .text-right {
-  text-align: right;
-  padding: 10px 0 0 0;
+	text-align: right;
+	padding: 10px 0 0 0;
 }
 
 /* button */
 
-  .form-btn-login {
-    background: #5439db;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 1rem;
-    margin: 1.2rem 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-
-
-
+.form-btn-login {
+	background: #5439db;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	padding: 1rem;
+	margin: 1.2rem 0;
+	cursor: pointer;
+	font-size: 1.2rem;
+}
