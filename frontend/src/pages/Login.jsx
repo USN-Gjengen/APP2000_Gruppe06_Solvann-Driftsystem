@@ -36,7 +36,7 @@ const Login = () => {
 	};
 
 	return (
-		<body className='body-login'>
+		
 		<div>
 			<div>
 				<div className="login_container">
@@ -94,7 +94,6 @@ const Login = () => {
 			</div>
 			<div id="dropDownSelect1" />
 		</div>
-		</body>
 	);
 };
 

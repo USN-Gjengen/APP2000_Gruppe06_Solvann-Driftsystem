@@ -1,19 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  } from 'chart.js';
-  import { Bar } from "react-chartjs-2";
-  
-ChartJS.register (CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
+import { Line } from 'react-chartjs-2';
+import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement, Filler} from 'chart.js';
+ChartJS.register(
+  Title, Tooltip, LineElement, Legend,
+  CategoryScale, LinearScale, PointElement, Filler
+)
 const Prototype = () => {
 
     const navigate = useNavigate();
@@ -29,7 +21,7 @@ const Prototype = () => {
     }, [navigate, logout]);
     
     
-    React.useEffect(() => {
+   /* React.useEffect(() => {
         fetch("http://api.solvann.eksempler.no/api/turbines/all", {
             method: "PUT",
             headers: {
@@ -40,7 +32,7 @@ const Prototype = () => {
         .catch(error => {
             console.error(error);
         });
-    }, [isTurbineOn]);
+    }, [isTurbineOn]);*/
 
     const handleTurbineOn = (e) => {
         e.preventDefault();
@@ -65,62 +57,47 @@ const Prototype = () => {
             	"Content-Type": "application/json"
             },
         });
-
         var data = await response.json();
         setGroupState(data);
     };
 
+    const [data, setData]= useState({labels:[],datasets:[{}],})
 
-    const [chartData, setChartData] = useState({
-        datasets: [],
-      });
-    const [chartOptions, setChartOptions] = useState({});
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    let waterLevel = [];
-    axios
-    .get("http://api.solvann.eksempler.no/api/groupstates/last") // get data from api
-    .then((res) => { 
-        console.log(res.data);
-        for (const dataObj of res.data.data) { // loop through data and create new array with only data
-            waterLevel.push(parseInt(dataObj.waterLevel));
-        }
-    })
-      useEffect(() => {
-        setChartData({
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          datasets: [
-            {
-              label: "Water level",
-              data: [52, 43, 15, 65, 53, 43, 32],
-              borderColor: "rgba(53, 162, 235)",
-              backgroundColor: "rgba(53, 162, 235, 0.4)",
-                
+      useEffect(()=>{
+        const arr = [];
+        fetch('https://jsonplaceholder.typicode.com/comments')
+        .then(response=>response.json())
+        .then(json => {console.log("json", json)
+            json.map((item, index)=>{
+                arr.push(item.postId);
+                arr.reverse();
+            })
+            setData({
+                labels:["Jan","Feb", "March", "April", "May", "June", "July", "August", "September", "Oct", "Nov", "Dec"],
+                datasets:[
+                  {
+                    label:"First Dataset",
+                    data:arr,
+                    backgroundColor:'#16ccc6',
+                    borderColor:'green',
+                    tension:0.4,
+                    fill:true,
+                    pointStyle:'rect',
+                    pointBorderColor:'blue',
+                    pointBackgroundColor:'#fff',
+                    showLine:true
+                  }
+                ],
+              })}
+        )
+        console.log("arr", arr)
+        
 
-            }
-          ]
-      });
-      setChartOptions({
-        responsive: true,
-        plugins: {
-          Legend: {
-            position: "top"
-          },
-          title: {
-            display: true,
-            text: "Chart.js Bar Chart"
-          },
-        }
-      });
-    }, [waterLevel])
-   
+      },[])
+
     
     return (
         
-    <html className='html-dashboard'>
-        
-        
-            
         <div className="dashboard">
             <div className="Header">  
                 <div className="nav">
@@ -157,9 +134,8 @@ const Prototype = () => {
 
             <div className='main-container'>
                 <div className='cards water-level-graph'>
-                    <h2>Water level Graph</h2>
-                    
-                <Bar options={chartOptions} data={chartData}/>
+                    <h2>Water level Graph</h2> 
+                    <Line data={data}></Line>
                 </div>
                 <div className='cards money-graph'>
                     <h2>Money Graph</h2>
@@ -175,7 +151,7 @@ const Prototype = () => {
             </div>
         </div>
             
-    </html>
+    
     );
 };
 
