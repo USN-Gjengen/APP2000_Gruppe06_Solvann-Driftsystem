@@ -61,41 +61,145 @@ const Prototype = () => {
         setGroupState(data);
     };
 
-    const [data, setData]= useState({labels:[],datasets:[{}],})
+    const [money, setMoney] = useState({
+        labels: [],
+        datasets: [
+            {
+                label: "Money",
+                data: [],
+                backgroundColor: "#16ccc6",
+                borderColor: "green",
+                tension: 0.4,
+                fill: true,
+                pointStyle: "rect",
+                pointBorderColor: "blue",
+                pointBackgroundColor: "#fff",
+                showLine: true,
+            },
+        ],
+    });
 
-      useEffect(()=>{
-        const arr = [];
-        fetch('https://jsonplaceholder.typicode.com/comments')
-        .then(response=>response.json())
-        .then(json => {console.log("json", json)
-            json.map((item, index)=>{
-                arr.push(item.postId);
-                arr.reverse();
-            })
-            setData({
-                labels:["Jan","Feb", "March", "April", "May", "June", "July", "August", "September", "Oct", "Nov", "Dec"],
-                datasets:[
+    const [data, setData] = useState({
+        labels: [],
+        datasets: [
+          {
+            label: "Water level",
+            data: [],
+            backgroundColor: "#16ccc6",
+            borderColor: "green",
+            tension: 0.4,
+            fill: true,
+            pointStyle: "rect",
+            pointBorderColor: "blue",
+            pointBackgroundColor: "#fff",
+            showLine: true,
+          },
+        ],
+      });
+
+      const generateTimeLabels = (minutesInterval, numberOfLabels) => {
+        const now = new Date();
+        const labels = [];
+
+        for (let i = 0; i < numberOfLabels; i++) {
+            const time = new Date(now.getTime() - i * minutesInterval * 60000);
+            const formattedTime = time.toLocaleDateString("en-GB", {
+                timeZone: 'Europe/Oslo',
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+            });
+            labels.unshift(formattedTime);
+        }
+
+        return labels;
+      };
+      
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(
+              "http://api.solvann.eksempler.no/api/groupstates/last"
+            );
+            const jsonData = await response.json();
+      
+            if (typeof jsonData === "object" && jsonData !== null) {
+              const waterLevel = jsonData.waterLevel;
+              const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
+      
+              setData((prevState) => ({
+                ...prevState,
+                labels: labels,
+                datasets: [
                   {
-                    label:"First Dataset",
-                    data:arr,
-                    backgroundColor:'#16ccc6',
-                    borderColor:'green',
-                    tension:0.4,
-                    fill:true,
-                    pointStyle:'rect',
-                    pointBorderColor:'blue',
-                    pointBackgroundColor:'#fff',
-                    showLine:true
-                  }
+                    ...prevState.datasets[0],
+                    data: [...prevState.datasets[0].data, waterLevel],
+                  },
                 ],
-              })}
-        )
-        console.log("arr", arr)
+              }));
+            } else {
+              console.error("Error: jsonData is not an object", jsonData);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+      
+        fetchData();
+
+
+        const interval = setInterval(() => {
+            fetchData(); // make this update every 5 minutes
+        }, 300000); // 5 Minutes
+
+        return () => clearInterval(interval);
+
+      }, []);
+
+
+      useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "http://api.solvann.eksempler.no/api/groupstates/last"
+                );
+                const jsonData = await response.json();
+
+                if (typeof jsonData === "object" && jsonData !== null) {
+                    const money = jsonData.money;
+                    const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
+
+                    setMoney((prevState) => ({
+                        ...prevState,
+                        labels: labels,
+                        datasets: [
+                            {
+                                ...prevState.datasets[0],
+                                data: [...prevState.datasets[0].data, money],
+                            },
+                        ],
+                    }));
+                } else {
+                    console.error("Error: jsonData is not an object", jsonData);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+
+
+        const interval = setInterval(() => {
+            fetchData(); // make this update every 5 minutes
+        }, 300000); // 5 Minutes
         
+        return () => clearInterval(interval);
 
-      },[])
+    }, []);
 
-    
+
+
     return (
         
         <div className="dashboard">
@@ -139,6 +243,7 @@ const Prototype = () => {
                 </div>
                 <div className='cards money-graph'>
                     <h2>Money Graph</h2>
+                    <Line data={money}></Line>
 
                 </div>
 
