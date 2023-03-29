@@ -96,15 +96,43 @@ const logGroupState = async () => {
 	//mongoose.connection.close();
 }
 
-/*const getAllGroupStates = async () => {
-  const cursor = GroupState.find({  }).cursor();
-  var rv = [];
-  for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
-	rv.push(doc);
-  }
-  return rv;
-}*/
-
+const getN = async (document, n) => {
+	const cursor = document.find({}).
+	limit(n).
+  	sort({ date: -1 }).
+  	cursor();
+	var rv = [];
+	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+		rv.push(doc);
+		console.log(doc);
+	}
+	return rv;
+}
+const getMonth = async (document,date) => {
+    const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
+    const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    return getPeriod(document, date1, date2);
+}
+const getDay = async (document,date) => {
+    const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
+   /* getPeriod(document, date1, date2).then(result => {console.log(result[result.length-1]);
+		console.log(result[0]);
+	});*/
+	return getPeriod(document, date1, date2);
+} 
+const getPeriod = async (document,date1, date2) => {
+	const cursor = document.find({}).
+	where('date').gte(date1).lte(date2).
+  	sort({ date: -1 }).
+  	cursor();
+	var rv = [];
+	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+		//console.log(doc);
+		rv.push(doc);
+	}
+	return rv;
+}
 const getAll = async (document) => {
 	const cursor = document.find({}).cursor();
 	var rv = [];
@@ -120,6 +148,10 @@ exports.logSolarValue = logSolarValue;
 exports.logWaterInflux = logWaterInflux;
 exports.logGroupState = logGroupState;
 exports.getAll = getAll;
+exports.getN = getN;
+exports.getMonth = getMonth;
+exports.getDay = getDay;
+exports.getPeriod = getPeriod;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;
