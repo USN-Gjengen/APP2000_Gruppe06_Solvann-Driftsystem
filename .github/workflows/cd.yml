@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/ci.yml
+    uses: USN-Gjengen/APP2000_Gruppe06_Solvann-Driftsystem/.github/workflows/ci.yml@main
 
   deploy-backend:
     runs-on: ubuntu-latest
