@@ -82,7 +82,7 @@ jobs:
         username: ${{secrets.SERVER_USERNAME}}
         password: ${{secrets.SERVER_PASSWORD}}
         local_folder: ./backend/
-        remote_folder: /var/www/eksempler.no/solvann/test/backend/
+        remote_folder: /var/www/eksempler.no/solvann/backend/
         cleanup: true
         exclude: '["tests"]'
 
@@ -109,6 +109,6 @@ jobs:
         username: ${{secrets.SERVER_USERNAME}}
         password: ${{secrets.SERVER_PASSWORD}}
         local_folder: ./frontend/
-        remote_folder: /var/www/eksempler.no/solvann/test/frontend/
+        remote_folder: /var/www/eksempler.no/solvann/frontend/
         cleanup: true
         exclude: '["tests"]'
