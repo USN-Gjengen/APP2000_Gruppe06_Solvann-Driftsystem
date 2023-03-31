@@ -6,8 +6,13 @@ on:
     paths: [ "frontend/**", "backend/**" ]
 
 jobs:
-  build:
-    uses: USN-Gjengen/APP2000_Gruppe06_Solvann-Driftsystem/.github/workflows/ci.yml@main
+  test-project:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Test
+      uses: USN-Gjengen/APP2000_Gruppe06_Solvann-Driftsystem/.github/workflows/ci.yml@main
+
 
   deploy-backend:
     runs-on: ubuntu-latest
