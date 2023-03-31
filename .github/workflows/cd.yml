@@ -21,7 +21,7 @@ jobs:
     - name: Build project
       uses: ./.github/workflows/ci.yml
     - name: Deploy to server
-      uses: actions/ftp-deploy@v3.1.2
+      uses: SamKirkland/FTP-Deploy-Action@v3.1.2
       with:
         server: 217.170.197.88
         port: ${{secrets.SERVER_PORT}}
