@@ -6,28 +6,50 @@ on:
     paths: [ "frontend/**", "backend/**" ]
 
 jobs:
-  deploy:
+  build:
+    uses: ./.github/workflows/ci.yml@main
+
+  deploy-backend:
     runs-on: ubuntu-latest
     
     defaults:
       run:
         working-directory: backend
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-    - name: Check out
+    - name: Checkout
       uses: actions/checkout@v3
-    - name: Build project
-      uses: ./.github/workflows/ci.yml
-    - name: Deploy to server
-      uses: SamKirkland/FTP-Deploy-Action@v3.1.2
+    - name: Deploy backend
+      uses: SamKirkland/FTP-Deploy-Action
       with:
         server: 217.170.197.88
         port: ${{secrets.SERVER_PORT}}
         username: ${{secrets.SERVER_USERNAME}}
         password: ${{secrets.SERVER_PASSWORD}}
-        server-dir: var/www/eksempler.no/solvann/test/
+        local-dir: ./backend/
+        server-dir: var/www/eksempler.no/solvann/test/backend/
+        dry-run: true
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: frontend
+        path: frontend
+    - name: Deploy frontend
+      uses: SamKirkland/FTP-Deploy-Action
+      with:
+        server: 217.170.197.88
+        port: ${{secrets.SERVER_PORT}}
+        username: ${{secrets.SERVER_USERNAME}}
+        password: ${{secrets.SERVER_PASSWORD}}
+        local-dir: ./frontend/
+        server-dir: var/www/eksempler.no/solvann/test/frontend/
         dry-run: true
