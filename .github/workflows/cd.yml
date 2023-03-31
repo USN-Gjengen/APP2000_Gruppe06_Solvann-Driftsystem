@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-project:
-    uses: USN-Gjengen/APP2000_Gruppe06_Solvann-Driftsystem/.github/workflows/ci.yml@main
+    uses: ./.github/workflows/ci.yml
 
 
   deploy-backend:
