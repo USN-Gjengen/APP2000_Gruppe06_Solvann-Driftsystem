@@ -64,7 +64,7 @@ jobs:
 
   deploy-backend:
     needs: [test-backend]
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     
     defaults:
       run:
@@ -86,7 +86,7 @@ jobs:
 
   deploy-frontend:
     needs: [build-frontend]
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     
     defaults:
       run:
