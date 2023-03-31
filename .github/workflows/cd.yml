@@ -72,7 +72,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Deploy backend
-      uses: SamKirkland/FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@master
       with:
         server: 217.170.197.88
         port: ${{secrets.SERVER_PORT}}
@@ -96,7 +96,7 @@ jobs:
         name: frontend
         path: frontend
     - name: Deploy frontend
-      uses: SamKirkland/FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@master
       with:
         server: 217.170.197.88
         port: ${{secrets.SERVER_PORT}}
