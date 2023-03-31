@@ -84,7 +84,7 @@ jobs:
         local_folder: ./backend/
         remote_folder: /var/www/eksempler.no/solvann/backend/
         cleanup: true
-        exclude: '["tests"]'
+        exclude: '["tests", "node_modules/**"]'
 
   deploy-frontend:
     needs: [build-frontend]
@@ -111,4 +111,4 @@ jobs:
         local_folder: ./frontend/
         remote_folder: /var/www/eksempler.no/solvann/frontend/
         cleanup: true
-        exclude: '["tests"]'
+        exclude: '["tests", "node_modules/**"]'
