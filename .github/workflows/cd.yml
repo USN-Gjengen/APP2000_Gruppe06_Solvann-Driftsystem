@@ -64,7 +64,7 @@ jobs:
 
   deploy-backend:
     needs: [test-backend]
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     
     defaults:
       run:
@@ -74,16 +74,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Deploy backend
-      uses: SamKirkland/FTP-Deploy-Action@v3.1.2
+      uses: sand4rt/ftp-deployer@v1.7
       with:
-        ftp-server: sftp://217.170.197.88:${{secrets.SERVER_PORT}}/var/www/eksempler.no/solvann/test/backend/
-        ftp-username: ${{secrets.SERVER_USERNAME}}
-        ftp-password: ${{secrets.SERVER_PASSWORD}}
-        local-dir: ./backend/
+        sftp: true
+        host: 217.170.197.88
+        port: ${{secrets.SERVER_PORT}}
+        username: ${{secrets.SERVER_USERNAME}}
+        password: ${{secrets.SERVER_PASSWORD}}
+        local_folder: ./backend/
+        remote_folder: /var/www/eksempler.no/solvann/test/backend/
 
   deploy-frontend:
     needs: [build-frontend]
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     
     defaults:
       run:
@@ -96,9 +99,12 @@ jobs:
         name: frontend
         path: frontend
     - name: Deploy frontend
-      uses: SamKirkland/FTP-Deploy-Action@v3.1.2
+      uses: sand4rt/ftp-deployer@v1.7
       with:
-        ftp-server: sftp://217.170.197.88:${{secrets.SERVER_PORT}}/var/www/eksempler.no/solvann/test/frontend/
-        ftp-username: ${{secrets.SERVER_USERNAME}}
-        ftp-password: ${{secrets.SERVER_PASSWORD}}
-        local-dir: ./frontend/
+        sftp: true
+        host: 217.170.197.88
+        port: ${{secrets.SERVER_PORT}}
+        username: ${{secrets.SERVER_USERNAME}}
+        password: ${{secrets.SERVER_PASSWORD}}
+        local_folder: ./frontend/
+        remote_folder: /var/www/eksempler.no/solvann/test/frontend/
