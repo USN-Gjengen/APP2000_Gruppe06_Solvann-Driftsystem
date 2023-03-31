@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/groupstates/last', async (req, res) => {
-	var states = await dbfunctions.getAll(dbfunctions.GroupState);
-	res.json(states[states.length - 1]);
+	var states = await dbfunctions.getN(dbfunctions.GroupState, 1);
+	res.json(states[0]);
 	console.log("Request received");
 })
 app.get('/api/groupstates/all', async (req, res) => {
@@ -37,8 +37,8 @@ app.get('/api/PowerPrice/all', async (req, res) => {
 	console.log("Request received");
 })
 app.get('/api/PowerPrice/last', async (req, res) => {
-	var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
-	res.json(states[states.length - 1]);
+	var states = await dbfunctions.getN(dbfunctions.PowerPrice, 1);
+	res.json(states[0]);
 	console.log("Request received");
 })
 app.get('/api/WaterInflux/all', async (req, res) => {
@@ -47,8 +47,8 @@ app.get('/api/WaterInflux/all', async (req, res) => {
 	console.log("Request received");
 })
 app.get('/api/WaterInflux/last', async (req, res) => {
-	var states = await dbfunctions.getAll(dbfunctions.WaterInflux);
-	res.json(states[states.length - 1]);
+	var states = await dbfunctions.getN(dbfunctions.WaterInflux, 1);
+	res.json(states[0]);
 	console.log("Request received");
 })
 app.get('/api/SolarValue/all', async (req, res) => {
@@ -57,8 +57,8 @@ app.get('/api/SolarValue/all', async (req, res) => {
 	console.log("Request received");
 })
 app.get('/api/SolarValue/last', async (req, res) => {
-	var states = await dbfunctions.getAll(dbfunctions.SolarValue);
-	res.json(states[states.length - 1]);
+	var states = await dbfunctions.getN(dbfunctions.SolarValue, 1);
+	res.json(states[0]);
 	console.log("Request received");
 })
 
