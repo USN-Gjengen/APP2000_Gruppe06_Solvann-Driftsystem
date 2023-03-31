@@ -6,7 +6,7 @@ on:
     paths: [ "frontend/**", "backend/**" ]
 
 jobs:
-  build-backend:
+  test-backend:
     runs-on: ubuntu-latest
     
     defaults:
@@ -24,7 +24,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
     - run: npm test
       env:
         DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
@@ -62,6 +61,7 @@ jobs:
 
 
   deploy-backend:
+    needs: [test-backend]
     runs-on: ubuntu-latest
     
     defaults:
@@ -83,6 +83,7 @@ jobs:
         dry-run: true
 
   deploy-frontend:
+    needs: [build-frontend]
     runs-on: ubuntu-latest
     
     defaults:
