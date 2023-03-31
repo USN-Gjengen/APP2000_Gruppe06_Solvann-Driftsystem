@@ -18,6 +18,8 @@ jobs:
         node-version: [18.x]
 
     steps:
+    - name: Check out
+      uses: actions/checkout@v3
     - name: Build project
       uses: ./.github/workflows/ci.yml
     - name: Deploy to server
