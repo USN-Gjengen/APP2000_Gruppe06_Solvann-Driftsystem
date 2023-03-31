@@ -141,6 +141,17 @@ const getAll = async (document) => {
 	}
 	return rv;
 }
+const getAvgDay = async (document,date1, date2) => {
+  const average = await document.aggregate([
+    { $match: { date: {
+		$gte: date1, 
+		$lte: date2
+	} } },
+    { $group: { _id: null, average: { $avg: '$value' } } },
+  ]).exec();
+	console.log(average);
+  return average;
+}
 
 exports.connect = connect;
 exports.logPowerPrice = logPowerPrice;
@@ -152,6 +163,7 @@ exports.getN = getN;
 exports.getMonth = getMonth;
 exports.getDay = getDay;
 exports.getPeriod = getPeriod;
+exports.getAvgDay = getAvgDay;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;
