@@ -83,7 +83,7 @@ jobs:
         password: ${{secrets.SERVER_PASSWORD}}
         local_folder: ./backend/
         remote_folder: /var/www/eksempler.no/solvann/backend/
-        cleanup: true
+        cleanup: false
         exclude: '["tests/**", "node_modules/**"]'
 
   deploy-frontend:
@@ -110,5 +110,5 @@ jobs:
         password: ${{secrets.SERVER_PASSWORD}}
         local_folder: ./frontend/
         remote_folder: /var/www/eksempler.no/solvann/frontend/
-        cleanup: true
+        cleanup: false
         exclude: '["tests/**", "node_modules/**"]'
