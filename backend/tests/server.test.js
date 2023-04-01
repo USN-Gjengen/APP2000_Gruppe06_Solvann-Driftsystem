@@ -15,10 +15,11 @@ try {
 
 /* Connecting to the database before each test. */
 beforeEach(async () => {
+    await mongoose.connection.close();
     mongoose.set('strictQuery', true);
     await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
 });
-  
+
 /* Closing database connection after each test. */
 afterEach(async () => {
     await mongoose.connection.close();
@@ -27,13 +28,10 @@ afterEach(async () => {
 
 describe("GET /", () => {
     it("should return {working : true}", async () => {
-        //fetch('https://solvann.azurewebsites.net/api/Solar/')
-        //    .then(res => res.json())
-        //    .then(data => console.log(data));
         const res = await request(server).get("/");
         expect(res.statusCode).toBe(200);
-        expect(res.body).toStrictEqual({"working" : true});
+        expect(res.body).toStrictEqual({ "working": true });
     });
-  });
+});
 
 server.close();

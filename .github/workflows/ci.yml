@@ -1,18 +1,16 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Compile Project
 
 on:
-  push:
-    branches: [ "main" ]
-    paths: [ "frontend/**", "backend/**" ]
+  workflow_call:
   pull_request:
     branches: [ "main" ]
     paths: [ "frontend/**", "backend/**" ]
 
 jobs:
-  build:
+  build-backend:
     runs-on: ubuntu-latest
     
     defaults:
@@ -37,3 +35,26 @@ jobs:
         DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
         SOLVANN_USERNAME: ${{secrets.SOLVANN_USERNAME}}
         SOLVANN_PASSWORD: ${{secrets.SOLVANN_PASSWORD}}
+  
+  build-frontend:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: frontend
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+      env:
+        CI: ""
+    - run: npm test

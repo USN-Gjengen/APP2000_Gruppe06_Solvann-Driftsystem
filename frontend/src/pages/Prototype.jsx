@@ -19,20 +19,23 @@ const Prototype = () => {
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) navigate("/login");
     }, [navigate, logout]);
-    
-    
-   /* React.useEffect(() => {
+
+
+
+    React.useEffect(() => {
+
         fetch("http://api.solvann.eksempler.no/api/turbines/all", {
             method: "PUT",
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ isTurbineOn: isTurbineOn })
         })
-        .catch(error => {
-            console.error(error);
-        });
-    }, [isTurbineOn]);*/
+
+            .catch(error => {
+                console.error(error);
+            });
+    }, [isTurbineOn]);
 
     const handleTurbineOn = (e) => {
         e.preventDefault();
@@ -54,7 +57,7 @@ const Prototype = () => {
         var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
             method: "GET",
             headers: {
-            	"Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
         });
         var data = await response.json();
@@ -201,9 +204,9 @@ const Prototype = () => {
 
 
     return (
-        
+
         <div className="dashboard">
-            <div className="Header">  
+            <div className="Header">
                 <div className="nav">
                     <div className="left">
                         <li>
@@ -219,22 +222,22 @@ const Prototype = () => {
                         <li>
                             <button className="btn">Profile</button>
                         </li>
+                    </div>
                 </div>
-            </div> 
-            
-                
+           
             </div>
-          	<div className="button-container">
-				<button className="btn" onClick={handleTurbineOn}>
-					<span>Turn On</span>
-				</button>
-				<button className="btn" onClick={handleTurbineOff}>
-					<span>Turn Off</span>
-				</button>
-				<button className="btn" onClick={handleUpdate}>
-					<span>Update</span>
-				</button>
-        	</div>
+            <div className="button-container">
+                <button className="btn" onClick={handleTurbineOn}>
+                    <span>Turn On</span>
+                </button>
+                <button className="btn" onClick={handleTurbineOff}>
+                    <span>Turn Off</span>
+                </button>
+                <button className="btn" onClick={handleUpdate}>
+                    <span>Update</span>
+                </button>
+
+            </div>
 
             <div className='main-container'>
                 <div className='cards water-level-graph'>
@@ -254,6 +257,7 @@ const Prototype = () => {
                 <p>Money: {groupState.money}</p>
                 <p>Environment Cost: {groupState.environmentCost}</p>
             </div>
+
         </div>
             
     
