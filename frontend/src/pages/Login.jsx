@@ -1,6 +1,6 @@
 import React from 'react';
 import { emailValidator, passwordValidator } from '../components/regexValidator';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
 	const navigate = useNavigate()
@@ -14,8 +14,8 @@ const Login = () => {
 		setInput({ ...input, [e.target.name]: e.target.value });
 	};
 
-	React.useEffect(()=>{
-		if(localStorage.getItem('auth')) navigate('/Prototype')
+	React.useEffect(() => {
+		if (localStorage.getItem('auth')) navigate('/Prototype')
 	})
 
 	const formSubmitter = e => {
@@ -28,7 +28,7 @@ const Login = () => {
 				'Password should have minimum 8 character with the combination of uppercase, lowercase, numbers and specialcharaters'
 			);
 		// setsuccessMessage('Successfully Validated');
-		if(input.email !== 'admin@a.com' || input.password !== 'Password@1') return seterrorMessage('Invalid email or password');
+		if (input.email !== 'admin@a.com' || input.password !== 'Password@1') return seterrorMessage('Invalid email or password');
 
 		navigate('/Prototype')
 		localStorage.setItem('auth', true)
@@ -43,9 +43,9 @@ const Login = () => {
 					<div className="wrap-login">
 						<form className="login-form" onSubmit={formSubmitter}>
 							<span className="form-title-login">Login</span>
-							
+
 							{errorMessage.length > 0 && <div style={{ marginBottom: '10px', color: 'red' }}>{errorMessage}</div>}
-							
+
 							{successMessage.length > 0 && (
 								<div style={{ marginBottom: '10px', color: 'green' }}>{successMessage}</div>
 							)}
@@ -73,8 +73,8 @@ const Login = () => {
 							<div className="text-right">
 								<a href="#">Forgot password?</a>
 							</div>
-								<button className="form-btn-login">Login</button>
-							 {/* <div className="txt1 text-center p-t-54 p-b-20">
+							<button className="form-btn-login">Login</button>
+							{/* <div className="txt1 text-center p-t-54 p-b-20">
 								<span>Or Sign Up Using (under maintenance) </span>
 							</div>
 							<div className="flex-c-m">

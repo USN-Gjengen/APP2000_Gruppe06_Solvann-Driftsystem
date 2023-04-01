@@ -1,7 +1,8 @@
 const functions = require('./functions.js');
 const dbfunctions = require('./dbfunctions.js');
+const mongoose = dbfunctions.connect();
 
-//dbfunctions.addCat('Bjarne');
+
 //functions.getSolarValue();
 //functions.getWaterInflux();
 //functions.getPowerPrice();
@@ -27,7 +28,7 @@ gt();*/
 //dbfunctions.logSolarValue();
 //dbfunctions.logWaterInflux();
 //dbfunctions.logGroupState();
-dbfunctions.getAllGroupStates();
+//dbfunctions.getDay(dbfunctions.WaterInflux, new Date('2023-02-23'));
 
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();

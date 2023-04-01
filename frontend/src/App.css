@@ -1,47 +1,47 @@
 
 
 .dashboard {
-  height: 100vh;
-  background-color: #282c34;
-  color: white;
+	height: 100vh;
+	background-color: #282c34;
+	color: white;
 }
 /* navbar section */
 .header {
-  position: fixed;
-  height: 35px;
-  width: 100vw;
-  z-index: 2;
+	position: fixed;
+	height: 35px;
+	width: 100vw;
+	z-index: 2;
 }
 
 .nav {
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  align-items: center;
-  text-transform: uppercase;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	align-items: center;
+	text-transform: uppercase;
 }
 
 li {
-  list-style: none;
+	list-style: none;
 }
 
 .center {
-  text-align: center;
-  display: flex;
+	text-align: center;
+	display: flex;
 }
 
 .right {
-  position: absolute;
-  right: 0;
-  text-align: right;
+	position: absolute;
+	right: 0;
+	text-align: right;
 }
 
 .left {
-  position: absolute;
-  left: 0;
-  text-align: left;
+	position: absolute;
+	left: 0;
+	text-align: left;
 }
 
 /* top buttons section */
@@ -53,25 +53,25 @@ li {
 }
 
 .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 0 10px;
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 30px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	margin: 0 10px;
 }
 
 .btn:first-child {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
 .btn:last-child {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 
 .btn:hover {
@@ -98,6 +98,7 @@ li {
   padding: 2px 16px;
   border-radius: 1rem;
 }
+
 
 
 
