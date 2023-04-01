@@ -5,18 +5,18 @@ import React from "react";
 import Prototype from "./pages/Prototype";
 
 function App() {
-	return (
-		<Router>
-			<div className="Appen">
 
-				<Routes>
-					<Route exact path="/" element={< Login />}></Route>
-					<Route exact path="/login" element={< Login />}></Route>
-					<Route exact path="/Prototype" element={< Prototype />} ></Route>
-				</Routes>
-			</div>
-		</Router>
-	);
+  return (
+    <Router>
+    <div className="Appen">
+      <Routes>
+        <Route exact path="/" element={< Login />}></Route>
+        <Route exact path="/login" element={< Login />}></Route>
+        <Route exact path="/Prototype" element={< Prototype />} ></Route>
+      </Routes>
+    </div>
+    </Router>
+  );
 }
 
 export default App;
