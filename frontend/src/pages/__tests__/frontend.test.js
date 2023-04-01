@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Prototype from "./Prototype";
+import Prototype from "../Prototype";
 
 describe("Prototype component", () => {
   test("renders without crashing", () => {
