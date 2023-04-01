@@ -1,0 +1,32 @@
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import Prototype from "./Prototype";
+
+describe("Prototype component", () => {
+  test("renders without crashing", () => {
+    render(<Prototype />);
+  });
+
+  test("displays the correct initial state", () => {
+    render(<Prototype />);
+
+    expect(screen.getByText("Dashboard")).toBeInTheDocument();
+    expect(screen.getByText("Water level Graph")).toBeInTheDocument();
+    expect(screen.getByText("Money Graph")).toBeInTheDocument();
+    expect(screen.getByText("The turbine is currently off")).toBeInTheDocument();
+  });
+
+  test("turbine status updates correctly", () => {
+    render(<Prototype />);
+
+    const turnOnButton = screen.getByText("Turn On");
+    const turnOffButton = screen.getByText("Turn Off");
+
+    fireEvent.click(turnOnButton);
+    expect(screen.getByText("The turbine is currently on")).toBeInTheDocument();
+
+    fireEvent.click(turnOffButton);
+    expect(screen.getByText("The turbine is currently off")).toBeInTheDocument();
+  });
+});
