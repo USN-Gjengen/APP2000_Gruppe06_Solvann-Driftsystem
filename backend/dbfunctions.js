@@ -141,7 +141,7 @@ const getAll = async (document) => {
 	}
 	return rv;
 }
-const getAvgDay = async (document,date1, date2) => {
+const getPeriodAvg = async (document,date1, date2) => {
   const average = await document.aggregate([
     { $match: { date: {
 		$gte: date1, 
@@ -163,7 +163,7 @@ exports.getN = getN;
 exports.getMonth = getMonth;
 exports.getDay = getDay;
 exports.getPeriod = getPeriod;
-exports.getAvgDay = getAvgDay;
+exports.getPeriodAvg = getPeriodAvg;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;
