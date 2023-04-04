@@ -104,7 +104,7 @@ const getN = async (document, n) => {
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
 		rv.push(doc);
-		console.log(doc);
+		//console.log(doc);
 	}
 	return rv;
 }
