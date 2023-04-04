@@ -29,7 +29,7 @@ gt();*/
 //dbfunctions.logWaterInflux();
 //dbfunctions.logGroupState();
 //dbfunctions.getDay(dbfunctions.WaterInflux, new Date('2023-02-23'));
-
+dbfunctions.getAvgDay(dbfunctions.WaterInflux, new Date('2023-02-20'), new Date('2023-02-22'));
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
 
