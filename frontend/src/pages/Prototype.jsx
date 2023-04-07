@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2'
+import WaterInflux from '../components/WaterInflux';
 import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement, Filler} from 'chart.js';
 ChartJS.register(
   Title, Tooltip, LineElement, Legend,
   CategoryScale, LinearScale, PointElement, Filler
 )
+
 const Prototype = () => {
 
     const navigate = useNavigate();
@@ -97,46 +99,38 @@ const Prototype = () => {
                 </div>
            
             </div>
-            <div className="button-container">
-                <button className="btn" onClick={handleTurbineOn}>
-                    <span>Turn On</span>
-                </button>
-                <button className="btn" onClick={handleTurbineOff}>
-                    <span>Turn Off</span>
-                </button>
-                <button className="btn" onClick={handleUpdate}>
-                    <span>Update</span>
-                </button>
-                <button className="btn" onClick={handleTrend}>
-                    <span>Trend</span>
-                </button>
-
-            </div>
-            <div className="data">
-                <p>The turbine is currently {isTurbineOn ? "on" : "off"}</p>
-                <p>Water level: {groupState.waterLevel} </p>
-                <p>Money: {groupState.money}</p>
-                <p>Environment Cost: {groupState.environmentCost}</p>
-            </div>
+         
 
             <div className='boxes'>
                 <div className='container'>
-                    <h1>Turbiner</h1>
+                    <button className='btn-box'>
+                        Turbiner
+                    </button>
                 </div>
                 <div className='container'>
-                    <h1>Vannstand</h1>
+                    <button className='btn-box'>
+                        Vannstand
+                    </button>
                 </div>
                 <div className='container'>
-                    <h1>Vær</h1>
+                    <button className='btn-box'>
+                        Vær
+                    </button>
                 </div>
                 <div className='container'>
-                    <h1>Trend</h1>
+                    <button className='btn-box' onClick={handleTrend}>
+                       <WaterInflux></WaterInflux>
+                    </button>
                 </div>
                 <div className='container'>
-                    <h1>Logg</h1>
+                    <button className='btn-box'>
+                        Logg
+                    </button>
                 </div>
                 <div className='container'>
-                    <h1>Innstillinger</h1>
+                    <button className='btn-box'>
+                        Innstillinger
+                    </button>
                 </div>
             </div>
         </div>
