@@ -12,17 +12,22 @@ const Prototype = () => {
     const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     const [logout, setLogout] = React.useState(false);
     const [groupState, setGroupState] = React.useState({ group: [] });
+    const [trend, setTrend] = React.useState(false);
 
 
-   
 
     React.useEffect(() => {
         if (!localStorage.getItem("auth")) navigate("/login");
     }, [navigate, logout]);
 
-
-
     React.useEffect(() => {
+        if (localStorage.getItem("auth") && trend) {
+            navigate("/Trend");
+        }
+    }, [navigate, trend]);
+
+
+  React.useEffect(() => {
 
         fetch("http://api.solvann.eksempler.no/api/turbines/all", {
             method: "PUT",
@@ -53,6 +58,11 @@ const Prototype = () => {
         setLogout(true);
     };
 
+    const handleTrend = (e) => {
+        e.preventDefault();
+        setTrend(true);
+    };
+
     const handleUpdate = async () => {
         var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
             method: "GET",
@@ -63,145 +73,6 @@ const Prototype = () => {
         var data = await response.json();
         setGroupState(data);
     };
-
-    const [money, setMoney] = useState({
-        labels: [],
-        datasets: [
-            {
-                label: "Money",
-                data: [],
-                backgroundColor: "#16ccc6",
-                borderColor: "green",
-                tension: 0.4,
-                fill: true,
-                pointStyle: "rect",
-                pointBorderColor: "blue",
-                pointBackgroundColor: "#fff",
-                showLine: true,
-            },
-        ],
-    });
-
-    const [data, setData] = useState({
-        labels: [],
-        datasets: [
-          {
-            label: "Water level",
-            data: [],
-            backgroundColor: "#16ccc6",
-            borderColor: "green",
-            tension: 0.4,
-            fill: true,
-            pointStyle: "rect",
-            pointBorderColor: "blue",
-            pointBackgroundColor: "#fff",
-            showLine: true,
-          },
-        ],
-      });
-
-      const generateTimeLabels = (minutesInterval, numberOfLabels) => {
-        const now = new Date();
-        const labels = [];
-
-        for (let i = 0; i < numberOfLabels; i++) {
-            const time = new Date(now.getTime() - i * minutesInterval * 60000);
-            const formattedTime = time.toLocaleDateString("en-GB", {
-                timeZone: 'Europe/Oslo',
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-            });
-            labels.unshift(formattedTime);
-        }
-
-        return labels;
-      };
-      
-      useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(
-              "http://api.solvann.eksempler.no/api/groupstates/last"
-            );
-            const jsonData = await response.json();
-      
-            if (typeof jsonData === "object" && jsonData !== null) {
-              const waterLevel = jsonData.waterLevel;
-              const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
-      
-              setData((prevState) => ({
-                ...prevState,
-                labels: labels,
-                datasets: [
-                  {
-                    ...prevState.datasets[0],
-                    data: [...prevState.datasets[0].data, waterLevel],
-                  },
-                ],
-              }));
-            } else {
-              console.error("Error: jsonData is not an object", jsonData);
-            }
-          } catch (error) {
-            console.error(error);
-          }
-        };
-      
-        fetchData();
-
-
-        const interval = setInterval(() => {
-            fetchData(); // make this update every 5 minutes
-        }, 300000); // 5 Minutes
-
-        return () => clearInterval(interval);
-
-      }, []);
-
-
-      useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(
-                    "http://api.solvann.eksempler.no/api/groupstates/last"
-                );
-                const jsonData = await response.json();
-
-                if (typeof jsonData === "object" && jsonData !== null) {
-                    const money = jsonData.money;
-                    const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
-
-                    setMoney((prevState) => ({
-                        ...prevState,
-                        labels: labels,
-                        datasets: [
-                            {
-                                ...prevState.datasets[0],
-                                data: [...prevState.datasets[0].data, money],
-                            },
-                        ],
-                    }));
-                } else {
-                    console.error("Error: jsonData is not an object", jsonData);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-
-
-        const interval = setInterval(() => {
-            fetchData(); // make this update every 5 minutes
-        }, 300000); // 5 Minutes
-        
-        return () => clearInterval(interval);
-
-    }, []);
-
-
 
     return (
 
@@ -236,19 +107,9 @@ const Prototype = () => {
                 <button className="btn" onClick={handleUpdate}>
                     <span>Update</span>
                 </button>
-
-            </div>
-
-            <div className='main-container'>
-                <div className='cards water-level-graph'>
-                    <h2>Water level Graph</h2> 
-                    <Line data={data}></Line>
-                </div>
-                <div className='cards money-graph'>
-                    <h2>Money Graph</h2>
-                    <Line data={money}></Line>
-
-                </div>
+                <button className="btn" onClick={handleTrend}>
+                    <span>Trend</span>
+                </button>
 
             </div>
             <div className="data">
@@ -258,6 +119,26 @@ const Prototype = () => {
                 <p>Environment Cost: {groupState.environmentCost}</p>
             </div>
 
+            <div className='boxes'>
+                <div className='container'>
+                    <h1>Turbiner</h1>
+                </div>
+                <div className='container'>
+                    <h1>Vannstand</h1>
+                </div>
+                <div className='container'>
+                    <h1>Vær</h1>
+                </div>
+                <div className='container'>
+                    <h1>Trend</h1>
+                </div>
+                <div className='container'>
+                    <h1>Logg</h1>
+                </div>
+                <div className='container'>
+                    <h1>Innstillinger</h1>
+                </div>
+            </div>
         </div>
             
     
