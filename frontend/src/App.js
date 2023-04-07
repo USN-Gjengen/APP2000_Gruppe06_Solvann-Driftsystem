@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 import Prototype from "./pages/Prototype";
 import Trend from "./pages/Trend";
+import WaterInflux from "./components/WaterInflux";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/login" element={< Login />}></Route>
         <Route exact path="/Prototype" element={< Prototype />} ></Route>
         <Route exact path="/Trend" element={< Trend />} ></Route>
+        <Route exact path="/components/WaterInflux" element={< WaterInflux />} ></Route>
       </Routes>
     </div>
     </Router>
