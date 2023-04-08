@@ -9,7 +9,7 @@ const WaterInflux = () => {
         labels: [],
         datasets: [
           {
-            label: "Water level",
+            label: "Water Inlfux",
             data: [],
             backgroundColor: "#16ccc6",
             borderColor: "green",
