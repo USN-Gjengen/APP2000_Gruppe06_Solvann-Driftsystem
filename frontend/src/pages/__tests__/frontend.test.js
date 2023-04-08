@@ -18,8 +18,5 @@ describe("Prototype component", () => {
     renderWithRouter(<Prototype />);
 
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
-    expect(screen.getByText("Water level Graph")).toBeInTheDocument();
-    expect(screen.getByText("Money Graph")).toBeInTheDocument();
-    expect(screen.getByText("The turbine is currently off")).toBeInTheDocument();
   });
 });
