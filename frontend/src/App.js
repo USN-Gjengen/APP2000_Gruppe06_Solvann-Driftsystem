@@ -23,7 +23,6 @@ function App() {
         <Route exact path="/components/Money" element={< Money />} ></Route>
         <Route exact path="/components/WaterLevel" element={< WaterLevel />} ></Route>
         <Route exact path="/components/EnvironmentCost" element={< EnvironmentCost />} ></Route>
-
       </Routes>
     </div>
     </Router>

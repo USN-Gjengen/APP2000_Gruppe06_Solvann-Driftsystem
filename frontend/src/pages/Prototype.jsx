@@ -114,7 +114,14 @@ const Prototype = () => {
 
             <div className="boxes">
                 <div className="container">
-                    <button className="btn-box">Turbiner</button>
+                    <button className="btn-box">
+                        <div>
+                        Turbin status:{" "}
+                            <span style={{ color: isTurbineOn ? "green" : "red" }}>
+                                        {isTurbineOn ? "Aktive" : "Passiv"}
+                            </span>
+                        </div>
+                    </button>
                 </div>
                 <div className="container">
                     <button className="btn-box">Vannstand</button>
