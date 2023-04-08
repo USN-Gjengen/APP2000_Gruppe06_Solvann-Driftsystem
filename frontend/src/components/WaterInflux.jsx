@@ -22,25 +22,23 @@ const WaterInflux = () => {
           },
         ],
       });
-
       const generateTimeLabels = (minutesInterval, numberOfLabels) => {
         const now = new Date();
         const labels = [];
-
+      
         for (let i = 0; i < numberOfLabels; i++) {
-            const time = new Date(now.getTime() - i * minutesInterval * 60000);
-            const formattedTime = time.toLocaleDateString("nb-NO", {
-                timeZone: 'Europe/Oslo',
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-            });
-            labels.unshift(formattedTime);
+          const time = new Date(now.getTime() - i * minutesInterval * 60000);
+          const formattedTime = time.toLocaleTimeString("nb-NO", {
+            timeZone: "Europe/Oslo",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          });
+          labels.unshift(formattedTime);
         }
-
+      
         return labels;
       };
-      
       useEffect(() => {
         const fetchData = async () => {
           try {
