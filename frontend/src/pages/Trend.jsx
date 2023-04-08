@@ -28,17 +28,6 @@ const Trend = () => {
         setLogout(true);
     };
 
-    const handleUpdate = async () => {
-        var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        });
-        var data = await response.json();
-        setGroupState(data);
-    };
-
     return (
 
         <div className="dashboard">
