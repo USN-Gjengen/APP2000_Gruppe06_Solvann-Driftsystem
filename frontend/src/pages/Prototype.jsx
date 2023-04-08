@@ -88,8 +88,8 @@ const Prototype = () => {
             setGroupState(data);
         };
 
-        return (
-            <div className="dashboard">
+    return (
+        <div className="dashboard">
             <div className="Header">
                 <div className="nav">
                 <div className="left">
@@ -114,16 +114,16 @@ const Prototype = () => {
 
             <div className="boxes">
                 <div className="container">
-                <button className="btn-box">Turbiner</button>
+                    <button className="btn-box">Turbiner</button>
                 </div>
                 <div className="container">
-                <button className="btn-box">Vannstand</button>
+                    <button className="btn-box">Vannstand</button>
                 </div>
                 <div className="container">
-                <button className="btn-box">Vær</button>
+                    <button className="btn-box">Vær</button>
                 </div>
                 <div className='container'>
-                    <button className='btn-box'>
+                    <button className='btn-box' onClick={handleTrend}>
                         <WaterInflux></WaterInflux>
                     </button>
                 </div>
@@ -138,9 +138,7 @@ const Prototype = () => {
                     </button>
                 </div>
             </div>
-                    </div>
-            
-    
+        </div>
     );
 };
 
