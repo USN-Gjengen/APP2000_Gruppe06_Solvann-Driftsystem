@@ -30,6 +30,7 @@ const Prototype = () => {
         const [logout, setLogout] = React.useState(false);
         const [groupState, setGroupState] = React.useState({ group: [] });
         const [trend, setTrend] = React.useState(false);
+        const [turbine, setTurbine] = React.useState(false);
 
         React.useEffect(() => {
             if (!localStorage.getItem("auth")) navigate("/login");
@@ -40,6 +41,12 @@ const Prototype = () => {
             navigate("/Trend");
             }
         }, [navigate, trend]);
+
+        React.useEffect(() => {
+            if (localStorage.getItem("auth") && turbine) {
+            navigate("/Turbine");
+            }
+        }, [navigate, turbine]);
 
         React.useEffect(() => {
             fetch("http://api.solvann.eksempler.no/api/turbines/all", {
@@ -72,6 +79,11 @@ const Prototype = () => {
         const handleTrend = (e) => {
             e.preventDefault();
             setTrend(true);
+        };
+
+        const handleTurbine = (e) => {
+            e.preventDefault();
+            setTurbine(true);
         };
 
         const handleUpdate = async () => {
@@ -114,7 +126,7 @@ const Prototype = () => {
 
             <div className="boxes">
                 <div className="container">
-                    <button className="btn-box">
+                    <button className="btn-box" onClick={handleTurbine}>
                         <div>
                         Turbin status:{" "}
                             <span style={{ color: isTurbineOn ? "green" : "red" }}>
