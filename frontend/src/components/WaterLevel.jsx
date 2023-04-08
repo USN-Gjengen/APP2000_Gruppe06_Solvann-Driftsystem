@@ -4,12 +4,12 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const WaterInflux = () => {
-    const [waterInflux, setwaterInflux] = useState({
+const WaterLevel = () => {
+    const [WaterLevel, setWaterLevel] = useState({
         labels: [],
         datasets: [
           {
-            label: "Water Inlfux",
+            label: "WaterLevel",
             data: [],
             backgroundColor: "#16ccc6",
             borderColor: "green",
@@ -43,21 +43,21 @@ const WaterInflux = () => {
         const fetchData = async () => {
           try {
             const response = await fetch(
-              "http://api.solvann.eksempler.no/api/waterInflux/last"
+              "http://api.solvann.eksempler.no/api/groupStates/last"
             );
             const jsonData = await response.json();
       
             if (typeof jsonData === "object" && jsonData !== null) {
-              const waterInflux = jsonData.waterInflux;
+              const WaterLevel = jsonData.waterLevel;
               const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
       
-              setwaterInflux((prevState) => ({
+              setWaterLevel((prevState) => ({
                 ...prevState,
                 labels: labels,
                 datasets: [
                   {
                     ...prevState.datasets[0],
-                    data: [...prevState.datasets[0].data, waterInflux],
+                    data: [...prevState.datasets[0].data, WaterLevel],
                   },
                 ],
               }));
@@ -82,10 +82,10 @@ const WaterInflux = () => {
 
     return (
         <div>
-            <h2>Water Influx</h2>
-            <Line data={waterInflux} />
+            <h2>Water Level</h2>
+            <Line data={WaterLevel} />
         </div>
     )
 }
 
-export default WaterInflux;
+export default WaterLevel;

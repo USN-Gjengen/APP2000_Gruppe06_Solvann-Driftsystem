@@ -4,12 +4,12 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const WaterInflux = () => {
-    const [waterInflux, setwaterInflux] = useState({
+const EnvironmentCost = () => {
+    const [EnvironmentCost, setEnvironmentCost] = useState({
         labels: [],
         datasets: [
           {
-            label: "Water Inlfux",
+            label: "EnvironmentCost",
             data: [],
             backgroundColor: "#16ccc6",
             borderColor: "green",
@@ -43,21 +43,21 @@ const WaterInflux = () => {
         const fetchData = async () => {
           try {
             const response = await fetch(
-              "http://api.solvann.eksempler.no/api/waterInflux/last"
+              "http://api.solvann.eksempler.no/api/groupStates/last"
             );
             const jsonData = await response.json();
       
             if (typeof jsonData === "object" && jsonData !== null) {
-              const waterInflux = jsonData.waterInflux;
+              const EnvironmentCost = jsonData.environmentCost;
               const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
       
-              setwaterInflux((prevState) => ({
+              setEnvironmentCost((prevState) => ({
                 ...prevState,
                 labels: labels,
                 datasets: [
                   {
                     ...prevState.datasets[0],
-                    data: [...prevState.datasets[0].data, waterInflux],
+                    data: [...prevState.datasets[0].data, EnvironmentCost],
                   },
                 ],
               }));
@@ -82,10 +82,10 @@ const WaterInflux = () => {
 
     return (
         <div>
-            <h2>Water Influx</h2>
-            <Line data={waterInflux} />
+            <h2>EnvironmentCost</h2>
+            <Line data={EnvironmentCost} />
         </div>
     )
 }
 
-export default WaterInflux;
+export default EnvironmentCost;
