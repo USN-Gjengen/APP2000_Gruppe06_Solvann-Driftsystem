@@ -32,7 +32,6 @@ const Login = () => {
 
 		navigate('/Prototype')
 		localStorage.setItem('auth', true)
-
 	};
 
 	return (

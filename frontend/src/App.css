@@ -1,19 +1,21 @@
-
-
 .dashboard {
-	height: 100vh;
+	height: 100%;
+	min-height: 100vh; /* Ensure that the height is at least equal to the viewport height */
 	background-color: #282c34;
 	color: white;
-}
-/* navbar section */
-.header {
+  }
+  body {
+	margin: 0;
+  }
+  /* navbar section */
+  .header {
 	position: fixed;
 	height: 35px;
 	width: 100vw;
 	z-index: 2;
-}
-
-.nav {
+  }
+  
+  .nav {
 	overflow: hidden;
 	position: relative;
 	display: flex;
@@ -21,38 +23,38 @@
 	height: 100%;
 	align-items: center;
 	text-transform: uppercase;
-}
-
-li {
+  }
+  
+  li {
 	list-style: none;
-}
-
-.center {
+  }
+  
+  .center {
 	text-align: center;
 	display: flex;
-}
-
-.right {
+  }
+  
+  .right {
 	position: absolute;
 	right: 0;
 	text-align: right;
-}
-
-.left {
+  }
+  
+  .left {
 	position: absolute;
 	left: 0;
 	text-align: left;
-}
-
-/* top buttons section */
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.btn {
+  }
+  
+  /* top buttons section */
+  
+  .button-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .btn {
 	display: inline-block;
 	padding: 10px 20px;
 	background-color: #007bff;
@@ -64,43 +66,85 @@ li {
 	font-size: 16px;
 	cursor: pointer;
 	margin: 0 10px;
-}
-
-.btn:first-child {
+  }
+  
+  .btn:first-child {
 	margin-right: 20px;
-}
-
-.btn:last-child {
+  }
+  
+  .btn:last-child {
 	margin-left: 20px;
+  }
+  
+  .btn:hover {
+	background-color: #0069d9;
+  }
+  
+  .btn:active {
+	background-color: #0062cc;
+  }
+  
+  /* main section */
+  
+  .main-container {
+	margin-top: 35px;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	gap: 20px;
+	color: black;
+  }
+  
+  .cards {
+	background-color: rgb(247, 247, 247);
+	padding: 2px 16px;
+	border-radius: 1rem;
+  }
+  
+  .boxes {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: calc(33.33% - 10px);
 }
+  
+  .btn-box {
+	width: 80%;
+    height: 300px;
+	font-size: larger;
+	border-radius: 1rem;
+	
+  }
 
-.btn:hover {
-  background-color: #0069d9;
-}
+  
+  @media only screen and (max-width: 768px) {
+	.boxes {
+	  flex-wrap: wrap;
+	}
+  
+	.container {
+	  width: 100%;
+	  margin-right: 0;
+	  margin-left: 0;
+	}
+  }
 
-.btn:active {
-  background-color: #0062cc;
-}
-
-/* main section */
-
-.main-container {
-  margin-top: 35px;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  gap: 20px;
-  color: black;
-}
-
-.cards {
-  background-color: rgb(247, 247, 247);
-  padding: 2px 16px;
-  border-radius: 1rem;
-}
-
-
-
-
-
-
+  @media only screen and (min-width: 1700px) {
+	.btn-box {
+		width: 80%;
+		height: 400px;
+	  }
+  }
+  
