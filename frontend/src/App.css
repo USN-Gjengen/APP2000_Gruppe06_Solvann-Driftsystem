@@ -148,3 +148,10 @@
 	  }
   }
   
+  @media only screen and (min-width: 2400px) {
+	/* for does with large screens */
+	.btn-box {
+		width: 80%;
+		height: 500px;
+	  }
+  }
