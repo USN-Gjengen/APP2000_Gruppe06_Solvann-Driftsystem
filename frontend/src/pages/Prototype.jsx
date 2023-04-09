@@ -59,17 +59,7 @@ const Prototype = () => {
             console.error(error);
             });
         }, [isTurbineOn]);
-
-        const handleTurbineOn = (e) => {
-            e.preventDefault();
-            setIsTurbineOn(true);
-        };
-
-        const handleTurbineOff = (e) => {
-            e.preventDefault();
-            setIsTurbineOn(false);
-        };
-
+        
         const logoutHandler = (e) => {
             e.preventDefault();
             localStorage.removeItem("auth");
