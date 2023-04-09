@@ -6,6 +6,7 @@ const Turbine = () => {
         const navigate = useNavigate();
         const [logout, setLogout] = React.useState(false);
         const [groupState, setGroupState] = React.useState({ group: [] });
+        const [isTurbineOn, setIsTurbineOn] = React.useState(false);
     
         React.useEffect(() => {
             if (!localStorage.getItem("auth")) navigate("/login");
@@ -16,6 +17,18 @@ const Turbine = () => {
             localStorage.removeItem("auth");
             setLogout(true);
         };
+
+        React.useEffect(() => {
+            fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ isTurbineOn: isTurbineOn }),
+            }).catch((error) => {
+            console.error(error);
+            });
+        }, [isTurbineOn]);
     
         const handleUpdate = async () => {
             var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
@@ -26,6 +39,16 @@ const Turbine = () => {
             });
             var data = await response.json();
             setGroupState(data);
+        };
+
+        const handleTurbineOn = (e) => {
+            e.preventDefault();
+            setIsTurbineOn(true);
+        };
+
+        const handleTurbineOff = (e) => {
+            e.preventDefault();
+            setIsTurbineOn(false);
         };
     
     return (
@@ -49,6 +72,24 @@ const Turbine = () => {
                         </li>
                     </div>
                 </div>
+            </div>
+            <div className="button-container">
+                <button className="btn" onClick={handleTurbineOn}>
+                    <span>Turn On</span>
+                </button>
+                <button className="btn" onClick={handleTurbineOff}>
+                    <span>Turn Off</span>
+                </button>
+                <button className="btn" onClick={handleUpdate}>
+                    <span>Update</span>
+                </button>
+
+            </div>
+            <div>    
+                Turbin status:{" "}
+                    <span style={{ color: isTurbineOn ? "green" : "red" }}>
+                                {isTurbineOn ? "Aktive" : "Passiv"}
+                    </span>
             </div>
         </div>
             
