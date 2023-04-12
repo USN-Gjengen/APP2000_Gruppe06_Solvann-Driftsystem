@@ -31,6 +31,13 @@ app.get('/api/groupstates/all', async (req, res) => {
 	res.json(states);
 	console.log("Request received");
 })
+app.get('/api/groupstates/lastWeek', async (req, res) => {
+	var start = new Date();
+	start.setDate(start.getDate() - 7);
+	var states = await dbfunctions.getDayAverage(dbfunctions.GroupState, start, new Date());
+	res.json(states[0]);
+	console.log("Request received");
+})
 app.get('/api/PowerPrice/all', async (req, res) => {
 	var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
 	res.json(states);
@@ -38,6 +45,13 @@ app.get('/api/PowerPrice/all', async (req, res) => {
 })
 app.get('/api/PowerPrice/last', async (req, res) => {
 	var states = await dbfunctions.getN(dbfunctions.PowerPrice, 1);
+	res.json(states[0]);
+	console.log("Request received");
+})
+app.get('/api/PowerPrice/lastWeek', async (req, res) => {
+	var start = new Date();
+	start.setDate(start.getDate() - 7);
+	var states = await dbfunctions.getDayAverage(dbfunctions.PowerPrice, start, new Date());
 	res.json(states[0]);
 	console.log("Request received");
 })
@@ -51,6 +65,13 @@ app.get('/api/WaterInflux/last', async (req, res) => {
 	res.json(states[0]);
 	console.log("Request received");
 })
+app.get('/api/WaterInflux/lastWeek', async (req, res) => {
+	var start = new Date();
+	start.setDate(start.getDate() - 7);
+	var states = await dbfunctions.getDayAverage(dbfunctions.WaterInflux, start, new Date());
+	res.json(states[0]);
+	console.log("Request received");
+})
 app.get('/api/SolarValue/all', async (req, res) => {
 	var states = await dbfunctions.getAll(dbfunctions.SolarValue);
 	res.json(states);
@@ -58,6 +79,13 @@ app.get('/api/SolarValue/all', async (req, res) => {
 })
 app.get('/api/SolarValue/last', async (req, res) => {
 	var states = await dbfunctions.getN(dbfunctions.SolarValue, 1);
+	res.json(states[0]);
+	console.log("Request received");
+})
+app.get('/api/SolarValue/lastWeek', async (req, res) => {
+	var start = new Date();
+	start.setDate(start.getDate() - 7);
+	var states = await dbfunctions.getDayAverage(dbfunctions.SolarValue, start, new Date());
 	res.json(states[0]);
 	console.log("Request received");
 })
