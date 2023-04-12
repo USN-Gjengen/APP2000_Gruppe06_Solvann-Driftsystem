@@ -161,13 +161,14 @@ const getDayAverage = async (document, date1, date2) => {
 		end.setDate(end.getDate() + 1);
 		//console.log(start + "  " + end);
 		dayValue.push(await getPeriodAvg(document, start, end));
-		console.log(dayValue[i]);
+		console.log(i + " : " + dayValue[i]);
 	}
 	return dayValue;
 }
 const days = (date_1, date_2) =>{
     let difference = date_1.getTime() - date_2.getTime();
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+	console.log(TotalDays);
     return TotalDays;
 }
 

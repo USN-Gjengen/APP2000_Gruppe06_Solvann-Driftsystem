@@ -34,10 +34,10 @@ gt();*/
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
 var start = new Date();
-
-start.setDate(start.getDate() - 7)
-
-dbfunctions.getDayAverage(dbfunctions.SolarValue, start, new Date());
+var end = new Date();
+start.setDate(start.getDate() - 5);
+console.log(start + " : " + new Date());
+dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
 
 
