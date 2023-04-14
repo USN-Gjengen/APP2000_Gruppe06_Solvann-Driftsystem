@@ -31,14 +31,16 @@ gt();*/
 //dbfunctions.getDay(dbfunctions.WaterInflux, new Date('2023-02-23'));
 //dbfunctions.getDayAverage(dbfunctions.SolarValue, new Date('2023-02-20'), new Date('2023-02-27'));
 //dbfunctions.getPeriodAvg(dbfunctions.WaterInflux, new Date('2023-02-20'), new Date('2023-02-27'));
+//dbfunctions.getPeriod(dbfunctions.WaterInflux, new Date('2023-02-20'), new Date('2023-02-27'));
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
 var start = new Date();
 var end = new Date();
-start.setDate(start.getDate() - 5);
+start.setHours(start.getHours() - 1);
 console.log(start + " : " + new Date());
-dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
+//dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
+dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, 12);
 
 
 
