@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useSpring, animated, config } from "react-spring";
 import turbineIMG from "../img/Turbine.png";
 import "../Turbine.css";
+import { useTurbineContext  } from "../components/TurbineProvider";
 
 const Turbine = () => {
     
         const navigate = useNavigate();
         const [logout, setLogout] = React.useState(false);
         const [groupState, setGroupState] = React.useState({ group: [] });
-        const [isTurbineOn, setIsTurbineOn] = React.useState(false);
+        const { isTurbineOn, setIsTurbineOn } = useTurbineContext();
         const [isSpinning, setIsSpinning] = useState(false);
 
         const props = useSpring({

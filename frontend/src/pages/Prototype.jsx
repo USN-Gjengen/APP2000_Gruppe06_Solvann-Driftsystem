@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import WaterInflux from "../components/WaterInflux";
+import { useTurbineContext } from "../components/TurbineProvider";
 import {
   Chart as ChartJS,
   Title,
@@ -26,7 +27,7 @@ ChartJS.register(
 
 const Prototype = () => {
         const navigate = useNavigate();
-        const [isTurbineOn, setIsTurbineOn] = React.useState(false);
+        const { isTurbineOn, setIsTurbineOn } = useTurbineContext();
         const [logout, setLogout] = React.useState(false);
         const [groupState, setGroupState] = React.useState({ group: [] });
         const [trend, setTrend] = React.useState(false);
