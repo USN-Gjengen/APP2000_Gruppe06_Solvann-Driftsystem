@@ -39,7 +39,7 @@ const connect = async () => {
 }
 
 const powerSchema = new mongoose.Schema({
-	price: Number,
+	value: Number,
 	date: Date,
 });
 const PowerPrice = mongoose.model('PowerPrice', powerSchema);
@@ -67,7 +67,7 @@ const logSolarValue = async () => {
 }
 
 const waterInfluxSchema = new mongoose.Schema({
-	waterInflux: Number,
+	value: Number,
 	date: Date,
 });
 const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
@@ -149,9 +149,48 @@ const getPeriodAvg = async (document,date1, date2) => {
 	} } },
     { $group: { _id: null, average: { $avg: '$value' } } },
   ]).exec();
-	console.log(average);
-  return average;
+	//console.log(average[0].average);
+  return average[0].average;
 }
+const getDayAverage = async (document, date1, date2) => {
+	var dayValue = [];
+	for(var i = 0; i < days(date2, date1); i++){
+		var start = new Date(date1); 
+		start.setDate(start.getDate() + i);
+		let end = new Date(start);
+		end.setDate(end.getDate() + 1);
+		//console.log(start + "  " + end);
+		dayValue.push(await getPeriodAvg(document, start, end));
+		console.log(i + " : " + dayValue[i]);
+	}
+	return dayValue;
+}
+
+const getNAverage = async (document, date1, date2, increment) => {
+	var nValue = [];
+	var data = await getPeriod(document, date1, date2);
+	var step = Math.floor(data.length / increment);
+	for(var i = 0; i < increment; i++){
+		var holder = 0;
+		var amount = 0;
+		for(var k = 0; k < step; k++){
+			if(i*step+k < data.length){
+				holder += data[(i*step)+k].value;
+				amount++;
+			}
+		}
+		nValue.push(holder / amount);
+		//console.log(i + " : " + nValue[i]);
+	}
+	return nValue;
+}
+
+const days = (date_1, date_2) =>{
+    let difference = date_1.getTime() - date_2.getTime();
+    let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+    return TotalDays;
+}
+
 
 exports.connect = connect;
 exports.logPowerPrice = logPowerPrice;
@@ -164,6 +203,8 @@ exports.getMonth = getMonth;
 exports.getDay = getDay;
 exports.getPeriod = getPeriod;
 exports.getPeriodAvg = getPeriodAvg;
+exports.getDayAverage = getDayAverage;
+exports.getNAverage = getNAverage;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;
