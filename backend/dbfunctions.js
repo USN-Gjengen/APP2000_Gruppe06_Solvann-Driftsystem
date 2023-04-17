@@ -45,9 +45,9 @@ const powerSchema = new mongoose.Schema({
 const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
 const logPowerPrice = async () => {
-	await functions.getPowerPrice().then(price => {
-		console.log(price);
-		const power = new PowerPrice({ price: price, date: Date.now() });
+	await functions.getPowerPrice().then(value => {
+		console.log(value);
+		const power = new PowerPrice({ value: value, date: Date.now() });
 		power.save();
 	});
 }
@@ -73,9 +73,9 @@ const waterInfluxSchema = new mongoose.Schema({
 const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
 const logWaterInflux = async () => {
-	await functions.getWaterInflux().then(waterInflux => {
-		console.log(waterInflux);
-		const influx = new WaterInflux({ waterInflux: waterInflux, date: Date.now() });
+	await functions.getWaterInflux().then(value => {
+		console.log(value);
+		const influx = new WaterInflux({ value: value, date: Date.now() });
 		influx.save();
 	});
 }
@@ -180,7 +180,7 @@ const getNAverage = async (document, date1, date2, increment) => {
 			}
 		}
 		nValue.push(holder / amount);
-		//console.log(i + " : " + nValue[i]);
+		console.log(i + " : " + nValue[i]);
 	}
 	return nValue;
 }
