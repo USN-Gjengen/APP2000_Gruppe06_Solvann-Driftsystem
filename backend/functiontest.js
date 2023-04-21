@@ -40,7 +40,7 @@ start.setHours(start.getHours() - 1);
 console.log(start + " : " + new Date());
 //dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
-dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
+dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
 
 
 

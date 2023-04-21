@@ -54,7 +54,7 @@ app.get('/api/PowerPrice/lastWeek', async (req, res) => {
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getDayAverage(dbfunctions.PowerPrice, start, end);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 app.get('/api/PowerPrice/lastHour', async (req, res) => {
@@ -62,7 +62,7 @@ app.get('/api/PowerPrice/lastHour', async (req, res) => {
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 app.get('/api/WaterInflux/all', async (req, res) => {
@@ -80,7 +80,7 @@ app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getDayAverage(dbfunctions.WaterInflux, start, end);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 app.get('/api/WaterInflux/lastHour', async (req, res) => {
@@ -88,7 +88,7 @@ app.get('/api/WaterInflux/lastHour', async (req, res) => {
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 app.get('/api/SolarValue/all', async (req, res) => {
@@ -106,7 +106,7 @@ app.get('/api/SolarValue/lastWeek', async (req, res) => {
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 app.get('/api/SolarValue/lastHour', async (req, res) => {
@@ -114,7 +114,7 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, 12);
-	res.json(states[0]);
+	res.json(states);
 	console.log("Request received");
 });
 
