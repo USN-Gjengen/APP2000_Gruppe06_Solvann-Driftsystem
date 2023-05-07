@@ -1,0 +1,11 @@
+.turbine {
+    animation: spin 1s linear infinite;
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+.turbines-container {
+    display: flex;
+    justify-content: space-between;
+  }
