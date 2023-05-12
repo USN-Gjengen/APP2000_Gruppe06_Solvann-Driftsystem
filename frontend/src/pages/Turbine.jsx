@@ -76,7 +76,7 @@ const Turbine = () => {
         <div className="nav">
           <div className="left">
                             <li>
-                                <button onClick={logoutHandler} className="btn">Logout</button>
+                                <button onClick={logoutHandler} className="btn">Logg ut</button>
                             </li>
                         </div>
                       <div className="center">
@@ -86,7 +86,7 @@ const Turbine = () => {
                         </div>
                         <div className="right">
                             <li>
-                                <button className="btn">Profile</button>
+                                <button className="btn">Profil</button>
                             </li>
                         </div>
                     </div>
