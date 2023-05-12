@@ -7,6 +7,7 @@
   body {
 	margin: 0;
   }
+  
   /* navbar section */
   .header {
 	position: fixed;
@@ -54,7 +55,7 @@
 	margin-top: 20px;
   }
   
-  .btn {
+  .btn1 {
 	display: inline-block;
 	padding: 10px 20px;
 	background-color: #007bff;
@@ -93,12 +94,6 @@
 	flex-direction: row;
 	gap: 20px;
 	color: black;
-  }
-  
-  .cards {
-	background-color: rgb(247, 247, 247);
-	padding: 2px 16px;
-	border-radius: 1rem;
   }
   
   .boxes {
@@ -154,4 +149,34 @@
 		width: 80%;
 		height: 500px;
 	  }
+  }
+
+  .table {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	color: black;
+  }
+  
+  .table li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #f0f0f0;
+	margin-bottom: 5px;
+	border-radius: 5px;
+  }
+  
+  .table li:nth-child(even) {
+	background-color: #d3d3d3;
+  }
+  
+  .table li strong {
+	margin-right: 10px;
+	font-weight: bold;
+  }
+  
+  .table li span {
+	font-size: 0.8em;
   }
