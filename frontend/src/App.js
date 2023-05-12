@@ -5,6 +5,7 @@ import React from "react";
 import Prototype from "./pages/Prototype";
 import Trend from "./pages/Trend";
 import Turbine from "./pages/Turbine";
+import Logg from "./pages/Logg";
 import WaterInflux from "./components/WaterInflux";
 import Money from "./components/Money";
 import WaterLevel from "./components/WaterLevel";
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/Prototype" element={< Prototype />} ></Route>
           <Route exact path="/Trend" element={< Trend />} ></Route>
           <Route exact path="/Turbine" element={< Turbine />} ></Route>
+          <Route exact path="/Logg" element={< Logg />} ></Route>
           <Route exact path="/components/WaterInflux" element={< WaterInflux />} ></Route>
           <Route exact path="/components/Money" element={< Money />} ></Route>
           <Route exact path="/components/WaterLevel" element={< WaterLevel />} ></Route>
