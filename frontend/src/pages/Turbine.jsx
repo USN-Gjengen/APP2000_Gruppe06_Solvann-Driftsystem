@@ -1,83 +1,85 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSpring, animated, config } from "react-spring";
 import turbineIMG from "../img/Turbine.png";
 import "../Turbine.css";
-import { useTurbineContext  } from "../components/TurbineProvider";
+import { useTurbineContext } from "../components/TurbineProvider";
+import Logg from '../components/ButtonLog';
+
 
 const Turbine = () => {
-    
-        const navigate = useNavigate();
-        const [logout, setLogout] = React.useState(false);
-        const [groupState, setGroupState] = React.useState({ group: [] });
-        const { isTurbineOn, setIsTurbineOn } = useTurbineContext();
-        const [isSpinning, setIsSpinning] = useState(false);
+  const navigate = useNavigate();
+  const [logout, setLogout] = React.useState(false);
+  const [groupState, setGroupState] = React.useState({ group: [] });
+  const { isTurbineOn, setIsTurbineOn } = useTurbineContext();
+  const [isSpinning, setIsSpinning] = useState(false);
 
-        const props = useSpring({
-            from: { transform: "rotate(0deg)" },
-            to: { transform: `rotate(${isSpinning ? 360 : 0}deg)` },
-            config: { duration: 1000 },
-            reset: true,
-            loop: isSpinning,
-        });
+  const props = useSpring({
+    from: { transform: "rotate(0deg)" },
+    to: { transform: `rotate(${isSpinning ? 360 : 0}deg)` },
+    config: { duration: 1000 },
+    reset: true,
+    loop: isSpinning,
+  });
 
+  React.useEffect(() => {
+    if (!localStorage.getItem("auth")) navigate("/login");
+  }, [navigate, logout]);
 
-        React.useEffect(() => {
-            if (!localStorage.getItem("auth")) navigate("/login");
-        }, [navigate, logout]);
-    
-        const logoutHandler = (e) => {
-            e.preventDefault();
-            localStorage.removeItem("auth");
-            setLogout(true);
-        };
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("auth");
+    setLogout(true);
+  };
 
-        React.useEffect(() => {
-            fetch("http://api.solvann.eksempler.no/api/turbines/all", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ isTurbineOn: isTurbineOn }),
-            }).catch((error) => {
-            console.error(error);
-            });
-        }, [isTurbineOn]);
-    
-        const handleUpdate = async () => {
-            var response = await fetch("http://api.solvann.eksempler.no/api/groupstates/last", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            });
-            var data = await response.json();
-            setGroupState(data);
-        };
+  React.useEffect(() => {
+    fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ isTurbineOn: isTurbineOn }),
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, [isTurbineOn]);
 
-        const handleTurbineOn = (e) => {
-            e.preventDefault();
-            setIsTurbineOn(true);
-            setIsSpinning(true);
-        };
+  const handleUpdate = async () => {
+    var response = await fetch(
+      "http://api.solvann.eksempler.no/api/groupstates/last",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    var data = await response.json();
+    setGroupState(data);
+  };
 
-        const handleTurbineOff = (e) => {
-            e.preventDefault();
-            setIsTurbineOn(false);
-            setIsSpinning(false);
-        };
+  const handleTurbineOn = (e) => {
+    e.preventDefault();
+    setIsTurbineOn(true);
+    setIsSpinning(true);
+  };
 
-    
-    return (
-     <div className="dashboard">
-                <div className="Header">
-                    <div className="nav">
-                        <div className="left">
+  const handleTurbineOff = (e) => {
+    e.preventDefault();
+    setIsTurbineOn(false);
+    setIsSpinning(false);
+  };
+
+  return (
+    <div className="dashboard">
+      <div className="Header">
+        <div className="nav">
+          <div className="left">
                             <li>
                                 <button onClick={logoutHandler} className="btn">Logout</button>
                             </li>
                         </div>
-                        <div className="center">
+                      <div className="center">
                             <li>
                                 <h1 className="dashboard-title">Dashboard</h1>
                             </li>
@@ -126,6 +128,12 @@ const Turbine = () => {
                         src={turbineIMG}
                         alt="Turbine"
                         />
+                </div>
+
+                <div>
+                  <Logg>
+
+                  </Logg>
                 </div>
             </div>
             

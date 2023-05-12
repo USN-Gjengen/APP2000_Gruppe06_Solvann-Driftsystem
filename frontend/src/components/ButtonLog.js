@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+export const handleButtonClick = (e, setLog, log) => {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    buttonId: e.target.id,
+    buttonText: e.target.innerText,
+  };
+  setLog([...log, logEntry]);
+};
+
+
 const Logg = () => {
   const [log, setLog] = useState([]);
 
@@ -27,22 +37,7 @@ const Logg = () => {
   }, [log]);
 
   return (
-    <div className="dashboard">
-      <div className="Header">
-          <div className="nav">
-            <div className="center">
-              <h1>Logg</h1>
-            </div>
-
-          <div className="left">
-          <div className="button-container">
-              <button id="test" onClick={handleButtonClick}>Button 1</button>
-              <button id="clear-log" onClick={handleClearLog}>Clear Log</button>
-            </div>
-          </div>
-            
-        </div>
-      </div>
+    
      <ul className="table">
       {log.map((entry, index) => (
         <li key={index}>
@@ -50,7 +45,6 @@ const Logg = () => {
         </li>
       ))}
      </ul>
-    </div>
   );
 };
 
