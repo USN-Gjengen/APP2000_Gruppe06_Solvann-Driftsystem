@@ -117,7 +117,7 @@ const Prototype = () => {
                 </div>
                 <div className="center">
                     <li>
-                    <h1 className="dashboard-title">Dashboard</h1>
+                    <h1 className="dashboard-title">Solvann Driftsystem</h1>
                     </li>
                 </div>
                 <div className="right">

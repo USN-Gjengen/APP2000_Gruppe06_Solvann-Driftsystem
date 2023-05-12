@@ -81,7 +81,7 @@ const Turbine = () => {
                         </div>
                       <div className="center">
                             <li>
-                                <h1 className="dashboard-title">Dashboard</h1>
+                                <h1 className="dashboard-title">Turbiner</h1>
                             </li>
                         </div>
                         <div className="right">
