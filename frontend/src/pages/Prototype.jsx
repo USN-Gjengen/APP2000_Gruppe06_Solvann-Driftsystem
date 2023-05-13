@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
-import WaterInflux from "../components/WaterInflux";
+import WaterInfluxDash from "../components/WaterInfluxDash";
 import { useTurbineContext } from "../components/TurbineProvider";
 import logLogo from "../img/log.png";
 import {
@@ -172,8 +172,7 @@ const Prototype = () => {
                             <div className='card'>
                             <div className="info">
                                 <div className="sub">Utforsk siste trender og analyser</div>
-                                <div className="title">Trender</div>
-                                <WaterInflux></WaterInflux>
+                                <WaterInfluxDash></WaterInfluxDash>
                                     <button className='btn' onClick={handleTrend}>
                                         Åpne alle trender
                                     </button>
