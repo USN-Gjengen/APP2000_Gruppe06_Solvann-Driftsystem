@@ -6,12 +6,12 @@ import Prototype from "./pages/Prototype";
 import Trend from "./pages/Trend";
 import Turbine from "./pages/Turbine";
 import Logg from "./pages/Logg";
-import WaterInflux from "./components/WaterInflux";
-import WaterInfluxDash from "./components/WaterInfluxDash";
-import Money from "./components/Money";
-import WaterLevel from "./components/WaterLevel";
-import EnvironmentCost from "./components/EnvironmentCost";
-import { TurbineProvider } from "./components/TurbineProvider";
+import WaterInflux from "./components/Graphs/WaterInflux";
+import WaterInfluxDash from "./components/Graphs/WaterInfluxDash";
+import Money from "./components/Graphs/Money";
+import WaterLevel from "./components/Graphs/WaterLevel";
+import EnvironmentCost from "./components/Graphs/EnvironmentCost";
+import { TurbineProvider } from "./components/Turbine/TurbineProvider";
 import TurbineController from "./components/Turbine/TurbineController";
 
 function App() {
