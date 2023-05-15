@@ -46,7 +46,7 @@ const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
 const logPowerPrice = async () => {
 	await functions.getPowerPrice().then(value => {
-		console.log(value);
+		//console.log(value);
 		const power = new PowerPrice({ value: value, date: Date.now() });
 		power.save();
 	});
@@ -60,7 +60,7 @@ const SolarValue = mongoose.model('SolarValue', solarSchema);
 
 const logSolarValue = async () => {
 	await functions.getSolarValue().then(value => {
-		console.log(value);
+		//console.log(value);
 		const solar = new SolarValue({ value: value, date: Date.now() });
 		solar.save();
 	});
@@ -74,7 +74,7 @@ const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
 const logWaterInflux = async () => {
 	await functions.getWaterInflux().then(value => {
-		console.log(value);
+		//console.log(value);
 		const influx = new WaterInflux({ value: value, date: Date.now() });
 		influx.save();
 	});

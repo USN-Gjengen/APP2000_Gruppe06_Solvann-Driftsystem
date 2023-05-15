@@ -16,10 +16,14 @@ process.on('SIGINT', () => {
 	mongoose.connection.close();
 });
 
+app.use((req, res, next) => {
+	console.log(new Date() + " : Request received");
+	next();
+  });
+
 app.get('/', (req, res) => {
 	try {
 		res.json({ "working": true });
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -30,7 +34,6 @@ app.get('/api/groupstates/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.GroupState, 1);
 		res.json(states[0]);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -41,7 +44,6 @@ app.get('/api/groupstates/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.GroupState);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -53,13 +55,11 @@ app.get('/api/groupstates/all', async (req, res) => {
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getDayAverage(dbfunctions.GroupState, start, end);
 	res.json(states[0]);
-	console.log("Request received");
 })*/
 app.get('/api/PowerPrice/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -69,7 +69,6 @@ app.get('/api/PowerPrice/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.PowerPrice, 1);
 		res.json(states[0]);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -82,7 +81,6 @@ app.get('/api/PowerPrice/lastWeek', async (req, res) => {
 		start.setDate(start.getDate() - 7);
 		var states = await dbfunctions.getDayAverage(dbfunctions.PowerPrice, start, end);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -95,7 +93,6 @@ app.get('/api/PowerPrice/lastHour', async (req, res) => {
 		start.setHours(start.getHours() - 1);
 		var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -105,7 +102,6 @@ app.get('/api/WaterInflux/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.WaterInflux);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -115,7 +111,6 @@ app.get('/api/WaterInflux/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.WaterInflux, 1);
 		res.json(states[0]);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -128,7 +123,6 @@ app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 		start.setDate(start.getDate() - 7);
 		var states = await dbfunctions.getDayAverage(dbfunctions.WaterInflux, start, end);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -141,7 +135,6 @@ app.get('/api/WaterInflux/lastHour', async (req, res) => {
 		start.setHours(start.getHours() - 1);
 		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -151,7 +144,6 @@ app.get('/api/SolarValue/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.SolarValue);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -161,7 +153,6 @@ app.get('/api/SolarValue/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.SolarValue, 1);
 		res.json(states[0]);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -174,7 +165,6 @@ app.get('/api/SolarValue/lastWeek', async (req, res) => {
 		start.setDate(start.getDate() - 7);
 		var states = await dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -187,7 +177,6 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 		start.setHours(start.getHours() - 1);
 		var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, 12);
 		res.json(states);
-		console.log("Request received");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
@@ -218,7 +207,7 @@ if (process.env.NODE_ENV != "test") {
 	cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
 		await dbfunctions.logGroupState();
 		var last = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
-		console.log(last.waterLevel);
+		//console.log(last.waterLevel);
 		if (last.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
 			functions.setAllTurbinesOn();
