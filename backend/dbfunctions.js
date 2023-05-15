@@ -149,8 +149,8 @@ const getPeriodAvg = async (document,date1, date2) => {
 	} } },
     { $group: { _id: null, average: { $avg: '$value' } } },
   ]).exec();
-	//console.log(average[0].average);
-  return average[0].average;
+	//console.log(average);
+  return average;
 }
 const getDayAverage = async (document, date1, date2) => {
 	var dayValue = [];
@@ -161,7 +161,7 @@ const getDayAverage = async (document, date1, date2) => {
 		end.setDate(end.getDate() + 1);
 		//console.log(start + "  " + end);
 		dayValue.push(await getPeriodAvg(document, start, end));
-		console.log(i + " : " + dayValue[i]);
+		//console.log(i + " : " + dayValue[i]);
 	}
 	return dayValue;
 }

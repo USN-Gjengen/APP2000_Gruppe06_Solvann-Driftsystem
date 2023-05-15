@@ -36,11 +36,12 @@ gt();*/
 //functions.setAllTurbinesOff();
 var start = new Date();
 var end = new Date();
-start.setHours(start.getHours() - 1);
+start.setDate(start.getDate() - 7);
+//start.setHours(start.getHours() - 200);
 console.log(start + " : " + new Date());
-//dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
+dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
-dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
+//dbfunctions.getPeriodAvg(dbfunctions.WaterInflux, start, end);
 
 
 
