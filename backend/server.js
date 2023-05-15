@@ -17,7 +17,8 @@ process.on('SIGINT', () => {
 });
 
 app.use((req, res, next) => {
-	console.log(new Date() + " : Request received");
+	let time = (new Date()).toISOString().replace("T", " ").split(".")[0];
+	console.log( time + " : Request received");
 	next();
   });
 
