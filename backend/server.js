@@ -218,7 +218,7 @@ if (process.env.NODE_ENV != "test") {
 	cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
 		await dbfunctions.logGroupState();
 		var last = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
-		console.log(last.waterLevel);
+		//console.log(last.waterLevel);
 		if (last.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
 			functions.setAllTurbinesOn();
