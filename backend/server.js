@@ -214,9 +214,9 @@ app.get('/api/turbines/all', async (req, res) => {
 app.put('/api/turbines/all', (req, res) => {
 	try {
 		if (req.body.isTurbineOn) {
-			functions.setAllTurbinesOn();
+			functions.setAllTurbines(1);
 		} else {
-			functions.setAllTurbinesOff();
+			functions.setAllTurbines(0);
 		}
 		res.send();
 	} catch (err) {
@@ -248,10 +248,10 @@ if (process.env.NODE_ENV != "test") {
 		//console.log(last.waterLevel);
 		if (last.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
-			functions.setAllTurbinesOn();
+			functions.setAllTurbines(1);
 		}
 		else if (last.waterLevel < 10) {
-			functions.setAllTurbinesOff();
+			functions.setAllTurbines(0);
 			console.log("Turbines off! Level below 10 meters");
 		}
 	});
