@@ -235,6 +235,20 @@ app.get('/api/turbines/:id', async (req, res) => {
 	}
 });
 
+app.put('/api/turbines/:id', (req, res) => {
+	try {
+		if (req.body.isTurbineOn) {
+			functions.setTurbineStatus(req.params.id, 1);
+		} else {
+			functions.setTurbineStatus(req.params.id, 0);
+		}
+		res.send();
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
 if (process.env.NODE_ENV != "test") {
 	cron.schedule('0 * * * * *', async () => {
 		dbfunctions.logWaterInflux();
