@@ -34,4 +34,12 @@ describe("GET /", () => {
     });
 });
 
+describe("GET /api/groupstates/last", () => {
+    it("should return last value of groupstates", async () => {
+        const res = await request(server).get("/api/groupstates/last");
+        expect(res.statusCode).toBe(200);
+    });
+});
+
+
 server.close();
