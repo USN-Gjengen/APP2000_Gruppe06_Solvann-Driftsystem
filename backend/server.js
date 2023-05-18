@@ -225,6 +225,16 @@ app.put('/api/turbines/all', (req, res) => {
 	}
 });
 
+app.get('/api/turbines/:id', async (req, res) => {
+	try {
+		var states = await functions.getSingleTurbineStatus(req.params.id);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
 if (process.env.NODE_ENV != "test") {
 	cron.schedule('0 * * * * *', async () => {
 		dbfunctions.logWaterInflux();
