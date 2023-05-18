@@ -201,6 +201,16 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 	}
 });
 
+app.get('/api/turbines/all', async (req, res) => {
+	try {
+		var states = await functions.getTurbineStatus();
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
 app.put('/api/turbines/all', (req, res) => {
 	try {
 		if (req.body.isTurbineOn) {
