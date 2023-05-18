@@ -50,13 +50,30 @@ app.get('/api/groupstates/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-/*app.get('/api/groupstates/lastWeek', async (req, res) => {
+app.get('/api/groupstates/lastHourWaterLevel', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
-	start.setDate(start.getDate() - 7);
-	var states = await dbfunctions.getDayAverage(dbfunctions.GroupState, start, end);
-	res.json(states[0]);
-})*/
+	start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
+		res.json(states);
+res.json(states);
+})
+app.get('/api/groupstates/lastHourMoney', async (req, res) => {
+	var start = new Date();
+	var end = new Date();
+	start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 12);
+		res.json(states);
+res.json(states);
+})
+app.get('/api/groupstates/lastHourEnvironmentCost', async (req, res) => {
+	var start = new Date();
+	var end = new Date();
+	start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
+		res.json(states);
+res.json(states);
+})
 app.get('/api/PowerPrice/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.PowerPrice);

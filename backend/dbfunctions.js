@@ -180,7 +180,7 @@ const getNAverage = async (document, date1, date2, increment) => {
 			}
 		}
 		nValue.push(holder / amount);
-		console.log(i + " : " + nValue[i]);
+		//console.log(i + " : " + nValue[i]);
 	}
 	return nValue;
 }
@@ -190,6 +190,65 @@ const days = (date_1, date_2) =>{
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
     return TotalDays;
 }
+
+//Egne metoder for GroupState
+
+const getNAverageWaterLevel = async (document, date1, date2, increment) => {
+	var nValue = [];
+	var data = await getPeriod(document, date1, date2);
+	var step = Math.floor(data.length / increment);
+	for(var i = 0; i < increment; i++){
+		var holder = 0;
+		var amount = 0;
+		for(var k = 0; k < step; k++){
+			if(i*step+k < data.length){
+				holder += data[(i*step)+k].waterLevel;
+				amount++;
+			}
+		}
+		nValue.push(holder / amount);
+		console.log(i + " : " + nValue[i]);
+	}
+	return nValue;
+}
+const getNAverageMoney = async (document, date1, date2, increment) => {
+	var nValue = [];
+	var data = await getPeriod(document, date1, date2);
+	var step = Math.floor(data.length / increment);
+	for(var i = 0; i < increment; i++){
+		var holder = 0;
+		var amount = 0;
+		for(var k = 0; k < step; k++){
+			if(i*step+k < data.length){
+				holder += data[(i*step)+k].money;
+				amount++;
+			}
+		}
+		nValue.push(holder / amount);
+		console.log(i + " : " + nValue[i]);
+	}
+	return nValue;
+}
+const getNAverageEnvironmentCost = async (document, date1, date2, increment) => {
+	var nValue = [];
+	var data = await getPeriod(document, date1, date2);
+	var step = Math.floor(data.length / increment);
+	for(var i = 0; i < increment; i++){
+		var holder = 0;
+		var amount = 0;
+		for(var k = 0; k < step; k++){
+			if(i*step+k < data.length){
+				holder += data[(i*step)+k].environmentCost;
+				amount++;
+			}
+		}
+		nValue.push(holder / amount);
+		console.log(i + " : " + nValue[i]);
+	}
+	return nValue;
+}
+
+
 
 
 exports.connect = connect;
@@ -205,6 +264,9 @@ exports.getPeriod = getPeriod;
 exports.getPeriodAvg = getPeriodAvg;
 exports.getDayAverage = getDayAverage;
 exports.getNAverage = getNAverage;
+exports.getNAverageWaterLevel = getNAverageWaterLevel;
+exports.getNAverageEnvironmentCost = getNAverageEnvironmentCost;
+exports.getNAverageMoney = getNAverageMoney;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;

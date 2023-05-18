@@ -39,11 +39,18 @@ gt();*/
 //start.setDate(start.getDate() - 7);
 //start.setHours(start.getHours() - 200);
 
-console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);
+//console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);
 //dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
 //dbfunctions.getPeriodAvg(dbfunctions.WaterInflux, start, end);
+var start = new Date();
+		var end = new Date();
+		start.setHours(start.getHours() - 1);
+		
 
+        var states =  dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
+//console.log(array[0].waterLevel)
+        
 
 
 
