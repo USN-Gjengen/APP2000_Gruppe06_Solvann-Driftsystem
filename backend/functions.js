@@ -61,6 +61,11 @@ const getTurbineStatus = async () => {
     return data;
 }
 
+const getSingleTurbineStatus = async (id) => {
+    let response = await getTurbineStatus();
+    return response.find(turbine => turbine.id === id);
+}
+
 const setAllTurbinesOn = () => {
     setTurbineStatus("8d360792-d4ab-42df-927d-11a8a1c83edc", 1);
     setTurbineStatus("f39090e5-22bf-406f-ab96-7cd8b89180aa", 1);
@@ -105,6 +110,7 @@ exports.getSolarValue = getSolarValue;
 exports.getPowerPrice = getPowerPrice;
 exports.getGroupState = getGroupState;
 exports.getTurbineStatus = getTurbineStatus;
+exports.getSingleTurbineStatus = getSingleTurbineStatus;
 exports.setTurbineStatus = setTurbineStatus;
 exports.setAllTurbinesOn = setAllTurbinesOn;
 exports.setAllTurbinesOff = setAllTurbinesOff;
