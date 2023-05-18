@@ -207,7 +207,7 @@ const getNAverageWaterLevel = async (document, date1, date2, increment) => {
 			}
 		}
 		nValue.push(holder / amount);
-		console.log(i + " : " + nValue[i]);
+		//console.log(i + " : " + nValue[i]);
 	}
 	return nValue;
 }
@@ -225,7 +225,7 @@ const getNAverageMoney = async (document, date1, date2, increment) => {
 			}
 		}
 		nValue.push(holder / amount);
-		console.log(i + " : " + nValue[i]);
+		//console.log(i + " : " + nValue[i]);
 	}
 	return nValue;
 }
@@ -243,7 +243,7 @@ const getNAverageEnvironmentCost = async (document, date1, date2, increment) => 
 			}
 		}
 		nValue.push(holder / amount);
-		console.log(i + " : " + nValue[i]);
+		//console.log(i + " : " + nValue[i]);
 	}
 	return nValue;
 }

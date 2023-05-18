@@ -48,7 +48,7 @@ var start = new Date();
 		start.setHours(start.getHours() - 1);
 		
 
-        var states =  dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
+        var states =  dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
 //console.log(array[0].waterLevel)
         
 
