@@ -2,7 +2,7 @@ import React, {useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Money from "../components/Graphs/Money";
 import WaterInflux from "../components/Graphs/WaterInflux";
-import WaterLevel from "../components/Graphs/WaterLevel";
+import WaterLevelGraph from "../components/Graphs/WaterLevelGraph";
 import EnvironmentCost from "../components/Graphs/EnvironmentCost";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement, Filler } from "chart.js";
@@ -63,7 +63,7 @@ const Trend = () => {
                 </div>
                 <div className='container2'>
                     <button className="btn-box">
-                        <WaterLevel></WaterLevel>
+                        <WaterLevelGraph></WaterLevelGraph>
                     </button>
                 </div>
                 <div className='container2'>

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
-import logLogo from "../img/log.png";
 import {
   Chart as ChartJS,
   Title,
@@ -34,6 +33,7 @@ const Prototype = () => {
         const [trend, setTrend] = React.useState(false);
         const [turbine, setTurbine] = React.useState(false);
         const [logg, setLogg] = React.useState(false);
+        const [waterlevel, setWaterlevel] = React.useState(false);
 
         React.useEffect(() => {
             if (!localStorage.getItem("auth")) navigate("/login");
@@ -56,6 +56,12 @@ const Prototype = () => {
             navigate("/Logg");
             }   
         }, [navigate, logg]);
+
+        React.useEffect(() => {
+            if (localStorage.getItem("auth") && waterlevel) {
+            navigate("/Waterlevel");
+            }
+        }, [navigate, waterlevel]);
 
         React.useEffect(() => {
             fetch("http://api.solvann.eksempler.no/api/turbines/all", {
@@ -88,6 +94,11 @@ const Prototype = () => {
         const handleLogg = (e) => {
             e.preventDefault();
             setLogg(true);
+        };
+
+        const handleWaterlevel = (e) => {
+            e.preventDefault();
+            setWaterlevel(true);
         };
 
         const handleUpdate = async () => {
@@ -154,7 +165,9 @@ const Prototype = () => {
                                 <div className="info">
                                 <div className="sub">Vannstandskontroll</div>
                                 <div className="title">Nivåindikator</div>
-                                    <button className="btn">Åpne Vannstand</button>
+                                    <button className="btn" onClick={handleWaterlevel}>
+                                        Åpne Vannstand
+                                    </button>
                                 </div>
                             </div>
 

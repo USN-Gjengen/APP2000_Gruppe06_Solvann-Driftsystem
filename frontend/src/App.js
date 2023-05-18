@@ -6,13 +6,15 @@ import Prototype from "./pages/Prototype";
 import Trend from "./pages/Trend";
 import Turbine from "./pages/Turbine";
 import Logg from "./pages/Logg";
+import Waterlevel from "./pages/Waterlevel";
 import WaterInflux from "./components/Graphs/WaterInflux";
 import WaterInfluxDash from "./components/Graphs/WaterInfluxDash";
 import Money from "./components/Graphs/Money";
-import WaterLevel from "./components/Graphs/WaterLevel";
+import WaterLevelGraph from "./components/Graphs/WaterLevelGraph";
 import EnvironmentCost from "./components/Graphs/EnvironmentCost";
 import { TurbineProvider } from "./components/Turbine/TurbineProvider";
 import TurbineController from "./components/Turbine/TurbineController";
+import WaterContainer from "./components/Waterlevel/WaterContainer";
 
 function App() {
 
@@ -27,12 +29,14 @@ function App() {
           <Route exact path="/Trend" element={< Trend />} ></Route>
           <Route exact path="/Turbine" element={< Turbine />} ></Route>
           <Route exact path="/Logg" element={< Logg />} ></Route>
+          <Route exact path="/Waterlevel" element={< Waterlevel />} ></Route>
           <Route exact path="/components/WaterInflux" element={< WaterInflux />} ></Route>
           <Route exact path="/components/WaterInfluxDash" element={< WaterInfluxDash />} ></Route>
           <Route exact path="/components/Money" element={< Money />} ></Route>
-          <Route exact path="/components/WaterLevel" element={< WaterLevel />} ></Route>
+          <Route exact path="/components/WaterLevelGraph" element={< WaterLevelGraph />} ></Route>
           <Route exact path="/components/EnvironmentCost" element={< EnvironmentCost />} ></Route>
           <Route exact path="/components/Turbine/TurbineController" element={< TurbineController />} ></Route>
+          <Route exact path="/components/Waterlevel/WaterContainer" element={< WaterContainer />} ></Route>
         </Routes>
       </div>
       </Router>

@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const WaterLevel = () => {
+const WaterLevelGraph = () => {
     const [WaterLevel, setWaterLevel] = useState({
         labels: [],
         datasets: [
@@ -88,4 +88,4 @@ const WaterLevel = () => {
     )
 }
 
-export default WaterLevel;
+export default WaterLevelGraph;

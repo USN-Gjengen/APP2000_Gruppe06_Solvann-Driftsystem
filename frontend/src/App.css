@@ -349,3 +349,23 @@
   .table li span {
 	font-size: 0.8em;
   }
+
+  /* waterlevel page */
+
+  .water-container {
+	width: 200px;
+	height: 300px;
+	background-color: #e0e0e0;
+	position: relative;
+	overflow: hidden;
+  }
+  
+  .water {
+	background-color: blue;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: height 0.5s;
+  }
+  
