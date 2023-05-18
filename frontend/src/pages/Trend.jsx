@@ -1,9 +1,9 @@
 import React, {useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Money from "../components/Money";
-import WaterInflux from "../components/WaterInflux";
-import WaterLevel from "../components/WaterLevel";
-import EnvironmentCost from "../components/EnvironmentCost";
+import Money from "../components/Graphs/Money";
+import WaterInflux from "../components/Graphs/WaterInflux";
+import WaterLevel from "../components/Graphs/WaterLevel";
+import EnvironmentCost from "../components/Graphs/EnvironmentCost";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement, Filler } from "chart.js";
 ChartJS.register(Title, Tooltip, LineElement, 
