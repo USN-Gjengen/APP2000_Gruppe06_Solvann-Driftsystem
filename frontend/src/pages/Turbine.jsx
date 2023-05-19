@@ -20,8 +20,7 @@ const Turbine = () => {
 	const [turbineList, setTurbineList] = useState([]);
 
 	const getTurbines = async () => {
-		//const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
-		const response = await fetch("http://localhost:21613/api/turbines/all", {
+		const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json"
@@ -33,8 +32,7 @@ const Turbine = () => {
 	}
 
 	const setTurbines = async (capacity) => {
-		//const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
-		const response = await fetch("http://localhost:21613/api/turbines/all", {
+		const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
