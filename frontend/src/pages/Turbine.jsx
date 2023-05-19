@@ -20,7 +20,8 @@ const Turbine = () => {
 	const [turbineList, setTurbineList] = useState([]);
 
 	const getTurbines = async () => {
-		const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+		//const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+		const response = await fetch("http://localhost:21613/api/turbines/all", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json"
@@ -31,16 +32,35 @@ const Turbine = () => {
 		return data;
 	}
 
-	const handleTurbineOn = (e) => {
+	const setTurbines = async (capacity) => {
+		//const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+		const response = await fetch("http://localhost:21613/api/turbines/all", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				capacity: capacity
+			})
+		});
+	}
+
+	const handleTurbineForward = (e) => {
 		e.preventDefault();
 
-		// Set turbine status and if it's spinning
+		setTurbines(1);
 	};
 
 	const handleTurbineOff = (e) => {
 		e.preventDefault();
 
-		// Set turbine status and if it's spinning
+		setTurbines(0);
+	};
+
+	const handleTurbineReverse = (e) => {
+		e.preventDefault();
+
+		setTurbines(-1);
 	};
 
 
@@ -48,11 +68,22 @@ const Turbine = () => {
 		const makeTurbines = async () => {
 			let turbines = await getTurbines();
 			setTurbineList(turbines.map((turbine) => {
+				let red = "00";
+				let green = "00";
+
+				if (turbine.capacityUsage > 0) {
+					green = Math.floor(0xFF * turbine.capacityUsage);
+				}
+
+				if (turbine.capacityUsage < 0) {
+					red = Math.floor(255 * turbine.capacityUsage * -1);
+				}
 
 				return (
 					<TurbineController 
 					key={turbine.id} 
 					isSpinning={turbine.capacityUsage != 0}
+					color={"#" + red.toString(16) + green.toString(16) + "00"}
 					/>
 				)
 			}));
@@ -89,11 +120,14 @@ const Turbine = () => {
 
 
 			<div className="button-container">
-				<button className="btn" onClick={handleTurbineOn}>
-					<span>Turn On</span>
+				<button className="btn" onClick={handleTurbineForward}>
+					<span>Max Forward</span>
 				</button>
 				<button className="btn" onClick={handleTurbineOff}>
 					<span>Turn Off</span>
+				</button>
+				<button className="btn" onClick={handleTurbineReverse}>
+					<span>Max Reverse</span>
 				</button>
 			</div>
 
