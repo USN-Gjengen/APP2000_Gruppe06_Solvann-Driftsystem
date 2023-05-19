@@ -58,7 +58,7 @@ const Prototype = () => {
         }, [navigate, logg]);
 
         React.useEffect(() => {
-            fetch("http://api.solvann.eksempler.no/api/turbines/all", {
+            fetch("http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/turbines/all", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const Prototype = () => {
 
         const handleUpdate = async () => {
             var response = await fetch(
-            "http://api.solvann.eksempler.no/api/groupstates/last",
+            "http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/groupstates/last",
             {
                 method: "GET",
                 headers: {
