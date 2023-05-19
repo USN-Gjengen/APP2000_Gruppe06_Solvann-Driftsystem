@@ -61,30 +61,16 @@ const getTurbineStatus = async () => {
     return data;
 }
 
-const setAllTurbinesOn = () => {
-    setTurbineStatus("8d360792-d4ab-42df-927d-11a8a1c83edc", 1);
-    setTurbineStatus("f39090e5-22bf-406f-ab96-7cd8b89180aa", 1);
-    setTurbineStatus("ebe242ea-baea-4241-a158-763c429fd495", 1);
-    setTurbineStatus("6381c1d6-b347-4afb-9b16-ba17ed239a95", 1);
-    setTurbineStatus("abe4c576-0e7f-481b-b48d-ff2cd2b2dffe", 1);
-    setTurbineStatus("c061b20b-6dcf-4584-9609-10d7bbaa0be1", 1);
-}
-const setAllTurbinesOff = () => {
-    setTurbineStatus("8d360792-d4ab-42df-927d-11a8a1c83edc", 0);
-    setTurbineStatus("f39090e5-22bf-406f-ab96-7cd8b89180aa", 0);
-    setTurbineStatus("ebe242ea-baea-4241-a158-763c429fd495", 0);
-    setTurbineStatus("6381c1d6-b347-4afb-9b16-ba17ed239a95", 0);
-    setTurbineStatus("abe4c576-0e7f-481b-b48d-ff2cd2b2dffe", 0);
-    setTurbineStatus("c061b20b-6dcf-4584-9609-10d7bbaa0be1", 0);
+const getSingleTurbineStatus = async (id) => {
+    let response = await getTurbineStatus();
+    return response.find(turbine => turbine.id === id);
 }
 
-const setAllTurbinesReverse = () => {
-    setTurbineStatus("8d360792-d4ab-42df-927d-11a8a1c83edc", -1);
-    setTurbineStatus("f39090e5-22bf-406f-ab96-7cd8b89180aa", -1);
-    setTurbineStatus("ebe242ea-baea-4241-a158-763c429fd495", -1);
-    setTurbineStatus("6381c1d6-b347-4afb-9b16-ba17ed239a95", -1);
-    setTurbineStatus("abe4c576-0e7f-481b-b48d-ff2cd2b2dffe", -1);
-    setTurbineStatus("c061b20b-6dcf-4584-9609-10d7bbaa0be1", -1);
+const setAllTurbines = async (flow) => {
+    let turbines = await getTurbineStatus();
+    turbines.forEach(turbine => {
+        setTurbineStatus(turbine.id, flow);
+    });
 }
 
 const setTurbineStatus = (id, cap) => {
@@ -105,7 +91,6 @@ exports.getSolarValue = getSolarValue;
 exports.getPowerPrice = getPowerPrice;
 exports.getGroupState = getGroupState;
 exports.getTurbineStatus = getTurbineStatus;
+exports.getSingleTurbineStatus = getSingleTurbineStatus;
 exports.setTurbineStatus = setTurbineStatus;
-exports.setAllTurbinesOn = setAllTurbinesOn;
-exports.setAllTurbinesOff = setAllTurbinesOff;
-exports.setAllTurbinesReverse = setAllTurbinesReverse;
+exports.setAllTurbines = setAllTurbines;

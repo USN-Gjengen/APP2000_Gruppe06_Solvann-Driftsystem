@@ -198,13 +198,39 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 	}
 });
 
+app.get('/api/turbines/all', async (req, res) => {
+	try {
+		var states = await functions.getTurbineStatus();
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
 app.put('/api/turbines/all', (req, res) => {
 	try {
-		if (req.body.isTurbineOn) {
-			functions.setAllTurbinesOn();
-		} else {
-			functions.setAllTurbinesOff();
-		}
+		functions.setAllTurbines(req.body.capacity);
+		res.send();
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
+app.get('/api/turbine/:id', async (req, res) => {
+	try {
+		var states = await functions.getSingleTurbineStatus(req.params.id);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+
+app.put('/api/turbine/:id', (req, res) => {
+	try {
+		functions.setTurbineStatus(req.params.id, req.body.capacity);
 		res.send();
 	} catch (err) {
 		console.error(err.message);
@@ -225,10 +251,10 @@ if (process.env.NODE_ENV != "test") {
 		//console.log(last.waterLevel);
 		if (last.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
-			functions.setAllTurbinesOn();
+			functions.setAllTurbines(1);
 		}
 		else if (last.waterLevel < 10) {
-			functions.setAllTurbinesOff();
+			functions.setAllTurbines(0);
 			console.log("Turbines off! Level below 10 meters");
 		}
 	});
