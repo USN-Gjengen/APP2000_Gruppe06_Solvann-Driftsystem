@@ -45,7 +45,7 @@ const Turbine = () => {
 
 
 	React.useEffect(() => {
-		setInterval(async () => {
+		const makeTurbines = async () => {
 			let turbines = await getTurbines();
 			setTurbineList(turbines.map((turbine) => {
 
@@ -56,7 +56,13 @@ const Turbine = () => {
 					/>
 				)
 			}));
-		}, 4000);
+		}
+
+
+		makeTurbines();
+		setInterval(async () => {
+			makeTurbines();
+		}, 5000);
 	}, []);
 
 	return (
