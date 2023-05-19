@@ -20,8 +20,7 @@ const Turbine = () => {
 	const [turbineList, setTurbineList] = useState([]);
 
 	const getTurbines = async () => {
-		//const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
-		const response = await fetch("http://localhost:21613/api/turbines/all", {
+		const response = await fetch("http://api.solvann.eksempler.no/api/turbines/all", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json"
@@ -53,7 +52,6 @@ const Turbine = () => {
 				return (
 					<TurbineController 
 					key={turbine.id} 
-					id={turbine.id} 
 					isSpinning={turbine.capacityUsage != 0}
 					/>
 				)
