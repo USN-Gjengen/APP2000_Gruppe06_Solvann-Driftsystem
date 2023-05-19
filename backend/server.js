@@ -221,7 +221,7 @@ app.put('/api/turbines/all', (req, res) => {
 	}
 });
 
-app.get('/api/turbines/:id', async (req, res) => {
+app.get('/api/turbine/:id', async (req, res) => {
 	try {
 		var states = await functions.getSingleTurbineStatus(req.params.id);
 		res.json(states);
@@ -231,9 +231,9 @@ app.get('/api/turbines/:id', async (req, res) => {
 	}
 });
 
-app.put('/api/turbines/:id', (req, res) => {
+app.put('/api/turbine/:id', (req, res) => {
 	try {
-		functions.setAllTurbines(req.body.capacity);
+		functions.setTurbineStatus(req.params.id, req.body.capacity);
 		res.send();
 	} catch (err) {
 		console.error(err.message);
