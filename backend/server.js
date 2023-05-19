@@ -18,9 +18,9 @@ process.on('SIGINT', () => {
 
 app.use((req, res, next) => {
 	let time = (new Date()).toISOString().replace("T", " ").split(".")[0];
-	console.log( time + " : Request received");
+	console.log(time + " : Request received");
 	next();
-  });
+});
 
 app.get('/', (req, res) => {
 	try {
@@ -54,25 +54,22 @@ app.get('/api/groupstates/lastHourWaterLevel', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
-		res.json(states);
-res.json(states);
+	var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
+	res.json(states);
 })
 app.get('/api/groupstates/lastHourMoney', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 12);
-		res.json(states);
-res.json(states);
+	var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 12);
+	res.json(states);
 })
 app.get('/api/groupstates/lastHourEnvironmentCost', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
-		res.json(states);
-res.json(states);
+	var states = await dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
+	res.json(states);
 })
 app.get('/api/PowerPrice/all', async (req, res) => {
 	try {
