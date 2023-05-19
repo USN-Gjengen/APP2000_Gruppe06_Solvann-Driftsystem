@@ -46,7 +46,7 @@ ChartJS.register(Title, Tooltip, LineElement,
             start.setDate(end.getDate() - 6);
     
             const response = await fetch(
-              `http://api.solvann.eksempler.no/api/WaterInflux/lastWeek?start=${start.toISOString()}&end=${end.toISOString()}`
+              "http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/WaterInflux/lastWeek?start=${start.toISOString()}&end=${end.toISOString()}"
             );
             const data = await response.json();
     
