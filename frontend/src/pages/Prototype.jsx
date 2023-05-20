@@ -3,27 +3,7 @@ import { useNavigate } from "react-router-dom";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 import HeaderSection from "../components/HeaderSection";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  LineElement,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Filler,
-} from "chart.js";
-ChartJS.register(
-  Title,
-  Tooltip,
-  LineElement,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Filler
-);
+
 
 const Prototype = () => {
         const navigate = useNavigate();
