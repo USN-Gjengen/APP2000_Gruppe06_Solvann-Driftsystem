@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
-import logLogo from "../img/log.png";
 import {
   Chart as ChartJS,
   Title,
@@ -166,7 +165,9 @@ const Prototype = () => {
                                 <div className="info">
                                 <div className="sub">Vannstandskontroll</div>
                                 <div className="title">Nivåindikator</div>
-                                <button className="btn">Åpne Vannstand</button>
+                                    <button className="btn" onClick={handleWaterlevel}>
+                                        Åpne Vannstand
+                                    </button>
                                 </div>
                             </div>
 
