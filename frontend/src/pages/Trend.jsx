@@ -1,7 +1,7 @@
 import React from "react";
 import Money from "../components/Graphs/Money";
 import WaterInflux from "../components/Graphs/WaterInflux";
-import WaterLevel from "../components/Graphs/WaterLevel";
+import WaterLevelGraph from "../components/Graphs/WaterLevelGraph";
 import EnvironmentCost from "../components/Graphs/EnvironmentCost";
 import HeaderSection from "../components/HeaderSection";
 
@@ -25,7 +25,7 @@ const Trend = () => {
                 </div>
                 <div className='container2'>
                     <button className="btn-box">
-                        <WaterLevel></WaterLevel>
+                        <WaterLevelGraph></WaterLevelGraph>
                     </button>
                 </div>
                 <div className='container2'>
