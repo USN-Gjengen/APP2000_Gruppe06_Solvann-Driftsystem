@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Line } from "react-chartjs-2";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 import HeaderSection from "../components/HeaderSection";
@@ -28,16 +27,10 @@ ChartJS.register(
 
 const Prototype = () => {
         const navigate = useNavigate();
-        const { isTurbineOn, setIsTurbineOn } = useTurbineContext();
-        const [logout, setLogout] = React.useState(false);
-        const [groupState, setGroupState] = React.useState({ group: [] });
+        const { isTurbineOn } = useTurbineContext();
         const [trend, setTrend] = React.useState(false);
         const [turbine, setTurbine] = React.useState(false);
         const [logg, setLogg] = React.useState(false);
-
-        React.useEffect(() => {
-            if (!localStorage.getItem("auth")) navigate("/login");
-        }, [navigate, logout]);
 
         React.useEffect(() => {
             if (localStorage.getItem("auth") && trend) {
@@ -68,12 +61,6 @@ const Prototype = () => {
             console.error(error);
             });
         }, [isTurbineOn]);
-        
-        const logoutHandler = (e) => {
-            e.preventDefault();
-            localStorage.removeItem("auth");
-            setLogout(true);
-        };
 
         const handleTrend = (e) => {
             e.preventDefault();
@@ -92,7 +79,7 @@ const Prototype = () => {
 
     return (
         <div className="dashboard">
-        <HeaderSection/>
+        <HeaderSection></HeaderSection>
         
                 <div className="wrapper">
                     <div className="container">
