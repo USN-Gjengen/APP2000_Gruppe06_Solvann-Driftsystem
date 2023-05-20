@@ -166,9 +166,7 @@ const Prototype = () => {
                                 <div className="info">
                                 <div className="sub">Vannstandskontroll</div>
                                 <div className="title">Nivåindikator</div>
-                                    <button className="btn" onClick={handleWaterlevel}>
-                                        Åpne Vannstand
-                                    </button>
+                                <button className="btn">Åpne Vannstand</button>
                                 </div>
                             </div>
 
