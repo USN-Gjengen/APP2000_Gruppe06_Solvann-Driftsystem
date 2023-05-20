@@ -2,17 +2,6 @@ import React from 'react';
 import WaterContainer from '../components/Waterlevel/WaterContainer';
 
 const Waterlevel = () => {
-  const [waterLevel, setWaterLevel] = React.useState(50); // Initial water level
-
-  // Example: Change the water level every second
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      const newWaterLevel = Math.random() * 100; // Generate a random value between 0 and 100
-      setWaterLevel(newWaterLevel);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className='dashboard'>
@@ -35,7 +24,7 @@ const Waterlevel = () => {
                     </div>
                 </div>
             </div>
-    <WaterContainer waterLevel={waterLevel} />
+    <WaterContainer />
 
     </div>
     );
