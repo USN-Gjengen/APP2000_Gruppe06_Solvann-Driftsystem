@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
-import logLogo from "../img/log.png";
+import HeaderSection from "../components/HeaderSection";
 import {
   Chart as ChartJS,
   Title,
@@ -90,46 +90,11 @@ const Prototype = () => {
             setLogg(true);
         };
 
-        const handleUpdate = async () => {
-            var response = await fetch(
-            "http://api.solvann.eksempler.no/api/groupstates/last",
-            {
-                method: "GET",
-                headers: {
-                "Content-Type": "application/json",
-                },
-            }
-            );
-            var data = await response.json();
-            setGroupState(data);
-        };
-
     return (
         <div className="dashboard">
-            <div className="Header">
-                <div className="nav">
-                <div className="left">
-                    <li>
-                    <button onClick={logoutHandler} className="btn">
-                        Logg ut
-                    </button>
-                    </li>
-                </div>
-                <div className="center">
-                    <li>
-                    <h1 className="dashboard-title">Solvann Driftsystem</h1>
-                    </li>
-                </div>
-                <div className="right">
-                    <li>
-                    <button className="btn">Profil</button>
-                    </li>
-                </div>
-                </div>
-            </div>
-            
+        <HeaderSection/>
+        
                 <div className="wrapper">
-                    
                     <div className="container">
 
                         <div className="row">
