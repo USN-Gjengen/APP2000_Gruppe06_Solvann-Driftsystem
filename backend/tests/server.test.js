@@ -124,4 +124,21 @@ describe("GET /api/SolarValue/lastHour", () => {
         expect(res.statusCode).toBe(200);
     });
 });
+
+describe("GET /api/turbines/all", () => {
+    it("should return the status of all turbines", async () => {
+        const res = await request(server).get("/api/turbines/all");
+        expect(res.statusCode).toBe(200);
+    });
+});
+
+describe("GET /api/turbine/:id", () => {
+    it("should return the status of one turbine", async () => {
+        const turbines = await request(server).get("/api/turbines/all");
+        const res = await request(server).get("/api/turbine/" + turbines.body[0]._id);
+        expect(res.statusCode).toBe(200);
+    });
+});
+
+
 server.close();

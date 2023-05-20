@@ -13,6 +13,7 @@ import WaterLevel from "./components/Graphs/WaterLevel";
 import EnvironmentCost from "./components/Graphs/EnvironmentCost";
 import { TurbineProvider } from "./components/Turbine/TurbineProvider";
 import TurbineController from "./components/Turbine/TurbineController";
+import HeaderSection from "./components/HeaderSection";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/components/WaterLevel" element={< WaterLevel />} ></Route>
           <Route exact path="/components/EnvironmentCost" element={< EnvironmentCost />} ></Route>
           <Route exact path="/components/Turbine/TurbineController" element={< TurbineController />} ></Route>
+          <Route exact path="/components/HeaderSection" element={< HeaderSection />} ></Route>
         </Routes>
       </div>
       </Router>

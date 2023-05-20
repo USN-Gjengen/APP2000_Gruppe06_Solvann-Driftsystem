@@ -25,6 +25,6 @@ describe("Prototype component", () => {
   test("displays the correct initial state", () => {
     renderWithRouter(<Prototype />);
 
-    expect(screen.getByText("Solvann Driftsystem")).toBeInTheDocument();
+    expect(screen.getByText("SOLVANN DRIFTSYSTEM")).toBeInTheDocument();
   });
 });
