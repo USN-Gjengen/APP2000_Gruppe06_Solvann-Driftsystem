@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const WaterLevel = () => {
+const WaterLevelGraph = () => {
     const [WaterLevel, setWaterLevel] = useState({
         labels: [],
         datasets: [
@@ -43,7 +43,7 @@ const WaterLevel = () => {
         const fetchData = async () => {
           try {
             const response = await fetch(
-              "http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/groupStates/last"
+              "http://api.solvann.eksempler.no/api/groupStates/last"
             );
             const jsonData = await response.json();
       
@@ -88,4 +88,4 @@ const WaterLevel = () => {
     )
 }
 
-export default WaterLevel;
+export default WaterLevelGraph;
