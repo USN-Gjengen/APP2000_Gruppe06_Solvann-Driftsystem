@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 import HeaderSection from "../components/HeaderSection";
+import Waterlevel from "./Waterlevel";
 
 
 const Prototype = () => {
@@ -11,6 +12,7 @@ const Prototype = () => {
         const [trend, setTrend] = React.useState(false);
         const [turbine, setTurbine] = React.useState(false);
         const [logg, setLogg] = React.useState(false);
+        const [waterlevel, setWaterlevel] = useState(false);
 
         React.useEffect(() => {
             if (localStorage.getItem("auth") && trend) {
@@ -29,6 +31,13 @@ const Prototype = () => {
             navigate("/Logg");
             }   
         }, [navigate, logg]);
+
+        React.useEffect(() => {
+            if (localStorage.getItem("auth") && waterlevel) {
+            navigate("/Waterlevel");
+            }
+        }, [navigate, waterlevel]);
+        
 
         React.useEffect(() => {
             fetch("http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/turbines/all", {
@@ -55,6 +64,11 @@ const Prototype = () => {
         const handleLogg = (e) => {
             e.preventDefault();
             setLogg(true);
+        };
+
+        const handleWaterLevel = (e) => {
+            e.preventDefault();
+            setWaterlevel(true);
         };
 
   
@@ -87,7 +101,9 @@ const Prototype = () => {
                                 <div className="info">
                                 <div className="sub">Vannstandskontroll</div>
                                 <div className="title">Nivåindikator</div>
-                                    <button className="btn">Åpne Vannstand</button>
+                                    <button className="btn" onClick={handleWaterLevel}>
+                                        Åpne Vannstand
+                                    </button>
                                 </div>
                             </div>
 
