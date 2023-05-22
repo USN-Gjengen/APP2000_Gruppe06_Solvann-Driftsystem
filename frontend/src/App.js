@@ -5,9 +5,9 @@ import React from "react";
 import Trend from "./pages/Trend";
 import Turbine from "./pages/Turbine";
 import Logg from "./pages/Logg";
-import Waterlevel from "./pages/Waterlevel";
 import HeaderSection from "./components/HeaderSection";
 import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/Trend" element={< Trend />} ></Route>
           <Route exact path="/Turbine" element={< Turbine />} ></Route>
           <Route exact path="/Logg" element={< Logg />} ></Route>
+          <Route exact path="/Innstillinger" element={< Settings />} ></Route>
         </Routes>
       </div>
     </Router>

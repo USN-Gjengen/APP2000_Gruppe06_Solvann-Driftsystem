@@ -176,7 +176,7 @@ li {
 
 .card {
 	height: 30vh;
-	width: 30vh;
+	width: 50vh;
 	display: flex;
 	align-items: center;
 	gap: 28px;

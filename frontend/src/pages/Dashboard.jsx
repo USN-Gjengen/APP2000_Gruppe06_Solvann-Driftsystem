@@ -9,8 +9,7 @@ const Dashboard = () => {
     const { isTurbineOn } = useTurbineContext();
     const [trend, setTrend] = React.useState(false);
     const [turbine, setTurbine] = React.useState(false);
-    const [logg, setLogg] = React.useState(false);
-    const [waterlevel, setWaterlevel] = useState(false);
+    const [settings, setSettings] = useState(false);
 
     React.useEffect(() => {
         if (localStorage.getItem("auth") && trend) {
@@ -25,16 +24,10 @@ const Dashboard = () => {
     }, [navigate, turbine]);
 
     React.useEffect(() => {
-        if (localStorage.getItem("auth") && logg) {
-            navigate("/Logg");
+        if (localStorage.getItem("auth") && settings) {
+            navigate("/Innstillinger");
         }
-    }, [navigate, logg]);
-
-    React.useEffect(() => {
-        if (localStorage.getItem("auth") && waterlevel) {
-            navigate("/Waterlevel");
-        }
-    }, [navigate, waterlevel]);
+    }, [navigate, settings]);
 
 
     React.useEffect(() => {
@@ -59,14 +52,9 @@ const Dashboard = () => {
         setTurbine(true);
     };
 
-    const handleLogg = (e) => {
+    const handleSettings = (e) => {
         e.preventDefault();
-        setLogg(true);
-    };
-
-    const handleWaterLevel = (e) => {
-        e.preventDefault();
-        setWaterlevel(true);
+        setSettings(true);
     };
 
 
@@ -116,19 +104,9 @@ const Dashboard = () => {
 
                         <div className='card'>
                             <div className="info">
-                                <div className="sub">Oversikt over tidligere logging</div>
-                                <div className="title">Logging Historikk</div>
-                                <button className='btn' onClick={handleLogg}>
-                                    Åpne logging historikk
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className='card'>
-                            <div className="info">
                                 <div className="sub">Tilpass appen etter dine behov</div>
                                 <div className="title">Innstillinger</div>
-                                <button className='btn'>
+                                <button className='btn' onClick={handleSettings}>
                                     Åpne Innstillinger
                                 </button>
                             </div>
