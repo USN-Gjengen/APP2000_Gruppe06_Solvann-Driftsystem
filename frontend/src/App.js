@@ -22,7 +22,6 @@ function App() {
           <Route exact path="/Trend" element={< Trend />} ></Route>
           <Route exact path="/Turbine" element={< Turbine />} ></Route>
           <Route exact path="/Logg" element={< Logg />} ></Route>
-          <Route exact path="/Waterlevel" element={< Waterlevel />} ></Route>
         </Routes>
       </div>
     </Router>
