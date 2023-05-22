@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
-import HeaderSection from "../components/HeaderSection";
-import Waterlevel from "./Waterlevel";
 
 
 const Dashboard = () => {
@@ -74,8 +72,6 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <HeaderSection></HeaderSection>
-
             <div className="wrapper">
                 <div className="container">
 

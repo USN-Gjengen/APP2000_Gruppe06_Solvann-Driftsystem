@@ -3,15 +3,11 @@ import Money from "../components/Graphs/Money";
 import WaterInflux from "../components/Graphs/WaterInflux";
 import WaterLevelGraph from "../components/Graphs/WaterLevelGraph";
 import EnvironmentCost from "../components/Graphs/EnvironmentCost";
-import HeaderSection from "../components/HeaderSection";
-
 const Trend = () => {
 
     return (
 
         <div className="trend">
-            <HeaderSection></HeaderSection>
-
             <div className='boxes'>
                 <div className='container2'>
                     <button className="btn-box">
