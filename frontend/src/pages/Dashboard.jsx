@@ -85,7 +85,9 @@ const Dashboard = () => {
                             <div className="info">
                                 <div className="sub">Væroversikt for vannstand</div>
                                 <div className="title">Værmelding</div>
-                                <button className="btn">Åpne Vær</button>
+                                <div className="weather">
+                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" />
+                                </div>
                             </div>
                         </div>
 

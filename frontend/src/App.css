@@ -236,6 +236,10 @@ li {
 	overflow: hidden;
 }
 
+.card .info .weather img {
+	width: 100%;
+}
+
 .card .info .btn {
 	margin-top: 28px;
 	color: #fff;
