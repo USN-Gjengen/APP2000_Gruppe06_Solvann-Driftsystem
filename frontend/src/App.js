@@ -19,8 +19,7 @@ import HeaderSection from "./components/HeaderSection";
 function App() {
 
   return (
-    <TurbineProvider>
-      <Router>
+    <Router>
       <div className="Appen">
         <Routes>
           <Route exact path="/" element={< Login />}></Route>
@@ -39,8 +38,7 @@ function App() {
           <Route exact path="/components/HeaderSection" element={< HeaderSection />} ></Route>
         </Routes>
       </div>
-      </Router>
-    </TurbineProvider>
+    </Router>
   );
 }
 
