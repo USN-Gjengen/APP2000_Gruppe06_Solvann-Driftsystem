@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
+import Graph from "../components/Graphs/Graph";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 
 
@@ -97,7 +97,10 @@ const Dashboard = () => {
                         <div className='card'>
                             <div className="info">
                                 <div className="sub">Utforsk siste trender og analyser</div>
-                                <WaterInfluxDash></WaterInfluxDash>
+                                <Graph 
+                                    src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
+                                    title="Water Influx"
+                                    />
                                 <button className='btn' onClick={handleTrend}>
                                     Åpne alle trender
                                 </button>

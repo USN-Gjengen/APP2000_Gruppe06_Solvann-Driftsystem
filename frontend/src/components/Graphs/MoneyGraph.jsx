@@ -4,12 +4,12 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const EnvironmentCost = () => {
-    const [EnvironmentCost, setEnvironmentCost] = useState({
+const MoneyGraph = () => {
+    const [Money, setMoney] = useState({
         labels: [],
         datasets: [
           {
-            label: "EnvironmentCost",
+            label: "Money",
             data: [],
             backgroundColor: "#16ccc6",
             borderColor: "green",
@@ -48,16 +48,16 @@ const EnvironmentCost = () => {
             const jsonData = await response.json();
       
             if (typeof jsonData === "object" && jsonData !== null) {
-              const EnvironmentCost = jsonData.environmentCost;
+              const Money = jsonData.money;
               const labels = generateTimeLabels(5, 12); // updates labels every 5 minutes
       
-              setEnvironmentCost((prevState) => ({
+              setMoney((prevState) => ({
                 ...prevState,
                 labels: labels,
                 datasets: [
                   {
                     ...prevState.datasets[0],
-                    data: [...prevState.datasets[0].data, EnvironmentCost],
+                    data: [...prevState.datasets[0].data, Money],
                   },
                 ],
               }));
@@ -82,10 +82,9 @@ const EnvironmentCost = () => {
 
     return (
         <div>
-            <h2>EnvironmentCost</h2>
-            <Line data={EnvironmentCost} />
+            <Line data={Money} />
         </div>
     )
 }
 
-export default EnvironmentCost;
+export default MoneyGraph;
