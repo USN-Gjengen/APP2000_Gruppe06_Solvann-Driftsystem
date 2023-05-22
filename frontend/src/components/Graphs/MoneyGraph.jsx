@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const Money = () => {
+const MoneyGraph = () => {
     const [Money, setMoney] = useState({
         labels: [],
         datasets: [
@@ -87,4 +87,4 @@ const Money = () => {
     )
 }
 
-export default Money;
+export default MoneyGraph;

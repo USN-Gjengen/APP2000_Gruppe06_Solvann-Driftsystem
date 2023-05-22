@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-    const WaterInflux = () => {
+    const WaterInfluxGraph = () => {
       const [waterInflux, setwaterInflux] = useState({
         labels: [],
         datasets: [
@@ -85,4 +85,4 @@ ChartJS.register(Title, Tooltip, LineElement,
       );
     };
 
-export default WaterInflux;
+export default WaterInfluxGraph;

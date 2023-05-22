@@ -4,7 +4,7 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
     Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const EnvironmentCost = () => {
+const EnvironmentCostGraph = () => {
     const [EnvironmentCost, setEnvironmentCost] = useState({
         labels: [],
         datasets: [
@@ -87,4 +87,4 @@ const EnvironmentCost = () => {
     )
 }
 
-export default EnvironmentCost;
+export default EnvironmentCostGraph;
