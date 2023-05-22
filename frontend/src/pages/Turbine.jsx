@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TurbineController from "../components/Turbine/TurbineController";
-import HeaderSection from "../components/HeaderSection";
 
 
 const Turbine = () => {
@@ -83,9 +82,7 @@ const Turbine = () => {
 	}, []);
 
 	return (
-		<div className="dashboard">
-            <HeaderSection></HeaderSection>
-
+		<div className="turbinePage">
 			<div className="button-container">
 				<button className="btn" onClick={handleTurbineForward}>
 					<span>Max Forward</span>

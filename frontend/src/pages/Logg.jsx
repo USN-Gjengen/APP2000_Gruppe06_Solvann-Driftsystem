@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HeaderSection from "../components/HeaderSection";
 
 const Logg = () => {
   const [log, setLog] = useState([]);
@@ -28,21 +27,18 @@ const Logg = () => {
   }, [log]);
 
   return (
-    <div className="dashboard">
-      
-      <HeaderSection></HeaderSection>
-      
-            <div className="button-container">
-                    <button id="test" onClick={handleButtonClick}>Button 1</button>
-                    <button id="clear-log" onClick={handleClearLog}>Clear Log</button>
-            </div>
-        <ul className="table">
-          {log.map((entry, index) => (
-            <li key={index}>
-              <strong>{entry.timestamp}</strong>: Button ID - {entry.buttonId}, Button Text - {entry.buttonText}
-            </li>
-          ))}
-        </ul>
+    <div className="logg">
+      <div className="button-container">
+        <button id="test" onClick={handleButtonClick}>Button 1</button>
+        <button id="clear-log" onClick={handleClearLog}>Clear Log</button>
+      </div>
+      <ul className="table">
+        {log.map((entry, index) => (
+          <li key={index}>
+            <strong>{entry.timestamp}</strong>: Button ID - {entry.buttonId}, Button Text - {entry.buttonText}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
