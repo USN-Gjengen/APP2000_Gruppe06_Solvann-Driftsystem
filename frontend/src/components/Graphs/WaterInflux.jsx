@@ -80,7 +80,6 @@ ChartJS.register(Title, Tooltip, LineElement,
     
       return (
         <div>
-          <h2>Water Influx</h2>
           <Line data={waterInflux} />
         </div>
       );

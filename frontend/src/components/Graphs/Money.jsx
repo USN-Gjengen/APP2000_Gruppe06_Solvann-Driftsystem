@@ -82,7 +82,6 @@ const Money = () => {
 
     return (
         <div>
-            <h2>Money</h2>
             <Line data={Money} />
         </div>
     )

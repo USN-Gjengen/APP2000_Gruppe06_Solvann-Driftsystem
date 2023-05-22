@@ -11,22 +11,26 @@ const Trend = () => {
             <div className='boxes'>
                 <div className='container2'>
                     <button className="btn-box">
-                        <WaterInflux></WaterInflux>
+                        <h2>Water Influx</h2>
+                        <WaterInflux/>
                     </button>
                 </div>
                 <div className='container2'>
                     <button className="btn-box">
-                        <Money></Money>
+                        <h2>Money</h2>
+                        <Money/>
                     </button>
                 </div>
                 <div className='container2'>
                     <button className="btn-box">
-                        <WaterLevelGraph></WaterLevelGraph>
+                        <h2>Water Level</h2>
+                        <WaterLevelGraph/>
                     </button>
                 </div>
                 <div className='container2'>
                     <button className="btn-box">
-                        <EnvironmentCost></EnvironmentCost>
+                        <h2>Environment Cost</h2>
+                        <EnvironmentCost/>
                     </button>
                 </div>
             </div>

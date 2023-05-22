@@ -82,7 +82,6 @@ const EnvironmentCost = () => {
 
     return (
         <div>
-            <h2>EnvironmentCost</h2>
             <Line data={EnvironmentCost} />
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import WaterInfluxDash from "../components/Graphs/WaterInfluxDash";
+import WaterInflux from "../components/Graphs/WaterInflux";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 
 
@@ -97,7 +97,7 @@ const Dashboard = () => {
                         <div className='card'>
                             <div className="info">
                                 <div className="sub">Utforsk siste trender og analyser</div>
-                                <WaterInfluxDash></WaterInfluxDash>
+                                <WaterInflux/>
                                 <button className='btn' onClick={handleTrend}>
                                     Åpne alle trender
                                 </button>

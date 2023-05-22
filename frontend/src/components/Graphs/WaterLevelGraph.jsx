@@ -82,7 +82,6 @@ const WaterLevelGraph = () => {
 
     return (
         <div>
-            <h2>Water Level</h2>
             <Line data={WaterLevel} />
         </div>
     )
