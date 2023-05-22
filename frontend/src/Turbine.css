@@ -10,4 +10,13 @@
   justify-content: left;
   flex-wrap: wrap;
   width: 13em;
+  height: 100%;
+}
+
+.turbinePageContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
 }

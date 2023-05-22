@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import waterTank from '../../img/waterTank.png';
+import "./WaterLevel.css"
 
 
 const WaterContainer = () => {
@@ -39,18 +40,18 @@ const WaterContainer = () => {
   const waterHeight = (waterLevel / maxWaterLevel) * 100;
 
   return (
-    <div>
+    <div className="WaterContainer">
       <div className='waterTank-container'>
 
-          <div className="water-container">
-              <div
-                className="water"
-                style={{ height: `${waterHeight}%` }}
-              >
-              </div>
+        <div className="water-container">
+          <div
+            className="water"
+            style={{ height: `${waterHeight}%` }}
+          >
           </div>
-      <img src={waterTank} alt="water tank" className="water-tank" />
-              
+        </div>
+        <img src={waterTank} alt="water tank" className="water-tank" />
+
       </div>
 
 
