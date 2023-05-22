@@ -1,4 +1,4 @@
-.dashboard {
+.page {
 	height: 100%;
 	min-height: 100vh; /* Ensure that the height is at least equal to the viewport height */
 	background: linear-gradient(30deg, #151515 10%, #0e1822);

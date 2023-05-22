@@ -15,7 +15,7 @@ const Login = () => {
 	};
 
 	React.useEffect(() => {
-		if (localStorage.getItem('auth')) navigate('/Prototype')
+		if (localStorage.getItem('auth')) navigate('/Dashboard')
 	})
 
 	const formSubmitter = e => {
@@ -30,7 +30,7 @@ const Login = () => {
 		// setsuccessMessage('Successfully Validated');
 		if (input.email !== 'admin@a.com' || input.password !== 'Password@1') return seterrorMessage('Invalid email or password');
 
-		navigate('/Prototype')
+		navigate('/Dashboard')
 		localStorage.setItem('auth', true)
 	};
 

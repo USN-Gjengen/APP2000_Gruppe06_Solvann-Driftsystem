@@ -9,9 +9,9 @@ const Trend = () => {
 
     return (
 
-        <div className="dashboard">
-        <HeaderSection></HeaderSection>
-            
+        <div className="trend">
+            <HeaderSection></HeaderSection>
+
             <div className='boxes'>
                 <div className='container2'>
                     <button className="btn-box">
@@ -35,10 +35,9 @@ const Trend = () => {
                 </div>
             </div>
         </div>
-    
+
     );
 
 }
 
 export default Trend;
-    

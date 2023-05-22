@@ -4,7 +4,7 @@ import WaterContainer from '../components/Waterlevel/WaterContainer';
 const Waterlevel = () => {
 
   return (
-    <div className='dashboard'>
+    <div className="waterLevel">
         <div className="Header">
                 <div className="nav">
                     <div className="left">

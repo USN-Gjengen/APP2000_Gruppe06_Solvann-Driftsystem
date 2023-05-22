@@ -83,7 +83,7 @@ const Turbine = () => {
 	}, []);
 
 	return (
-		<div className="dashboard">
+		<div className="turbinePage">
             <HeaderSection></HeaderSection>
 
 			<div className="button-container">
