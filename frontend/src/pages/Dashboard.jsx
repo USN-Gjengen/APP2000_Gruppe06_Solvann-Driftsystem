@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import WaterInflux from "../components/Graphs/WaterInflux";
+import WaterInflux from "../components/Graphs/WaterInfluxGraph";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
 
 

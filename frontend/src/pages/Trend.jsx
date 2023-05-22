@@ -1,8 +1,8 @@
 import React from "react";
-import Money from "../components/Graphs/Money";
-import WaterInflux from "../components/Graphs/WaterInflux";
+import Money from "../components/Graphs/MoneyGraph";
+import WaterInflux from "../components/Graphs/WaterInfluxGraph";
 import WaterLevelGraph from "../components/Graphs/WaterLevelGraph";
-import EnvironmentCost from "../components/Graphs/EnvironmentCost";
+import EnvironmentCost from "../components/Graphs/EnvironmentCostGraph";
 const Trend = () => {
 
     return (
