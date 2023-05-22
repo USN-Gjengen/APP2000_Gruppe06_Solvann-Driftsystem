@@ -10,7 +10,7 @@ const WaterContainer = () => {
   const fetchWaterLevel = async () => {
     try {
       const response = await fetch(
-        'http://api.solvann.eksempler.no/api/groupStates/last'
+        "http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/groupStates/last"
       );
       const jsonData = await response.json();
 
