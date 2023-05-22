@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Dashboard from "../Dashboard";
+import App from "../../App";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -23,8 +24,8 @@ describe("Dashboard component", () => {
 
 
   test("displays the correct initial state", () => {
-    renderWithRouter(<Dashboard />);
+    render(<App />);
 
-    // expect(screen.getByText("SOLVANN DRIFTSYSTEM")).toBeInTheDocument();
+    expect(screen.getByText("SOLVANN DRIFTSYSTEM")).toBeInTheDocument();
   });
 });
