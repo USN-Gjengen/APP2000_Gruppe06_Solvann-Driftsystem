@@ -1,0 +1,34 @@
+.waterTank-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.water-tank {
+	z-index: 10;
+}
+
+.water-container {
+	z-index: 10;
+	width: 200px;
+	height: 810px;
+	background-color: #e0e0e0;
+	position: absolute;
+	overflow: hidden;
+}
+
+.water {
+	background-color: #1ca3ec;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: height 0.5s;
+}
+
+.water-level-text {
+	font-size: 75px;
+	text-align: center;
+
+	padding-top: 10px;
+}
