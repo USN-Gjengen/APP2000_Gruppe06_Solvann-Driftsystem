@@ -95,16 +95,6 @@ const Dashboard = () => {
 
                         <div className="card">
                             <div className="info">
-                                <div className="sub">Vannstandskontroll</div>
-                                <div className="title">Nivåindikator</div>
-                                <button className="btn" onClick={handleWaterLevel}>
-                                    Åpne Vannstand
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="card">
-                            <div className="info">
                                 <div className="sub">Væroversikt for vannstand</div>
                                 <div className="title">Værmelding</div>
                                 <button className="btn">Åpne Vær</button>

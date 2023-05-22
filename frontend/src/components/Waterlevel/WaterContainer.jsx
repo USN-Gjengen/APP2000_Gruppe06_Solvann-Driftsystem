@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import waterTank from '../../img/waterTank.png';
+import "./WaterLevel.css"
 
 
 const WaterContainer = () => {
@@ -10,7 +11,7 @@ const WaterContainer = () => {
   const fetchWaterLevel = async () => {
     try {
       const response = await fetch(
-        'http://api.solvann.eksempler.no/api/groupStates/last'
+        "http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/groupStates/last"
       );
       const jsonData = await response.json();
 
@@ -39,18 +40,18 @@ const WaterContainer = () => {
   const waterHeight = (waterLevel / maxWaterLevel) * 100;
 
   return (
-    <div>
+    <div className="WaterContainer">
       <div className='waterTank-container'>
 
-          <div className="water-container">
-              <div
-                className="water"
-                style={{ height: `${waterHeight}%` }}
-              >
-              </div>
+        <div className="water-container">
+          <div
+            className="water"
+            style={{ height: `${waterHeight}%` }}
+          >
           </div>
-      <img src={waterTank} alt="water tank" className="water-tank" />
-              
+        </div>
+        <img src={waterTank} alt="water tank" className="water-tank" />
+
       </div>
 
 

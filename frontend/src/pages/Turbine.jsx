@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TurbineController from "../components/Turbine/TurbineController";
+import WaterContainer from "../components/Waterlevel/WaterContainer";
 
 
 const Turbine = () => {
@@ -65,10 +66,10 @@ const Turbine = () => {
 				}
 
 				return (
-					<TurbineController 
-					key={turbine.id} 
-					isSpinning={turbine.capacityUsage != 0}
-					color={"#" + red.toString(16) + green.toString(16) + "00"}
+					<TurbineController
+						key={turbine.id}
+						isSpinning={turbine.capacityUsage != 0}
+						color={"#" + red.toString(16) + green.toString(16) + "00"}
 					/>
 				)
 			}));
@@ -95,8 +96,16 @@ const Turbine = () => {
 				</button>
 			</div>
 
-			<div className="turbines-container">
-				{turbineList}
+			<div className="turbinePageContent">
+				<div>
+					<div className="turbines-container">
+						{turbineList}
+					</div>
+				</div>
+
+				<div className="waterLevel-container">
+					<WaterContainer />
+				</div>
 			</div>
 		</div>
 
