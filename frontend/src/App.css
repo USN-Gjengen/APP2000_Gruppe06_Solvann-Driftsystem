@@ -379,8 +379,8 @@ li {
 }
 
 .graf-Trend {
-	width: 90% !important; /* bruker important for å overstyre css fra chart.js */
-	height: 90%	!important;
+	width: 96%;
+	height: 96%;
 }
 
 /* trend side mobil */
