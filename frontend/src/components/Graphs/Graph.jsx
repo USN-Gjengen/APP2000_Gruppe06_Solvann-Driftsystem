@@ -72,6 +72,7 @@ const Graph = (props) => {
 			let data = await fetchData();
 			
 			if (Array.isArray(data)) {
+				data.reverse();
 				let labels = generateTimeLabels(start, end);
 				setGraphPoints((prevState) => ({
 					labels: labels,
