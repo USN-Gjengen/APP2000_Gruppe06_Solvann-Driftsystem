@@ -42,6 +42,24 @@ const Trend = () => {
                         />
                     </button>
                 </div>
+                <div className='container2'>
+                    <button className="btn-box">
+                        <h2>Solar Value</h2>
+                        <Graph
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/lastHour`}
+                            title="Solar Value"
+                        />
+                    </button>
+                </div>
+                <div className='container2'>
+                    <button className="btn-box">
+                        <h2>Power Price</h2>
+                        <Graph
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastHour`}
+                            title="Power Price"
+                        />
+                    </button>
+                </div>
             </div>
         </div>
 
