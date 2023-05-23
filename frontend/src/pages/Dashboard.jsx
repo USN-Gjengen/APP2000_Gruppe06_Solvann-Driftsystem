@@ -86,8 +86,10 @@ const Dashboard = () => {
                                 <div className="sub">Væroversikt for vannstand</div>
                                 <div className="title">Værmelding</div>
                                 <div className="weather">
-                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" />
+                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop"/>
+                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '20vh', border: 'none' }}/>
                                 </div>
+                                
                             </div>
                         </div>
 
