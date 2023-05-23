@@ -370,6 +370,11 @@ li {
 	width: calc(33.33% - 10px);
 }
 
+.graf-Trend {
+	width: 90% !important; /* bruker important for å overstyre css fra chart.js */
+	height: 90%	!important;
+}
+
 /* trend side mobil */
 
 @media only screen and (max-width: 768px) {
