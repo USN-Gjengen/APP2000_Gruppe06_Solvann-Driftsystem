@@ -9,9 +9,9 @@ const GraphLastWeek = (props) => {
 		scales: {
 			x: {
 				time: {
-					unit: "day",
+					unit: "date",
 					displayFormats: {
-						day: "DD",
+						date: "DD",
 					},
 				},
 			},
@@ -41,12 +41,12 @@ const GraphLastWeek = (props) => {
 	const generateTimeLabels = (start, end) => {
 		const labels = [];
 
-		for (let time = start; time < end; time.setDay(time.getDay() + 1)) {
+		for (let time = start; time < end; time.setDate(time.getDate() + 1)) {
 			const formattedTime = time.toLocaleDateString("nb-NO", {
 				timeZone: "Europe/Oslo",
-				day: "2-digit",
+				date: "2-digit",
 			});
-
+            console.log(formattedTime.split(" ")[1]);
 			labels.push(formattedTime.split(" ")[1]);
 		}
 
@@ -67,7 +67,7 @@ const GraphLastWeek = (props) => {
 		const updateGraph = async () => {
 			const end = new Date();
 			const start = new Date();
-			start.setDay(end.getDay() - 7);
+			start.setDate(start.getDate() - 7);
 			let data = await fetchData();
 			
 			if (Array.isArray(data)) {
