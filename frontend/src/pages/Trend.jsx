@@ -7,45 +7,45 @@ const Trend = () => {
         <div className="trend">
             <div className='bokser'>
                 <div className='trend-Konteiner'>
-                        <h2>Water Influx</h2>
+                        <h2>Vanninfiltrasjon</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
-                            title="Water Influx"
+                            title={`m\u00b3/s`}
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Money</h2>
+                        <h2>Finansdata</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourMoney`}
-                            title="Money"
+                            title="NOK"
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Water Level</h2>
+                        <h2>Vannstand</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourWaterLevel`}
-                            title="Water Level"
+                            title="Meter"
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Environment Cost</h2>
+                        <h2>Miljøkostnad</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourEnvironmentCost`}
-                            title="Environment Cost"
+                            title="NOK"
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Solar Value</h2>
+                        <h2>Solenergiverdi</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/lastHour`}
-                            title="Solar Value"
+                            title="kWh/s"
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Power Price</h2>
+                        <h2>Strømpris</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastHour`}
-                            title="Power Price"
+                            title="NOK/MWh"
                         />
                 </div>
             </div>
