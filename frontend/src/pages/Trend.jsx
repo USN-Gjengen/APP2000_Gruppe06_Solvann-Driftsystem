@@ -1,5 +1,6 @@
 import React from "react";
 import Graph from "../components/Graphs/Graph";
+import GraphLastWeek from "../components/Graphs/GraphLastWeek";
 const Trend = () => {
 
     return (
@@ -57,6 +58,15 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastHour`}
                             title="Power Price"
+                        />
+                    </button>
+                </div>
+                <div className='container2'>
+                    <button className="btn-box">
+                        <h2>Power Price Week</h2>
+                        <GraphLastWeek
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastWeek`}
+                            title="Power Price Week"
                         />
                     </button>
                 </div>

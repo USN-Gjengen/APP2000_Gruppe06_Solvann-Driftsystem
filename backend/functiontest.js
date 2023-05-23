@@ -43,12 +43,7 @@ gt();*/
 //dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
 //dbfunctions.getPeriodAvg(dbfunctions.WaterInflux, start, end);
-var start = new Date();
-		var end = new Date();
-		start.setHours(start.getHours() - 1);
-		
-
-        var states =  dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
+functions.getSolarValue();
 //console.log(array[0].waterLevel)
         
 
