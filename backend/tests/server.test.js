@@ -40,42 +40,78 @@ describe("GET /api/groupstates/last", () => {
         expect(res.statusCode).toBe(200);
     });
 });
-
-describe("GET /api/groupstates/lastHourWaterLevel", () => {
+describe("GET /api/WaterLevel/lastHour", () => {
     it("should return the average value of waterLevel in 12 increments", async () => {
-        const res = await request(server).get("/api/groupstates/lastHourWaterLevel");
+        const res = await request(server).get("/api/WaterLevel/lastHour");
         expect(res.statusCode).toBe(200);
     });
 });
-
-describe("GET /api/groupstates/lastHourMoney", () => {
+describe("GET /api/WaterLevel/lastWeek", () => {
+    it("should return the average value of waterLevel in 7 day increments", async () => {
+        const res = await request(server).get("/api/WaterLevel/lastWeek");
+        expect(res.statusCode).toBe(200);
+    });
+});
+describe("GET /api/WaterLevel/lastMonth", () => {
+    it("should return the average value of waterLevel in 5 increments", async () => {
+        const res = await request(server).get("/api/WaterLevel/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
+describe("GET /api/Money/lastHour", () => {
     it("should return the average value of money in 12 increments", async () => {
-        const res = await request(server).get("/api/groupstates/lastHourMoney");
+        const res = await request(server).get("/api/Money/lastHour");
         expect(res.statusCode).toBe(200);
     });
 });
-
-describe("GET /api/groupstates/lastHourEnvironmentCost", () => {
+describe("GET /api/Money/lastWeek", () => {
+    it("should return the average value of money in 7 day increments", async () => {
+        const res = await request(server).get("/api/Money/lastWeek");
+        expect(res.statusCode).toBe(200);
+    });
+});
+describe("GET /api/Money/lastMonth", () => {
+    it("should return the average value of money in 5 increments", async () => {
+        const res = await request(server).get("/api/Money/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
+describe("GET /api/EnvironmentCost/lastHour", () => {
     it("should return the average value of EnvironmentCost in 12 increments", async () => {
-        const res = await request(server).get("/api/groupstates/lastHourEnvironmentCost");
+        const res = await request(server).get("/api/EnvironmentCost/lastHour");
         expect(res.statusCode).toBe(200);
     });
 });
-
+describe("GET /api/EnvironmentCost/lastWeek", () => {
+    it("should return the average value of EnvironmentCost in 7 day increments", async () => {
+        const res = await request(server).get("/api/EnvironmentCost/lastWeek");
+        expect(res.statusCode).toBe(200);
+    });
+});
+describe("GET /api/EnvironmentCost/lastMonth", () => {
+    it("should return the average value of EnvironmentCost in 5 increments", async () => {
+        const res = await request(server).get("/api/EnvironmentCost/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
 describe("GET /api/PowerPrice/last", () => {
     it("should return the last value of powerPrice", async () => {
         const res = await request(server).get("/api/PowerPrice/last");
         expect(res.statusCode).toBe(200);
     });
 });
-
+describe("GET /api/PowerPrice/lastMonth", () => {
+    it("should return the average value of PowerPrice in 5 increments", async () => {
+        const res = await request(server).get("/api/PowerPrice/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
 describe("GET /api/PowerPrice/lastWeek", () => {
     it("should return the average day value of powerPrice in 7 increments", async () => {
         const res = await request(server).get("/api/PowerPrice/lastWeek");
         expect(res.statusCode).toBe(200);
     });
 });
-
 describe("GET /api/PowerPrice/lastHour", () => {
     it("should return the average 5 minute values of powerPrice in 12 increments", async () => {
         const res = await request(server).get("/api/PowerPrice/lastHour");
@@ -89,35 +125,42 @@ describe("GET /api/WaterInflux/last", () => {
         expect(res.statusCode).toBe(200);
     });
 });
-
+describe("GET /api/WaterInflux/lastMonth", () => {
+    it("should return the average value of WaterInflux in 5 increments", async () => {
+        const res = await request(server).get("/api/WaterInflux/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
 describe("GET /api/WaterInflux/lastWeek", () => {
     it("should return the average day value of waterInflux in 7 increments", async () => {
         const res = await request(server).get("/api/WaterInflux/lastWeek");
         expect(res.statusCode).toBe(200);
     });
 });
-
 describe("GET /api/WaterInflux/lastHour", () => {
     it("should return the average 5 minute values of waterInflux in 12 increments", async () => {
         const res = await request(server).get("/api/WaterInflux/lastHour");
         expect(res.statusCode).toBe(200);
     });
 });
-
 describe("GET /api/SolarValue/last", () => {
     it("should return the last value of SolarValue", async () => {
         const res = await request(server).get("/api/SolarValue/last");
         expect(res.statusCode).toBe(200);
     });
 });
-
+describe("GET /api/SolarValue/lastMonth", () => {
+    it("should return the average value of SolarValue in 5 increments", async () => {
+        const res = await request(server).get("/api/SolarValue/lastMonth");
+        expect(res.statusCode).toBe(200);
+    });
+});
 describe("GET /api/SolarValue/lastWeek", () => {
     it("should return the average day value of SolarValue in 7 increments", async () => {
         const res = await request(server).get("/api/SolarValue/lastWeek");
         expect(res.statusCode).toBe(200);
     });
 });
-
 describe("GET /api/SolarValue/lastHour", () => {
     it("should return the average 5 minute values of SolarValue in 12 increments", async () => {
         const res = await request(server).get("/api/SolarValue/lastHour");

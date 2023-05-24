@@ -5,53 +5,52 @@ const Trend = () => {
         return (
             <div className='boxes'>
                 <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Water Influx</h2>
-                        <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
-                            title={`m\u00b3/s`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Water Influx</h2>
+                    <Graph
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
+                        title={`m\u00b3/s`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Finans</h2>
-                        <Graph
-                            title="NOK"
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/money/${timespan}`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Finans</h2>
+                    <Graph
+                        title="NOK"
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/money/${timespan}`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Vannstand</h2>
-                        <Graph
-                            title="Meter"
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/waterLevel/${timespan}`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Vannstand</h2>
+                    <Graph
+                        title="Meter"
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/waterLevel/${timespan}`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Miljøkostnad</h2>
-                        <Graph
-                            title="NOK"
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/environmentCost/${timespan}`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Miljøkostnad</h2>
+                    <Graph
+                        title="NOK"
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/environmentCost/${timespan}`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Solenergiverdi</h2>
-                        <Graph
-                            title="kWh/s"
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/${timespan}`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Solenergiverdi</h2>
+                    <Graph
+                        title="kWh/s"
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/${timespan}`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Strømpris</h2>
-                        <Graph
-                            title="NOK/MWh"
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/${timespan}`}
-                            dateFormat={dateFormat}
-                        />
+                    <h2>Strømpris</h2>
+                    <Graph
+                        title="NOK/MWh"
+                        src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/${timespan}`}
+                        dateFormat={dateFormat}
+                    />
                 </div>
             </div>
         );
