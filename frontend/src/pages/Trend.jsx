@@ -7,14 +7,14 @@ const Trend = () => {
         <div className="trend">
             <div className='bokser'>
                 <div className='trend-Konteiner'>
-                        <h2>Vanninfiltrasjon</h2>
+                        <h2>Vanntilstrømming</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
                             title={`m\u00b3/s`}
                         />
                 </div>
                 <div className='trend-Konteiner'>
-                        <h2>Finansdata</h2>
+                        <h2>Finans</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourMoney`}
                             title="NOK"
