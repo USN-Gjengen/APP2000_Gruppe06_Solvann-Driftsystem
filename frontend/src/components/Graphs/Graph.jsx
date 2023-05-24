@@ -15,7 +15,7 @@ const Graph = (props) => {
 					},
 				},
 			},
-		},	y: {
+		}, y: {
 			type: "linear"
 		}
 	}
@@ -66,26 +66,27 @@ const Graph = (props) => {
 		};
 
 		const updateGraph = async () => {
-			const end = new Date();
-			const start = new Date();
-			start.setHours(end.getHours() - 1);
 			let data = await fetchData();
+			data.value.reverse();
+			let labels = [];
 			
-			if (Array.isArray(data)) {
-				data.reverse();
-				let labels = generateTimeLabels(start, end);
-				setGraphPoints((prevState) => ({
-					labels: labels,
-					datasets: [
-						{
-							...prevState.datasets[0],
-							data: data,
-						},
-					],
-				}));
-			} else {
-				console.error("Error: data is not an array", data);
+			for (let i = 0; i < data.datetime.length; i++) {
+				data.datetime[i] = new Date(data.datetime[i]);
+				data.datetime[i]= data.datetime[i].toLocaleTimeString("nb-NO", props.dateFormat);
+				//labels.push(format(data.datetime[i], "HH:mm")); 
 			}
+			//console.log(labels);
+
+
+			setGraphPoints((prevState) => ({
+				labels: data.datetime,
+				datasets: [
+					{
+						...prevState.datasets[0],
+						data: data.value,
+					},
+				],
+			}));
 		}
 
 

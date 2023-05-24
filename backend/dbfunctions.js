@@ -167,7 +167,7 @@ const getDayAverage = async (document, date1, date2) => {
 }
 
 const getNAverage = async (document, date1, date2, increment) => {
-	var nValue = [];
+	var nValue = {value: [], datetime: []};
 	var data = await getPeriod(document, date1, date2);
 	var step = Math.floor(data.length / increment);
 	for(var i = 0; i < increment; i++){
@@ -179,8 +179,10 @@ const getNAverage = async (document, date1, date2, increment) => {
 				amount++;
 			}
 		}
-		nValue.push(holder / amount);
-		//console.log(i + " : " + nValue[i]);
+		let scale = (date2-date1)/(increment-1);
+		nValue.value.push(holder / amount);
+		nValue.datetime.push(new Date(scale*i + date1.getTime()));
+		//console.log(i + " : " + nValue[i].datetime + "  " + scale*i);
 	}
 	return nValue;
 }
@@ -194,7 +196,7 @@ const days = (date_1, date_2) =>{
 //Egne metoder for GroupState
 
 const getNAverageWaterLevel = async (document, date1, date2, increment) => {
-	var nValue = [];
+	var nValue = {value: [], datetime: []};
 	var data = await getPeriod(document, date1, date2);
 	var step = Math.floor(data.length / increment);
 	for(var i = 0; i < increment; i++){
@@ -206,13 +208,14 @@ const getNAverageWaterLevel = async (document, date1, date2, increment) => {
 				amount++;
 			}
 		}
-		nValue.push(holder / amount);
-		//console.log(i + " : " + nValue[i]);
+		let scale = (date2-date1)/(increment-1);
+		nValue.value.push(holder / amount);
+		nValue.datetime.push(new Date(scale*i + date1.getTime()));
 	}
 	return nValue;
 }
 const getNAverageMoney = async (document, date1, date2, increment) => {
-	var nValue = [];
+	var nValue = {value: [], datetime: []};
 	var data = await getPeriod(document, date1, date2);
 	var step = Math.floor(data.length / increment);
 	for(var i = 0; i < increment; i++){
@@ -224,13 +227,14 @@ const getNAverageMoney = async (document, date1, date2, increment) => {
 				amount++;
 			}
 		}
-		nValue.push(holder / amount);
-		//console.log(i + " : " + nValue[i]);
+		let scale = (date2-date1)/(increment-1);
+		nValue.value.push(holder / amount);
+		nValue.datetime.push(new Date(scale*i + date1.getTime()));
 	}
 	return nValue;
 }
 const getNAverageEnvironmentCost = async (document, date1, date2, increment) => {
-	var nValue = [];
+	var nValue = {value: [], datetime: []};
 	var data = await getPeriod(document, date1, date2);
 	var step = Math.floor(data.length / increment);
 	for(var i = 0; i < increment; i++){
@@ -242,8 +246,9 @@ const getNAverageEnvironmentCost = async (document, date1, date2, increment) => 
 				amount++;
 			}
 		}
-		nValue.push(holder / amount);
-		//console.log(i + " : " + nValue[i]);
+		let scale = (date2-date1)/(increment-1);
+		nValue.value.push(holder / amount);
+		nValue.datetime.push(new Date(scale*i + date1.getTime()));
 	}
 	return nValue;
 }

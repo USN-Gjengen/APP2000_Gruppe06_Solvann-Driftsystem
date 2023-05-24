@@ -36,8 +36,8 @@ gt();*/
 //functions.setAllTurbinesOff();
 var start = new Date();
 var end = new Date();
-console.log(start.setDate(start.getDate() - 7));
-console.log(end.setHours(end.getHours() - 1));
+start.setHours(start.getHours() - 1);
+dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
 //start.setHours(start.getHours() - 200);
 
 //console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);

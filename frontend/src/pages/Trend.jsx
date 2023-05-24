@@ -64,9 +64,12 @@ const Trend = () => {
                 <div className='container2'>
                     <button className="btn-box">
                         <h2>Power Price Week</h2>
-                        <GraphLastWeek
+                        <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastWeek`}
                             title="Power Price Week"
+                            dateFormat = {{
+                                weekday: "short",
+                            }}
                         />
                     </button>
                 </div>
