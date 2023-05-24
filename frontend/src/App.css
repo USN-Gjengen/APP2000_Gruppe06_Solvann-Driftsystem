@@ -367,3 +367,7 @@ li {
 .table li span {
 	font-size: 0.8em;
 }
+
+.hidden {
+	display: none;
+}

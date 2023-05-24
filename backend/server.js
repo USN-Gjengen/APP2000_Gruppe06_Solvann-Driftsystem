@@ -50,42 +50,42 @@ app.get('/api/groupstates/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-app.get('/api/groupstates/lastHourWaterLevel', async (req, res) => {
+app.get('/api/waterLevel/lastHour', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
 	res.json(states);
 })
-app.get('/api/groupstates/lastHourMoney', async (req, res) => {
+app.get('/api/money/lastHour', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 12);
 	res.json(states);
 })
-app.get('/api/groupstates/lastHourEnvironmentCost', async (req, res) => {
+app.get('/api/environmentCost/lastHour', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setHours(start.getHours() - 1);
 	var states = await dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
 	res.json(states);
 })
-app.get('/api/groupstates/lastWeekWaterLevel', async (req, res) => {
+app.get('/api/waterLevel/lastWeek', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 7);
 	res.json(states);
 })
-app.get('/api/groupstates/lastWeekMoney', async (req, res) => {
+app.get('/api/money/lastWeek', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
 	var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 7);
 	res.json(states);
 })
-app.get('/api/groupstates/lastWeekEnvironmentCost', async (req, res) => {
+app.get('/api/environmentCost/lastWeek', async (req, res) => {
 	var start = new Date();
 	var end = new Date();
 	start.setDate(start.getDate() - 7);
@@ -157,7 +157,7 @@ app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setDate(start.getDate() - 7);
-		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
+		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 7);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);

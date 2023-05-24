@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Graph from "../components/Graphs/Graph";
-import GraphLastWeek from "../components/Graphs/GraphLastWeek";
 const Trend = () => {
-
-    return (
-
-        <div className="trend">
+    const generateGraphs = (timespan, dateFormat) => {
+        return (
             <div className='boxes'>
                 <div className='container2'>
                     <button className="btn-box">
                         <h2>Water Influx</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
                             title="Water Influx"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
@@ -24,12 +18,9 @@ const Trend = () => {
                     <button className="btn-box">
                         <h2>Money</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourMoney`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/money/${timespan}`}
                             title="Money"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
@@ -37,12 +28,9 @@ const Trend = () => {
                     <button className="btn-box">
                         <h2>Water Level</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourWaterLevel`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/waterLevel/${timespan}`}
                             title="Water Level"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
@@ -50,12 +38,9 @@ const Trend = () => {
                     <button className="btn-box">
                         <h2>Environment Cost</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourEnvironmentCost`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/environmentCost/${timespan}`}
                             title="Environment Cost"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
@@ -63,12 +48,9 @@ const Trend = () => {
                     <button className="btn-box">
                         <h2>Solar Value</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/lastHour`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/${timespan}`}
                             title="Solar Value"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
@@ -76,27 +58,52 @@ const Trend = () => {
                     <button className="btn-box">
                         <h2>Power Price</h2>
                         <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastHour`}
+                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/${timespan}`}
                             title="Power Price"
-                            dateFormat = {{
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }}
+                            dateFormat={dateFormat}
                         />
                     </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Power Price Week</h2>
-                        <Graph
-                            src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastWeek`}
-                            title="Power Price Week"
-                            dateFormat = {{
-                                weekday: "short",
-                            }}
-                        />
-                    </button>
-                </div>
+            </div>
+        );
+    };
+
+    const [lastHourActive, setLastHourActive] = useState(true);
+    const [lastWeekActive, setLastWeekActive] = useState(false);
+
+    const handlePeriodChange = (e) => {
+        e.preventDefault();
+
+        if (e.target.innerHTML === "Hour") {
+            setLastHourActive(true);
+        } else {
+            setLastHourActive(false);
+        }
+
+        if (e.target.innerHTML === "Week") {
+            setLastWeekActive(true);
+        } else {
+            setLastWeekActive(false);
+        }
+
+    }
+
+    return (
+        <div className="trend">
+            <div className="graph-buttons-switch">
+                <button className='btn' onClick={handlePeriodChange}>Hour</button>
+                <button className='btn' onClick={handlePeriodChange}>Week</button>
+            </div>
+            <div className={lastHourActive ? "" : "hidden"}>
+                {generateGraphs("lastHour", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                })}
+            </div>
+            <div className={lastWeekActive ? "" : "hidden"}>
+                {generateGraphs("lastWeek", {
+                    weekday: "short",
+                })}
             </div>
         </div>
 
