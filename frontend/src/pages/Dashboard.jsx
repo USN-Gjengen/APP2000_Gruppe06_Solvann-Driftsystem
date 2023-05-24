@@ -101,7 +101,7 @@ const Dashboard = () => {
                                 <div className="sub">Utforsk siste trender og analyser</div>
                                 <Graph 
                                     src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
-                                    title={`Vanninfiltrasjon m\u00b3/s`}
+                                    title={`Vanntilstrømming m\u00b3/s`}
                                     />
                                 <button className='btn' onClick={handleTrend}>
                                     Åpne alle trender
