@@ -44,10 +44,9 @@ const GraphLastWeek = (props) => {
 		for (let time = start; time < end; time.setDate(time.getDate() + 1)) {
 			const formattedTime = time.toLocaleDateString("nb-NO", {
 				timeZone: "Europe/Oslo",
-				date: "2-digit",
+				weekday: "short",
 			});
-            console.log(formattedTime.split(" ")[1]);
-			labels.push(formattedTime.split(" ")[1]);
+			labels.push(formattedTime);
 		}
 
 		return labels;
