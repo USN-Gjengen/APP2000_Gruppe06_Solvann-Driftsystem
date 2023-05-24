@@ -71,15 +71,15 @@ const Graph = (props) => {
 			let labels = [];
 			
 			for (let i = 0; i < data.datetime.length; i++) {
-				data.datetime[i] = new Date(data.datetime[i]);
-				data.datetime[i]= data.datetime[i].toLocaleTimeString("nb-NO", props.dateFormat);
-				//labels.push(format(data.datetime[i], "HH:mm")); 
+				/*data.datetime[i] = new Date(data.datetime[i]);
+				data.datetime[i]= data.datetime[i].toLocaleTimeString("nb-NO", props.dateFormat);*/
+				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data.datetime[i]))); 
 			}
 			//console.log(labels);
 
 
 			setGraphPoints((prevState) => ({
-				labels: data.datetime,
+				labels: labels,
 				datasets: [
 					{
 						...prevState.datasets[0],

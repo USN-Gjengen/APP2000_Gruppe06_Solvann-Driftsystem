@@ -13,6 +13,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
                             title="Water Influx"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
@@ -22,6 +26,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourMoney`}
                             title="Money"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
@@ -31,6 +39,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourWaterLevel`}
                             title="Water Level"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
@@ -40,6 +52,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/groupstates/lastHourEnvironmentCost`}
                             title="Environment Cost"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
@@ -49,6 +65,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/lastHour`}
                             title="Solar Value"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
@@ -58,6 +78,10 @@ const Trend = () => {
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/lastHour`}
                             title="Power Price"
+                            dateFormat = {{
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            }}
                         />
                     </button>
                 </div>
