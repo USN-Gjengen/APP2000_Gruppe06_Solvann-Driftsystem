@@ -86,8 +86,10 @@ const Dashboard = () => {
                                 <div className="sub">Væroversikt for vannstand</div>
                                 <div className="title">Værmelding</div>
                                 <div className="weather">
-                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" />
+                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop"/>
+                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '20vh', border: 'none' }}/>
                                 </div>
+                                
                             </div>
                         </div>
 
@@ -95,11 +97,11 @@ const Dashboard = () => {
 
                     <div className="row">
                         <div className='card'>
-                            <div className="info">
+                            <div className="info trend-Dashboard">
                                 <div className="sub">Utforsk siste trender og analyser</div>
                                 <Graph 
                                     src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
-                                    title="Water Influx"
+                                    title={`Vanntilstrømming m\u00b3/s`}
                                     dateFormat = {{
                                         hour: "2-digit",
                                         minute: "2-digit",

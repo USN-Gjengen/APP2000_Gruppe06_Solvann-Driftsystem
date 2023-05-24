@@ -97,8 +97,8 @@ const Graph = (props) => {
 	}, []);
 
 	return (
-		<div>
-			<Line data={graphPoints} options={options} />
+		<div className="graf-Trend">
+			<Line data={graphPoints} options={options}/>
 		</div>
 	);
 };

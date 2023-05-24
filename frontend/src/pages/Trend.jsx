@@ -9,60 +9,49 @@ const Trend = () => {
                         <h2>Water Influx</h2>
                         <Graph
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
-                            title="Water Influx"
+                            title={`m\u00b3/s`}
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Money</h2>
+                <div className='trend-Konteiner'>
+                        <h2>Finans</h2>
                         <Graph
+                            title="NOK"
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/money/${timespan}`}
-                            title="Money"
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Water Level</h2>
+                <div className='trend-Konteiner'>
+                        <h2>Vannstand</h2>
                         <Graph
+                            title="Meter"
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/waterLevel/${timespan}`}
-                            title="Water Level"
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Environment Cost</h2>
+                <div className='trend-Konteiner'>
+                        <h2>Miljøkostnad</h2>
                         <Graph
+                            title="NOK"
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/environmentCost/${timespan}`}
-                            title="Environment Cost"
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Solar Value</h2>
+                <div className='trend-Konteiner'>
+                        <h2>Solenergiverdi</h2>
                         <Graph
+                            title="kWh/s"
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/solarvalue/${timespan}`}
-                            title="Solar Value"
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
-                <div className='container2'>
-                    <button className="btn-box">
-                        <h2>Power Price</h2>
+                <div className='trend-Konteiner'>
+                        <h2>Strømpris</h2>
                         <Graph
+                            title="NOK/MWh"
                             src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/powerprice/${timespan}`}
-                            title="Power Price"
                             dateFormat={dateFormat}
                         />
-                    </button>
                 </div>
             </div>
         );
