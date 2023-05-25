@@ -416,3 +416,6 @@ li {
 	}
 }
 
+.hidden {
+	display: none;
+}
