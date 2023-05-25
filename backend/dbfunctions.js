@@ -46,7 +46,6 @@ const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
 const logPowerPrice = async () => {
 	await functions.getPowerPrice().then(value => {
-		//console.log(value);
 		const power = new PowerPrice({ value: value, date: Date.now() });
 		power.save();
 	});
@@ -60,7 +59,6 @@ const SolarValue = mongoose.model('SolarValue', solarSchema);
 
 const logSolarValue = async () => {
 	await functions.getSolarValue().then(value => {
-		//console.log(value);
 		const solar = new SolarValue({ value: value, date: Date.now() });
 		solar.save();
 	});
@@ -74,7 +72,6 @@ const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
 const logWaterInflux = async () => {
 	await functions.getWaterInflux().then(value => {
-		//console.log(value);
 		const influx = new WaterInflux({ value: value, date: Date.now() });
 		influx.save();
 	});
@@ -104,21 +101,20 @@ const getN = async (document, n) => {
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
 		rv.push(doc);
-		//console.log(doc);
 	}
+
 	return rv;
 }
 const getMonth = async (document,date) => {
     const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
     const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
     return getPeriod(document, date1, date2);
 }
 const getDay = async (document,date) => {
     const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
-   /* getPeriod(document, date1, date2).then(result => {console.log(result[result.length-1]);
-		console.log(result[0]);
-	});*/
+	
 	return getPeriod(document, date1, date2);
 } 
 const getPeriod = async (document,date1, date2) => {
@@ -128,7 +124,6 @@ const getPeriod = async (document,date1, date2) => {
   	cursor();
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
-		//console.log(doc);
 		rv.push(doc);
 	}
 	return rv;
@@ -141,49 +136,49 @@ const getAll = async (document) => {
 	}
 	return rv;
 }
-const getPeriodAvg = async (document,date1, date2) => {
+const getPeriodAvg = async (document,date1, date2, value) => {
   const average = await document.aggregate([
     { $match: { date: {
 		$gte: date1, 
 		$lte: date2
 	} } },
-    { $group: { _id: null, average: { $avg: '$value' } } },
+    { $group: { _id: null, average: { $avg: "$" + value } } },
   ]).exec();
-	//console.log(average);
-  return average;
+  
+  if(average.length == 0){
+	  return 0;
+  }
+  
+  return average[0].average;
 }
-const getDayAverage = async (document, date1, date2) => {
+const getDayAverage = async (document, date1, date2, value) => {
 	var dayValue = [];
 	for(var i = 0; i < days(date2, date1); i++){
 		var start = new Date(date1); 
 		start.setDate(start.getDate() + i);
 		let end = new Date(start);
 		end.setDate(end.getDate() + 1);
-		//console.log(start + "  " + end);
-		dayValue.push(await getPeriodAvg(document, start, end));
-		//console.log(i + " : " + dayValue[i]);
+		dayValue.push(await getPeriodAvg(document, start, end, value));
 	}
+
 	return dayValue;
 }
 
-const getNAverage = async (document, date1, date2, increment) => {
+const getNAverage = async (document, date1, date2, value, increment) => {
 	var nValue = {value: [], datetime: []};
-	var data = await getPeriod(document, date1, date2);
-	var step = Math.floor(data.length / increment);
+	var scale = (date2 - date1) / (increment - 1);
+
 	for(var i = 0; i < increment; i++){
-		var holder = 0;
-		var amount = 0;
-		for(var k = 0; k < step; k++){
-			if(i*step+k < data.length){
-				holder += data[(i*step)+k].value;
-				amount++;
-			}
-		}
-		let scale = (date2-date1)/(increment-1);
-		nValue.value.push(holder / amount);
-		nValue.datetime.push(new Date(scale*i + date1.getTime()));
-		//console.log(i + " : " + nValue[i].datetime + "  " + scale*i);
+		var start = new Date(date1.getTime() + scale * (i - 1));
+		var end = new Date(start.getTime() + scale);
+
+		var period = await getPeriodAvg(document, start, end, value)
+		
+		nValue.value.push(period);
+		nValue.datetime.push(new Date(date1.getTime() + scale*i));
 	}
+
+
 	return nValue;
 }
 
@@ -192,67 +187,6 @@ const days = (date_1, date_2) =>{
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
     return TotalDays;
 }
-
-//Egne metoder for GroupState
-
-const getNAverageWaterLevel = async (document, date1, date2, increment) => {
-	var nValue = {value: [], datetime: []};
-	var data = await getPeriod(document, date1, date2);
-	var step = Math.floor(data.length / increment);
-	for(var i = 0; i < increment; i++){
-		var holder = 0;
-		var amount = 0;
-		for(var k = 0; k < step; k++){
-			if(i*step+k < data.length){
-				holder += data[(i*step)+k].waterLevel;
-				amount++;
-			}
-		}
-		let scale = (date2-date1)/(increment-1);
-		nValue.value.push(holder / amount);
-		nValue.datetime.push(new Date(scale*i + date1.getTime()));
-	}
-	return nValue;
-}
-const getNAverageMoney = async (document, date1, date2, increment) => {
-	var nValue = {value: [], datetime: []};
-	var data = await getPeriod(document, date1, date2);
-	var step = Math.floor(data.length / increment);
-	for(var i = 0; i < increment; i++){
-		var holder = 0;
-		var amount = 0;
-		for(var k = 0; k < step; k++){
-			if(i*step+k < data.length){
-				holder += data[(i*step)+k].money;
-				amount++;
-			}
-		}
-		let scale = (date2-date1)/(increment-1);
-		nValue.value.push(holder / amount);
-		nValue.datetime.push(new Date(scale*i + date1.getTime()));
-	}
-	return nValue;
-}
-const getNAverageEnvironmentCost = async (document, date1, date2, increment) => {
-	var nValue = {value: [], datetime: []};
-	var data = await getPeriod(document, date1, date2);
-	var step = Math.floor(data.length / increment);
-	for(var i = 0; i < increment; i++){
-		var holder = 0;
-		var amount = 0;
-		for(var k = 0; k < step; k++){
-			if(i*step+k < data.length){
-				holder += data[(i*step)+k].environmentCost;
-				amount++;
-			}
-		}
-		let scale = (date2-date1)/(increment-1);
-		nValue.value.push(holder / amount);
-		nValue.datetime.push(new Date(scale*i + date1.getTime()));
-	}
-	return nValue;
-}
-
 
 
 
@@ -269,9 +203,6 @@ exports.getPeriod = getPeriod;
 exports.getPeriodAvg = getPeriodAvg;
 exports.getDayAverage = getDayAverage;
 exports.getNAverage = getNAverage;
-exports.getNAverageWaterLevel = getNAverageWaterLevel;
-exports.getNAverageEnvironmentCost = getNAverageEnvironmentCost;
-exports.getNAverageMoney = getNAverageMoney;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;

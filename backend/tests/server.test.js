@@ -13,17 +13,29 @@ try {
     console.error(err);
 }
 
+/* Set test timeout */
+jest.setTimeout(15000);
+
 /* Connecting to the database before each test. */
-beforeEach(async () => {
-    await mongoose.connection.close();
+beforeAll(async () => {
     mongoose.set('strictQuery', true);
     await mongoose.connect('mongodb://' + DB_USR + ':' + DB_PWD + '@eksempler.no:37191/?authMechanism=DEFAULT');
 });
 
 /* Closing database connection after each test. */
-afterEach(async () => {
+afterAll(async () => {
     await mongoose.connection.close();
+    console.log("Database connection closed!");
+    await server.close();
+    console.log("Server closed!");
 });
+
+let testnumber = 0;
+beforeEach(async () => {
+    testnumber++;
+    console.log("Test number " + testnumber + " is running.");
+});
+
 
 
 describe("GET /", () => {
@@ -46,18 +58,21 @@ describe("GET /api/WaterLevel/lastHour", () => {
         expect(res.statusCode).toBe(200);
     });
 });
+
 describe("GET /api/WaterLevel/lastWeek", () => {
     it("should return the average value of waterLevel in 7 day increments", async () => {
         const res = await request(server).get("/api/WaterLevel/lastWeek");
         expect(res.statusCode).toBe(200);
     });
 });
+
 describe("GET /api/WaterLevel/lastMonth", () => {
     it("should return the average value of waterLevel in 5 increments", async () => {
         const res = await request(server).get("/api/WaterLevel/lastMonth");
         expect(res.statusCode).toBe(200);
     });
 });
+
 describe("GET /api/Money/lastHour", () => {
     it("should return the average value of money in 12 increments", async () => {
         const res = await request(server).get("/api/Money/lastHour");
@@ -182,6 +197,3 @@ describe("GET /api/turbine/:id", () => {
         expect(res.statusCode).toBe(200);
     });
 });
-
-
-server.close();
