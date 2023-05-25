@@ -67,15 +67,11 @@ const Graph = (props) => {
 
 		const updateGraph = async () => {
 			let data = await fetchData();
-			data.value.reverse();
 			let labels = [];
-			
 			for (let i = 0; i < data.datetime.length; i++) {
-				/*data.datetime[i] = new Date(data.datetime[i]);
-				data.datetime[i]= data.datetime[i].toLocaleTimeString("nb-NO", props.dateFormat);*/
 				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data.datetime[i]))); 
-			}
-			//console.log(labels);
+			};
+			
 
 
 			setGraphPoints((prevState) => ({
