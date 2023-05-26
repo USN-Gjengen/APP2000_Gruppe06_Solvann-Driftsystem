@@ -50,26 +50,113 @@ app.get('/api/groupstates/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
-app.get('/api/groupstates/lastHourWaterLevel', async (req, res) => {
-	var start = new Date();
-	var end = new Date();
-	start.setHours(start.getHours() - 1);
-	var states = await dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
-	res.json(states);
+app.get('/api/waterLevel/lastHour', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "waterLevel", 12);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
 })
-app.get('/api/groupstates/lastHourMoney', async (req, res) => {
-	var start = new Date();
-	var end = new Date();
-	start.setHours(start.getHours() - 1);
-	var states = await dbfunctions.getNAverageMoney(dbfunctions.GroupState, start, end, 12);
-	res.json(states);
+app.get('/api/money/lastHour', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "money", 12);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
 })
-app.get('/api/groupstates/lastHourEnvironmentCost', async (req, res) => {
-	var start = new Date();
-	var end = new Date();
-	start.setHours(start.getHours() - 1);
-	var states = await dbfunctions.getNAverageEnvironmentCost(dbfunctions.GroupState, start, end, 12);
-	res.json(states);
+app.get('/api/environmentCost/lastHour', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setHours(start.getHours() - 1);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "environmentCost", 12);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/waterLevel/lastWeek', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 7);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "waterLevel", 7);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/money/lastWeek', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 7);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "money", 7);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/environmentCost/lastWeek', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 7);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "environmentCost", 7);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/waterLevel/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "waterLevel", 5);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/money/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "money", 5);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+})
+app.get('/api/environmentCost/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.GroupState, start, end, "environmentCost", 5);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
 })
 app.get('/api/PowerPrice/all', async (req, res) => {
 	try {
@@ -94,7 +181,7 @@ app.get('/api/PowerPrice/lastWeek', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setDate(start.getDate() - 7);
-		var states = await dbfunctions.getDayAverage(dbfunctions.PowerPrice, start, end);
+		var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 7);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
@@ -106,7 +193,19 @@ app.get('/api/PowerPrice/lastHour', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
+		var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 12);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+app.get('/api/PowerPrice/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 5);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
@@ -136,7 +235,7 @@ app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setDate(start.getDate() - 7);
-		var states = await dbfunctions.getDayAverage(dbfunctions.WaterInflux, start, end);
+		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, "value", 7);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
@@ -148,7 +247,19 @@ app.get('/api/WaterInflux/lastHour', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, 12);
+		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, "value", 12);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
+app.get('/api/WaterInflux/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.WaterInflux, start, end, "value", 5);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
@@ -178,7 +289,7 @@ app.get('/api/SolarValue/lastWeek', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setDate(start.getDate() - 7);
-		var states = await dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
+		var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, "value", 7);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
@@ -190,14 +301,25 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 		var start = new Date();
 		var end = new Date();
 		start.setHours(start.getHours() - 1);
-		var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, 12);
+		var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, "value", 12);
 		res.json(states);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
 });
-
+app.get('/api/SolarValue/lastMonth', async (req, res) => {
+	try {
+		var start = new Date();
+		var end = new Date();
+		start.setDate(start.getDate() - 30);
+		var states = await dbfunctions.getNAverage(dbfunctions.SolarValue, start, end, "value", 5);
+		res.json(states);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+});
 app.get('/api/turbines/all', async (req, res) => {
 	try {
 		var states = await functions.getTurbineStatus();

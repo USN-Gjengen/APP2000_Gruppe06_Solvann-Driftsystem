@@ -319,6 +319,27 @@ li {
 
 }
 
+/* Dashboard Trend */
+
+@media only screen and (min-width: 768px) {
+
+	.trend-Dashboard{
+		width: 100%;
+		height: 100%;
+	}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	.trend-Dashboard{
+		width: 80%;
+		height: 80%;
+	}
+
+}
+
+/* logg */
 
 .table {
 	list-style: none;
@@ -379,8 +400,8 @@ li {
 }
 
 .graf-Trend {
-	width: 90% !important; /* bruker important for å overstyre css fra chart.js */
-	height: 90%	!important;
+	width: 96%;
+	height: 96%;
 }
 
 /* trend side mobil */
@@ -395,3 +416,6 @@ li {
 	}
 }
 
+.hidden {
+	display: none;
+}

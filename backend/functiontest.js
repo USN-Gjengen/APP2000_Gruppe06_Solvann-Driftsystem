@@ -34,21 +34,19 @@ gt();*/
 //dbfunctions.getPeriod(dbfunctions.WaterInflux, new Date('2023-02-20'), new Date('2023-02-27'));
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
-//var start = new Date();
-//var end = new Date();
-//start.setDate(start.getDate() - 7);
+var start = new Date();
+var end = new Date();
+start.setHours(start.getHours() - 1);
+dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 12).then(value => {
+    console.log(value);
+});
 //start.setHours(start.getHours() - 200);
 
 //console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);
 //dbfunctions.getDayAverage(dbfunctions.SolarValue, start, end);
 //start.setDate(start.getDate() + i);
 //dbfunctions.getPeriodAvg(dbfunctions.WaterInflux, start, end);
-var start = new Date();
-		var end = new Date();
-		start.setHours(start.getHours() - 1);
-		
-
-        var states =  dbfunctions.getNAverageWaterLevel(dbfunctions.GroupState, start, end, 12);
+//functions.getSolarValue();
 //console.log(array[0].waterLevel)
         
 

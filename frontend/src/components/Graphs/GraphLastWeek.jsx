@@ -4,18 +4,18 @@ import { Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, L
 ChartJS.register(Title, Tooltip, LineElement,
 	Legend, CategoryScale, LinearScale, PointElement, Filler);
 
-const Graph = (props) => {
+const GraphLastWeek = (props) => {
 	const options = {
 		scales: {
 			x: {
 				time: {
-					unit: "minute",
+					unit: "date",
 					displayFormats: {
-						minute: "HH:mm",
+						date: "DD",
 					},
 				},
 			},
-		}, y: {
+		},	y: {
 			type: "linear"
 		}
 	}
@@ -41,14 +41,12 @@ const Graph = (props) => {
 	const generateTimeLabels = (start, end) => {
 		const labels = [];
 
-		for (let time = start; time < end; time.setMinutes(time.getMinutes() + 5)) {
+		for (let time = start; time < end; time.setDate(time.getDate() + 1)) {
 			const formattedTime = time.toLocaleDateString("nb-NO", {
 				timeZone: "Europe/Oslo",
-				hour: "2-digit",
-				minute: "2-digit",
+				weekday: "short",
 			});
-
-			labels.push(formattedTime.split(" ")[1]);
+			labels.push(formattedTime);
 		}
 
 		return labels;
@@ -66,23 +64,26 @@ const Graph = (props) => {
 		};
 
 		const updateGraph = async () => {
+			const end = new Date();
+			const start = new Date();
+			start.setDate(start.getDate() - 7);
 			let data = await fetchData();
-			let labels = [];
-			let values = [];
-			for (let i = 0; i < data.length; i++) {
-				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data[i]._id.max))); 
-				values.push(data[i].average); 
-			};
 			
-			setGraphPoints((prevState) => ({
-				labels: labels,
-				datasets: [
-					{
-						...prevState.datasets[0],
-						data: values,
-					},
-				],
-			}));
+			if (Array.isArray(data)) {
+				data.reverse();
+				let labels = generateTimeLabels(start, end);
+				setGraphPoints((prevState) => ({
+					labels: labels,
+					datasets: [
+						{
+							...prevState.datasets[0],
+							data: data,
+						},
+					],
+				}));
+			} else {
+				console.error("Error: data is not an array", data);
+			}
 		}
 
 
@@ -93,10 +94,10 @@ const Graph = (props) => {
 	}, []);
 
 	return (
-		<div className="graf-Trend">
-			<Line data={graphPoints} options={options}/>
+		<div>
+			<Line data={graphPoints} options={options} />
 		</div>
 	);
 };
 
-export default Graph;
+export default GraphLastWeek;
