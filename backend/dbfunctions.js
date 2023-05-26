@@ -95,9 +95,9 @@ const logGroupState = async () => {
 
 const getN = async (document, n) => {
 	const cursor = document.find({}).
-	limit(n).
-  	sort({ date: -1 }).
-  	cursor();
+		limit(n).
+		sort({ date: -1 }).
+		cursor();
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
 		rv.push(doc);
@@ -106,22 +106,22 @@ const getN = async (document, n) => {
 	return rv;
 }
 const getMonth = async (document,date) => {
-    const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
-    const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+	const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
+	const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-    return getPeriod(document, date1, date2);
+	return getPeriod(document, date1, date2);
 }
 const getDay = async (document,date) => {
-    const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+	const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
-	
+
 	return getPeriod(document, date1, date2);
-} 
+}
 const getPeriod = async (document,date1, date2) => {
 	const cursor = document.find({}).
-	where('date').gte(date1).lte(date2).
-  	sort({ date: -1 }).
-  	cursor();
+		where('date').gte(date1).lte(date2).
+		sort({ date: -1 }).
+		cursor();
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
 		rv.push(doc);
@@ -137,24 +137,24 @@ const getAll = async (document) => {
 	return rv;
 }
 const getPeriodAvg = async (document,date1, date2, value) => {
-  const average = await document.aggregate([
+	const average = await document.aggregate([
     { $match: { date: {
-		$gte: date1, 
-		$lte: date2
+					$gte: date1,
+					$lte: date2
 	} } },
-    { $group: { _id: null, average: { $avg: "$" + value } } },
-  ]).exec();
-  
+		{ $group: { _id: null, average: { $avg: "$" + value } } },
+	]).exec();
+
   if(average.length == 0){
-	  return 0;
-  }
-  
-  return average[0].average;
+		return 0;
+	}
+
+	return average[0].average;
 }
 const getDayAverage = async (document, date1, date2, value) => {
 	var dayValue = [];
 	for(var i = 0; i < days(date2, date1); i++){
-		var start = new Date(date1); 
+		var start = new Date(date1);
 		start.setDate(start.getDate() + i);
 		let end = new Date(start);
 		end.setDate(end.getDate() + 1);
@@ -165,27 +165,39 @@ const getDayAverage = async (document, date1, date2, value) => {
 }
 
 const getNAverage = async (document, date1, date2, value, increment) => {
-	var nValue = {value: [], datetime: []};
-	var scale = (date2 - date1) / (increment - 1);
+	const averages = await document.aggregate([
+		{
+			$match: {
+				date: {
+					$gte: date1,
+					$lte: date2
+				}
+			}
+		},
+		{
+			$bucketAuto: {
+				groupBy: "$date",
+				buckets: increment,
+				output: {
+					average: {
+						$sum: "$" + value
+					}
+				}
+			}
+		}
+	]).exec();
 
-	for(var i = 0; i < increment; i++){
-		var start = new Date(date1.getTime() + scale * (i - 1));
-		var end = new Date(start.getTime() + scale);
-
-		var period = await getPeriodAvg(document, start, end, value)
-		
-		nValue.value.push(period);
-		nValue.datetime.push(new Date(date1.getTime() + scale*i));
+	if (averages.length == 0) {
+		return 0;
 	}
 
-
-	return nValue;
+	return averages;
 }
 
 const days = (date_1, date_2) =>{
-    let difference = date_1.getTime() - date_2.getTime();
-    let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-    return TotalDays;
+	let difference = date_1.getTime() - date_2.getTime();
+	let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+	return TotalDays;
 }
 
 
