@@ -180,7 +180,7 @@ const getNAverage = async (document, date1, date2, value, increment) => {
 				buckets: increment,
 				output: {
 					average: {
-						$sum: "$" + value
+						$avg: "$" + value
 					}
 				}
 			}
