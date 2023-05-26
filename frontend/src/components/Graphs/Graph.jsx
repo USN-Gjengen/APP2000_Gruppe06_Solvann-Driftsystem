@@ -68,18 +68,18 @@ const Graph = (props) => {
 		const updateGraph = async () => {
 			let data = await fetchData();
 			let labels = [];
-			for (let i = 0; i < data.datetime.length; i++) {
-				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data.datetime[i]))); 
+			let values = [];
+			for (let i = 0; i < data.length; i++) {
+				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data[i]._id.max))); 
+				values.push(data[i].average); 
 			};
 			
-
-
 			setGraphPoints((prevState) => ({
 				labels: labels,
 				datasets: [
 					{
 						...prevState.datasets[0],
-						data: data.value,
+						data: values,
 					},
 				],
 			}));

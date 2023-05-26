@@ -37,7 +37,9 @@ gt();*/
 var start = new Date();
 var end = new Date();
 start.setHours(start.getHours() - 1);
-dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, 12);
+dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 12).then(value => {
+    console.log(value);
+});
 //start.setHours(start.getHours() - 200);
 
 //console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);
