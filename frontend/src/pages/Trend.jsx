@@ -4,7 +4,7 @@ const Trend = () => {
     const generateGraphs = (timespan, dateFormat) => {
         return (
             <div className='boxes'>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Water Influx</h2>
                     <Graph
                         src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
@@ -12,7 +12,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Finans</h2>
                     <Graph
                         title="NOK"
@@ -20,7 +20,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Vannstand</h2>
                     <Graph
                         title="Meter"
@@ -28,7 +28,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Miljøkostnad</h2>
                     <Graph
                         title="NOK"
@@ -36,7 +36,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Solenergiverdi</h2>
                     <Graph
                         title="kWh/s"
@@ -44,7 +44,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Strømpris</h2>
                     <Graph
                         title="NOK/MWh"
