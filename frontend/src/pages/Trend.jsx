@@ -4,7 +4,7 @@ const Trend = () => {
     const generateGraphs = (timespan, dateFormat) => {
         return (
             <div className='boxes'>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Water Influx</h2>
                     <Graph
                         src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
@@ -12,7 +12,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Finans</h2>
                     <Graph
                         title="NOK"
@@ -20,7 +20,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Vannstand</h2>
                     <Graph
                         title="Meter"
@@ -28,7 +28,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Miljøkostnad</h2>
                     <Graph
                         title="NOK"
@@ -36,7 +36,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Solenergiverdi</h2>
                     <Graph
                         title="kWh/s"
@@ -44,7 +44,7 @@ const Trend = () => {
                         dateFormat={dateFormat}
                     />
                 </div>
-                <div className='trend-Konteiner'>
+                <div className='trend-Container'>
                     <h2>Strømpris</h2>
                     <Graph
                         title="NOK/MWh"
@@ -63,19 +63,19 @@ const Trend = () => {
     const handlePeriodChange = (e) => {
         e.preventDefault();
 
-        if (e.target.innerHTML === "Hour") {
+        if (e.target.innerHTML === "Time") {
             setLastHourActive(true);
         } else {
             setLastHourActive(false);
         }
 
-        if (e.target.innerHTML === "Week") {
+        if (e.target.innerHTML === "Uke") {
             setLastWeekActive(true);
         } else {
             setLastWeekActive(false);
         }
 
-        if (e.target.innerHTML === "Month") {
+        if (e.target.innerHTML === "Måned") {
             setLastMonthActive(true);
         } else {
             setLastMonthActive(false);
@@ -86,9 +86,9 @@ const Trend = () => {
     return (
         <div className="trend">
             <div className="graph-buttons-switch">
-                <button className='btn' onClick={handlePeriodChange}>Hour</button>
-                <button className='btn' onClick={handlePeriodChange}>Week</button>
-                <button className='btn' onClick={handlePeriodChange}>Month</button>
+                <button className='btn' onClick={handlePeriodChange}>Time</button>
+                <button className='btn' onClick={handlePeriodChange}>Uke</button>
+                <button className='btn' onClick={handlePeriodChange}>Måned</button>
             </div>
             <div className={lastHourActive ? "" : "hidden"}>
                 {generateGraphs("lastHour", {

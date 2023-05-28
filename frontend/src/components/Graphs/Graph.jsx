@@ -93,7 +93,7 @@ const Graph = (props) => {
 	}, []);
 
 	return (
-		<div className="graf-Trend">
+		<div className="graph-Trend">
 			<Line data={graphPoints} options={options}/>
 		</div>
 	);
