@@ -1,21 +1,11 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Solvann Driftsystem",
+  "name": "Dashboard for Solvann Driftsystem",
   "icons": [
     {
       "src": "solvann.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "solvann.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "solvann.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
