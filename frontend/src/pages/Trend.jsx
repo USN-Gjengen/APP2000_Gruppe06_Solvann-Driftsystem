@@ -63,19 +63,19 @@ const Trend = () => {
     const handlePeriodChange = (e) => {
         e.preventDefault();
 
-        if (e.target.innerHTML === "Hour") {
+        if (e.target.innerHTML === "Time") {
             setLastHourActive(true);
         } else {
             setLastHourActive(false);
         }
 
-        if (e.target.innerHTML === "Week") {
+        if (e.target.innerHTML === "Uke") {
             setLastWeekActive(true);
         } else {
             setLastWeekActive(false);
         }
 
-        if (e.target.innerHTML === "Month") {
+        if (e.target.innerHTML === "Måned") {
             setLastMonthActive(true);
         } else {
             setLastMonthActive(false);
@@ -86,9 +86,9 @@ const Trend = () => {
     return (
         <div className="trend">
             <div className="graph-buttons-switch">
-                <button className='btn' onClick={handlePeriodChange}>Hour</button>
-                <button className='btn' onClick={handlePeriodChange}>Week</button>
-                <button className='btn' onClick={handlePeriodChange}>Month</button>
+                <button className='btn' onClick={handlePeriodChange}>Time</button>
+                <button className='btn' onClick={handlePeriodChange}>Uke</button>
+                <button className='btn' onClick={handlePeriodChange}>Måned</button>
             </div>
             <div className={lastHourActive ? "" : "hidden"}>
                 {generateGraphs("lastHour", {
