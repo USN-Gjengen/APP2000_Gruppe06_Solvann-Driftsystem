@@ -150,7 +150,7 @@ li {
 }
 
 .card {
-	height: 30vh;
+	height: 35vh;
 	width: 50vh;
 	display: flex;
 	align-items: center;
@@ -371,19 +371,23 @@ li {
 	font-size: 0.8em;
 }
 
-/* Trend side */
+/* Trend site */
 
-.trend {
-	background: linear-gradient(50deg, #015344 0%, transparent 50%, transparent 50%, #015344 100%);
+.graph-buttons-switch {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-.bokser {
+.boxes {
 	display: flex;
 	flex-wrap:	wrap;
 	justify-content: space-between;
 }
 
-.trend-Konteiner {
+.trend-Container {
 	background-color:#172838da;
 	display: flex;
 	flex-direction: column;
@@ -399,18 +403,18 @@ li {
 	width: calc(33.33% - 10px);
 }
 
-.graf-Trend {
+.graph-Trend {
 	width: 96%;
 	height: 96%;
 }
 
-/* trend side mobil */
+/* trend site mobile */
 
 @media only screen and (max-width: 768px) {
-	.bokser {
+	.boxes {
 		flex-direction: column;
 	}
-	.trend-Konteiner {
+	.trend-Container {
 		width: 80%;
 		margin: 10px auto;
 	}
