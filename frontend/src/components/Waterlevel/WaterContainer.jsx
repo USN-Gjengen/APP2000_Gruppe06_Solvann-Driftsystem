@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import waterTank from '../../img/waterTank.png';
-import "./WaterLevel.css"
+import "../../styles/WaterLevel.css"
 
 
 const WaterContainer = () => {
