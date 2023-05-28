@@ -5,7 +5,7 @@ const Trend = () => {
         return (
             <div className='boxes'>
                 <div className='trend-Container'>
-                    <h2>Water Influx</h2>
+                    <h2>Vanntilstrømming</h2>
                     <Graph
                         src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/${timespan}`}
                         title={`m\u00b3/s`}
