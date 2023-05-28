@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TurbineController from "../components/Turbine/TurbineController";
 import WaterContainer from "../components/Waterlevel/WaterContainer";
+import "../styles/Turbine.css";
+import "../styles/App.css";
+
 
 
 const Turbine = () => {

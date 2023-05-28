@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import turbineIMG from "../../img/Turbine.png";
 import { useSpring, animated, config } from "react-spring";
 import { useTurbineContext } from "./TurbineProvider";
-import "../../Turbine.css";
+import "../../styles/Turbine.css";
 
 const TurbineController = (props) => {
     const from = {

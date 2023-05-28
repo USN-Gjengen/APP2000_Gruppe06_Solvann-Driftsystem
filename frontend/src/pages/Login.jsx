@@ -1,6 +1,7 @@
 import React from 'react';
 import { emailValidator, passwordValidator } from '../components/regexValidator';
 import { useNavigate } from "react-router-dom"
+import "../styles/index.css"
 
 const Login = () => {
 	const navigate = useNavigate()
