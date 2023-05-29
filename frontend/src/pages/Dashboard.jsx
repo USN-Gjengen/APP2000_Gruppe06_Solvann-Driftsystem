@@ -66,12 +66,12 @@ const Dashboard = () => {
                     <div className="row">
                         <button className="btn-dash" onClick={handleTurbine}>
                             <div className="info">
-                                <div className="sub"><div>
-                                    Turbin status:{" "}
-                                    <span style={{ color: isTurbineOn ? "green" : "red" }}>
-                                        {isTurbineOn ? "Aktive" : "Passiv"}
-                                    </span>
-                                </div></div>
+                                <div className="sub">
+                                        Turbin status:{" "}
+                                        <span style={{ color: isTurbineOn ? "green" : "red" }}>
+                                            {isTurbineOn ? "Aktive" : "Passiv"}
+                                        </span>
+                                </div>
                                 <div className="title">Driftskontroll av vannturbiner</div>
 
                             </div>
