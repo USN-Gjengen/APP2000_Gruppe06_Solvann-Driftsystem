@@ -70,9 +70,6 @@ const Login = () => {
 									onChange={handleChange}
 								/>
 							</div>
-							<div className="text-right">
-								<a href="#">Forgot password?</a>
-							</div>
 							<button className="form-btn-login">Login</button>
 							{/* <div className="txt1 text-center p-t-54 p-b-20">
 								<span>Or Sign Up Using (under maintenance) </span>
