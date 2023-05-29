@@ -200,6 +200,13 @@ const days = (date_1, date_2) =>{
 	return TotalDays;
 }
 
+const getMedian = async (document) => {
+	const median = await document.find({}).
+	sort({ value: 1 }).
+	skip(await document.countDocuments() / 2).
+	limit(1);
+	return median[0].value;
+}
 
 
 exports.connect = connect;
@@ -215,6 +222,7 @@ exports.getPeriod = getPeriod;
 exports.getPeriodAvg = getPeriodAvg;
 exports.getDayAverage = getDayAverage;
 exports.getNAverage = getNAverage;
+exports.getMedian = getMedian;
 exports.GroupState = GroupState;
 exports.PowerPrice = PowerPrice;
 exports.WaterInflux = WaterInflux;

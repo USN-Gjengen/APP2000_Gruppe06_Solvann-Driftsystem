@@ -40,12 +40,13 @@ start.setHours(start.getHours() - 1);
 dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 12).then(value => {
     console.log(value);
 });*/
-dbfunctions.getN(dbfunctions.GroupState, 1).then(value => {
-    console.log(value[0].waterLevel);
+
+
+
+dbfunctions.getMedian(dbfunctions.PowerPrice).then(value => {
+    console.log(value * 0.7);
 });
-dbfunctions.getN(dbfunctions.PowerPrice, 1).then(value => {
-    console.log(value[0].value);
-});
+
 //start.setHours(start.getHours() - 200);
 
 //console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);

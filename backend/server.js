@@ -381,12 +381,12 @@ if (process.env.NODE_ENV != "test") {
 			console.log("Turbines off! Level below 10 meters");
 		}
 		else {
-		 	if (powerPrice.value > 600) {
-				console.log("Turbines on! Price over 600");
+		 	if (powerPrice.value > getMedian(powerPrice) * 1.3) {
+				console.log("Turbines on! Niceprice!");
 				functions.setAllTurbines(1);
 			}
-			else if (powerPrice.value < 300) {
-				console.log("Turbines off! Price under 300");
+			else if (powerPrice.value < getMedian(powerPrice) * 0.7) {
+				console.log("Turbines off! Badprice!");
 				functions.setAllTurbines(0);
 			}
 		}
