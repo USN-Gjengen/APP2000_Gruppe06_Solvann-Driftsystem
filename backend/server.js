@@ -370,6 +370,7 @@ if (process.env.NODE_ENV != "test") {
 	cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
 		await dbfunctions.logGroupState();
 		var last = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
+		var price = (await dbfunctions.getN(dbfunctions.PowerPrice, 1))[0];
 		//console.log(last.waterLevel);
 		if (last.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
@@ -378,6 +379,16 @@ if (process.env.NODE_ENV != "test") {
 		else if (last.waterLevel < 10) {
 			functions.setAllTurbines(0);
 			console.log("Turbines off! Level below 10 meters");
+		}
+		else {
+		 	if (price.value > 600) {
+				console.log("Turbines on! Price over 600");
+				functions.setAllTurbines(1);
+			}
+			else if (price.value < 300) {
+				console.log("Turbines off! Price under 300");
+				functions.setAllTurbines(0);
+			}
 		}
 	});
 };
