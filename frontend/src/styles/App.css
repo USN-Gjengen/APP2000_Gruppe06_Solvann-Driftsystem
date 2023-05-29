@@ -50,6 +50,14 @@ li {
 	text-align: left;
 }
 
+@media only screen and (max-width: 768px) {
+
+	.center {
+		margin-bottom: 100px;
+	}
+
+}
+
 /* Nav knapper seksjon */
 
 .button-container {
@@ -111,6 +119,71 @@ li {
 }
 
 
+/* Dashboard buttons */
+
+
+.btn-dash {
+	height: 35vh;
+	width: 50vh;
+	display: inline-block;
+	margin-top: 28px;
+	color: #fff;
+	background: transparent;
+	border: unset;
+	border-radius: 16px;
+	overflow: hidden;
+	padding: 10px 20px;
+	font-weight: 600;
+	font-size: 16px;
+	margin: 0 10px;
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+	transition: background 0.3s ease;
+	box-shadow: 6px 28px 46px -6px #000;	
+}
+
+@media only screen and (max-width: 768px) {
+
+	.btn-dash {
+		width: 35vh;
+	}
+
+}
+
+.btn-dash::before,
+.btn-dash::after {
+	content: '';
+	position: absolute;
+}
+
+.btn-dash::before {
+	left: 50%;
+	top: 50%;
+	background: linear-gradient(90deg, #00ff22 0%, transparent 45%, transparent 55%, #00ffd0 100%);
+	transform: translate(-50%, -50%) rotate(55deg);
+	width: 100%;
+	height: 240%;
+	border-radius: 16px;
+	z-index: -2;
+	opacity: 0.4;
+	transition: all 0.3s ease;
+}
+
+.btn-dash::after {
+	left: 2px;
+	top: 2px;
+	background: #171721;
+	width: calc(100% - 4px);
+	height: calc(100% - 4px);
+	border-radius: 16px;
+	z-index: -1;
+}
+
+.btn-dash:hover::before {
+	animation: 5s move infinite linear;
+	opacity: 1;
+}
 /* Dashboard main seksjon */
 
 .wrapper {
@@ -119,17 +192,6 @@ li {
 	width: 100%;
 	display: flex;
 }
-
-
-.main-container {
-	margin-top: 35px;
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	gap: 20px;
-	color: black;
-}
-
 
 .container {
 	width: 100%;
@@ -149,123 +211,6 @@ li {
 	gap: 40px;
 }
 
-.card {
-	height: 35vh;
-	width: 50vh;
-	display: flex;
-	align-items: center;
-	gap: 28px;
-	color: #fcfcfc;
-	padding: 10px;
-	border-radius: 30%;
-	position: relative;
-	z-index: 1;
-	box-shadow: 6px 28px 46px -6px #000;
-}
-
-.card::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 1rem;
-	background: linear-gradient(135deg, #00ffd0, #000000 40%);
-	z-index: -2;
-}
-
-.card::after {
-	content: '';
-	position: absolute;
-	left: 1px;
-	top: 1px;
-	width: calc(100% - 1px);
-	height: calc(100% - 1px);
-	border-radius: 1rem;
-	background: linear-gradient(90deg, #171721, #060609);
-	transition: box-shadow 0.3s ease;
-	z-index: -1;
-}
-
-.card .info {
-	display: flex;
-	flex-flow: column nowrap;
-}
-
-.card .info .sub {
-	color: #00ffd0;
-	line-height: 28px;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-.card .info .title {
-	max-width: 260px;
-	line-height: 28px;
-	font-size: 17px;
-	font-weight: 500;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-.card .info .weather img {
-	width: 100%;
-}
-
-.card .info .btn {
-	margin-top: 28px;
-	color: #fff;
-	background: transparent;
-	border: unset;
-	border-radius: 16px;
-	overflow: hidden;
-	padding: 12px 24px;
-	font-weight: 600;
-	font-size: 16px;
-	margin-right: auto;
-	cursor: pointer;
-	position: relative;
-	z-index: 0;
-	transition: background 0.3s ease;
-}
-
-.card .info .btn::before,
-.card .info .btn::after {
-	content: '';
-	position: absolute;
-}
-
-.card .info .btn::before {
-	left: 50%;
-	top: 50%;
-	background: linear-gradient(90deg, #00ffd0 0%, transparent 45%, transparent 55%, #00ffd0 100%);
-	transform: translate(-50%, -50%) rotate(55deg);
-	width: 100%;
-	height: 240%;
-	border-radius: 16px;
-	z-index: -2;
-	opacity: 0.4;
-	transition: all 0.3s ease;
-}
-
-.card .info .btn::after {
-	left: 2px;
-	top: 2px;
-	background: #171721;
-	width: calc(100% - 4px);
-	height: calc(100% - 4px);
-	border-radius: 16px;
-	z-index: -1;
-}
-
-.card .info .btn:hover::before {
-	animation: 5s move infinite linear;
-	opacity: 1;
-}
-
 @keyframes move {
 	0% {
 		transform: translate(-50%, -50%) rotate(55deg);
@@ -279,10 +224,71 @@ li {
 
 /* Dashboard Vær */
 
+.btn-dash-Weather {
+	height: 35vh;
+	width: 50vh;
+	display: inline-block;
+	margin-top: 28px;
+	color: #fff;
+	background: transparent;
+	border: unset;
+	border-radius: 16px;
+	overflow: hidden;
+	padding: 10px 20px;
+	font-weight: 600;
+	font-size: 16px;
+	margin: 0 10px;
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+	transition: background 0.3s ease;
+	box-shadow: 6px 28px 46px -6px #000;	
+}
+
+.btn-dash-Weather::before,
+.btn-dash-Weather::after {
+	content: '';
+	position: absolute;
+}
+
+.btn-dash-Weather::before {
+	left: 50%;
+	top: 50%;
+	background: linear-gradient(90deg, #00ff22 0%, transparent 45%, transparent 55%, #00ffd0 100%);
+	transform: translate(-50%, -50%) rotate(55deg);
+	width: 100%;
+	height: 240%;
+	border-radius: 16px;
+	z-index: -2;
+	opacity: 0.4;
+	transition: all 0.3s ease;
+}
+
+.btn-dash-Weather::after {
+	left: 2px;
+	top: 2px;
+	background: #171721;
+	width: calc(100% - 4px);
+	height: calc(100% - 4px);
+	border-radius: 16px;
+	z-index: -1;
+}
+
+.btn-dash-Weather:hover::before {
+	animation: 5s move infinite linear;
+	opacity: 1;
+}
+
 @media only screen and (min-width: 768px) {
 
 	.vær-Mobil {
 		display: none;
+	}
+
+	.vær-Desktop {
+		height: 10%;
+		width: 100%;
+		align-items: center;
 	}
 
 }
@@ -299,24 +305,14 @@ li {
 		margin-left: 0;
 	}
 
-	.card {
-		height: 30vh;
-    	width: 35vh;
-		display: flex;
-		align-items: center;
-		gap: 28px;
-		color: #fcfcfc;
-		padding: 10px;
-		border-radius: 30%;
-		position: relative;
-		z-index: 1;
-		box-shadow: 6px 28px 46px -6px #000;
-	}
-
 	.vær-Desktop {
 		display: none;
 	}
 
+	.btn-dash-Weather {
+		height: 60vh;
+		width: 35vh;
+	}
 }
 
 /* Dashboard Trend */
@@ -324,17 +320,25 @@ li {
 @media only screen and (min-width: 768px) {
 
 	.trend-Dashboard{
-		width: 100%;
+		margin-top: 20px;
 		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
 	}
+
 
 }
 
 @media only screen and (max-width: 768px) {
 
 	.trend-Dashboard{
-		width: 80%;
 		height: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
 	}
 
 }
@@ -411,6 +415,7 @@ li {
 /* trend site mobile */
 
 @media only screen and (max-width: 768px) {
+
 	.boxes {
 		flex-direction: column;
 	}
@@ -418,6 +423,7 @@ li {
 		width: 80%;
 		margin: 10px auto;
 	}
+
 }
 
 .hidden {
