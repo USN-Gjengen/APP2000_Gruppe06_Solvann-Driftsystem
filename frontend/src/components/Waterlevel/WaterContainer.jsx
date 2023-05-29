@@ -31,7 +31,7 @@ const WaterContainer = () => {
     fetchWaterLevel();
     const interval = setInterval(() => {
       fetchWaterLevel();
-    }, 1000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
