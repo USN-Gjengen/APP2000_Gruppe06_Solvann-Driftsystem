@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Graph from "../components/Graphs/Graph";
 import { useTurbineContext } from "../components/Turbine/TurbineProvider";
+import turbineIMG from "../img/TurbineSVG.svg";
 
 
 const Dashboard = () => {
@@ -29,19 +30,6 @@ const Dashboard = () => {
         }
     }, [navigate, settings]);
 
-
-    React.useEffect(() => {
-        fetch("http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/turbines/all", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ isTurbineOn: isTurbineOn }),
-        }).catch((error) => {
-            console.error(error);
-        });
-    }, [isTurbineOn]);
-
     const handleTrend = (e) => {
         e.preventDefault();
         setTrend(true);
@@ -66,14 +54,9 @@ const Dashboard = () => {
                     <div className="row">
                         <button className="btn-dash" onClick={handleTurbine}>
                             <div className="info">
-                                <div className="sub">
-                                        Turbin status:{" "}
-                                        <span style={{ color: isTurbineOn ? "green" : "red" }}>
-                                            {isTurbineOn ? "Aktive" : "Passiv"}
-                                        </span>
-                                </div>
+                                
                                 <div className="title">Driftskontroll av vannturbiner</div>
-
+                                <img src={turbineIMG} alt="Turbine" className="Turbine-dashboard"/>
                             </div>
                         </button>
 

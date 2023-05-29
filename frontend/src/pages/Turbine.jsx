@@ -192,7 +192,7 @@ const Turbine = () => {
 			</div>
 			<div className="button-container">
 				<button className="btn" onClick={handleTurbineForward} style={{background:"linear-gradient(90deg, #00ff00 0%, transparent 45%, transparent 55%, #00ff00 100%)",}}>
-					<span>Maks Forover</span>
+					<span>Maks forover</span>
 				</button>
 				<button className="btn" onClick={handleTurbineOff}  style={{background:"linear-gradient(90deg, #ff0d00 0%, transparent 45%, transparent 55%, #ff0d00	 100%)",}}>
 					<span>Skru av</span>
