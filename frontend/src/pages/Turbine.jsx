@@ -88,13 +88,13 @@ const Turbine = () => {
 	return (
 		<div className="turbinePage">
 			<div className="button-container">
-				<button className="btn" onClick={handleTurbineForward}>
+				<button className="btn" onClick={handleTurbineForward} style={{background:"linear-gradient(90deg, #00ff00 0%, transparent 45%, transparent 55%, #00ff00 100%)",}}>
 					<span>Max Forward</span>
 				</button>
-				<button className="btn" onClick={handleTurbineOff}>
+				<button className="btn" onClick={handleTurbineOff}  style={{background:"linear-gradient(90deg, #ff0d00 0%, transparent 45%, transparent 55%, #ff0d00	 100%)",}}>
 					<span>Turn Off</span>
 				</button>
-				<button className="btn" onClick={handleTurbineReverse}>
+				<button className="btn" onClick={handleTurbineReverse} style={{background:"linear-gradient(50deg, #faa49d 20%, transparent 45%, transparent 55%, #faa49d 100%)",}}>
 					<span>Max Reverse</span>
 				</button>
 			</div>
