@@ -64,39 +64,34 @@ const Dashboard = () => {
                 <div className="container">
 
                     <div className="row">
-                        <div className="card">
+                        <button className="btn-dash" onClick={handleTurbine}>
                             <div className="info">
-                                <div className="sub"><div>
-                                    Turbin status:{" "}
-                                    <span style={{ color: isTurbineOn ? "green" : "red" }}>
-                                        {isTurbineOn ? "Aktive" : "Passiv"}
-                                    </span>
-                                </div></div>
+                                <div className="sub">
+                                        Turbin status:{" "}
+                                        <span style={{ color: isTurbineOn ? "green" : "red" }}>
+                                            {isTurbineOn ? "Aktive" : "Passiv"}
+                                        </span>
+                                </div>
                                 <div className="title">Driftskontroll av vannturbiner</div>
 
-                                <button className="btn" onClick={handleTurbine}>
-                                    Åpne Driftskontroll
-                                </button>
-
                             </div>
-                        </div>
+                        </button>
 
-                        <div className="card">
+                        <button className='btn-dash-Weather'>
                             <div className="info">
-                                <div className="sub">Væroversikt for vannstand</div>
-                                <div className="title">Værmelding</div>
+                                <div className="sub">Værmelding</div>
                                 <div className="weather">
                                     <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop"/>
-                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '20vh', border: 'none' }}/>
+                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '50vh', border: 'none' }}/>
                                 </div>
                                 
                             </div>
-                        </div>
+                        </button>
 
                     </div>
 
                     <div className="row">
-                        <div className='card'>
+                        <button className='btn-dash' onClick={handleTrend}>
                             <div className="info trend-Dashboard">
                                 <div className="sub">Utforsk siste trender og analyser</div>
                                 <Graph 
@@ -107,21 +102,15 @@ const Dashboard = () => {
                                         minute: "2-digit",
                                     }}
                                     />
-                                <button className='btn' onClick={handleTrend}>
-                                    Åpne alle trender
-                                </button>
                             </div>
-                        </div>
+                        </button>
 
-                        <div className='card'>
+                        <button className='btn-dash' onClick={handleSettings}>
                             <div className="info">
-                                <div className="sub">Tilpass appen etter dine behov</div>
                                 <div className="title">Innstillinger</div>
-                                <button className='btn' onClick={handleSettings}>
-                                    Åpne Innstillinger
-                                </button>
+                                
                             </div>
-                        </div>
+                        </button>
                     </div>
 
 
