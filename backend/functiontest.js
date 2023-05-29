@@ -34,12 +34,19 @@ gt();*/
 //dbfunctions.getPeriod(dbfunctions.WaterInflux, new Date('2023-02-20'), new Date('2023-02-27'));
 //functions.setAllTurbinesOn();
 //functions.setAllTurbinesOff();
-var start = new Date();
+/*var start = new Date();
 var end = new Date();
 start.setHours(start.getHours() - 1);
 dbfunctions.getNAverage(dbfunctions.PowerPrice, start, end, "value", 12).then(value => {
     console.log(value);
+});*/
+
+
+
+dbfunctions.getMedian(dbfunctions.PowerPrice).then(value => {
+    console.log(value * 0.7);
 });
+
 //start.setHours(start.getHours() - 200);
 
 //console.log((new Date()).toISOString().replace("T", " ").split(".")[0]);
