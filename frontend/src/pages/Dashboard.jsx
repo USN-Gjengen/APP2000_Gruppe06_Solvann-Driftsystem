@@ -77,12 +77,12 @@ const Dashboard = () => {
                             </div>
                         </button>
 
-                        <button className='btn-dash'>
+                        <button className='btn-dash-Weather'>
                             <div className="info">
                                 <div className="sub">Værmelding</div>
                                 <div className="weather">
                                     <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop"/>
-                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '20vh', border: 'none' }}/>
+                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '50vh', border: 'none' }}/>
                                 </div>
                                 
                             </div>
