@@ -7,16 +7,17 @@
 
 .turbines-container {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 13em;
-  height: 100%;
+  width: 26em;
+  gap: 20px;
 }
 
 .turbinePageContent {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   height: 50vh;
+  margin-top: 25px;
 }
