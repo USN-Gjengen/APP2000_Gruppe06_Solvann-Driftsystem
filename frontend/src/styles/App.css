@@ -63,7 +63,12 @@ li {
 .button-container {
 	display: flex;
 	justify-content: center;
-	margin-top: 20px;
+	margin-top: -10px;
+}
+@media only screen and (max-width: 768px) {
+	.button-container {
+		margin-top: -350px;
+	}
 }
 
 .btn {

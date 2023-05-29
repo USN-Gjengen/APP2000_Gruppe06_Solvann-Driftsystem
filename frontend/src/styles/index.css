@@ -1,17 +1,7 @@
-html {
-	font-family: Microsoft Sans Serif;
-	/* background color */
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-image: linear-gradient(79deg, #5439db, #65b6e9 48%, #b1f78b);
-}
-
 .login-form {
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
 }
 
 .login_container {
@@ -29,7 +19,7 @@ html {
 .wrap-login {
 	width: 300px;
 	padding: 40px;
-	background: transparent;
+	background: linear-gradient(79deg, #38268f67, #3664814f 48%, #6d97564f);;
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -65,17 +55,11 @@ html {
 	border-radius: 0.5rem;
 }
 
-/* forgot password */
-
-.text-right {
-	text-align: right;
-	padding: 10px 0 0 0;
-}
 
 /* button */
 
 .form-btn-login {
-	background: #5439db;
+	background: #4523ee;
 	color: white;
 	border: none;
 	border-radius: 10px;
@@ -84,3 +68,16 @@ html {
 	cursor: pointer;
 	font-size: 1.2rem;
 }
+
+.title-container {
+	text-align: center;
+	margin-bottom: 1rem;
+  }
+  
+  .form-title-login {
+	display: block;
+	font-size: 39px;
+	color: white;
+	line-height: 1.2;
+  }
+  
