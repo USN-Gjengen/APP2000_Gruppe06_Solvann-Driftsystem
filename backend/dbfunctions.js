@@ -12,6 +12,10 @@ try {
 	console.error(err);
 }
 
+/**
+ * Establishes a connection with the database
+ * @returns "Mongoose connection"
+ */
 const connect = async () => {
 	console.log("Connecting to database...");
 	mongoose.set('strictQuery', true);
@@ -44,6 +48,9 @@ const powerSchema = new mongoose.Schema({
 });
 const PowerPrice = mongoose.model('PowerPrice', powerSchema);
 
+/**
+ * Logs the current power price to the database
+ */
 const logPowerPrice = async () => {
 	await functions.getPowerPrice().then(value => {
 		const power = new PowerPrice({ value: value, date: Date.now() });
@@ -57,6 +64,9 @@ const solarSchema = new mongoose.Schema({
 });
 const SolarValue = mongoose.model('SolarValue', solarSchema);
 
+/**
+ * Logs the current solar value to the database
+ */
 const logSolarValue = async () => {
 	await functions.getSolarValue().then(value => {
 		const solar = new SolarValue({ value: value, date: Date.now() });
@@ -70,6 +80,9 @@ const waterInfluxSchema = new mongoose.Schema({
 });
 const WaterInflux = mongoose.model('WaterInflux', waterInfluxSchema);
 
+/**
+ * Logs the current water influx to the database
+ */
 const logWaterInflux = async () => {
 	await functions.getWaterInflux().then(value => {
 		const influx = new WaterInflux({ value: value, date: Date.now() });
@@ -85,6 +98,9 @@ const groupStateSchema = new mongoose.Schema({
 });
 const GroupState = mongoose.model('GroupState', groupStateSchema);
 
+/**
+ * Logs the current group state (money, water level, and environment cost) to the database
+ */
 const logGroupState = async () => {
 	await functions.getGroupState().then(gs => {
 		const state = new GroupState({ money: gs.money, date: Date.now(), waterLevel: gs.waterLevel, environmentCost: gs.environmentCost });
@@ -92,8 +108,14 @@ const logGroupState = async () => {
 	});
 }
 
-const getN = async (document, n) => {
-	const cursor = document.find({}).
+/**
+ * 
+ * @param {Schema} schema What schema to search in
+ * @param {number} n Amount of documents to get
+ * @returns The n latest values
+ */
+const getN = async (schema, n) => {
+	const cursor = schema.find({}).
 		limit(n).
 		sort({ date: -1 }).
 		cursor();
@@ -105,22 +127,41 @@ const getN = async (document, n) => {
 	return rv;
 }
 
-const getMonth = async (document,date) => {
+/**
+ * 
+ * @param {Schema} schema What schema to search in
+ * @param {Date} date A datetime inside the month you want to get
+ * @returns All values in the month
+ */
+const getMonth = async (schema,date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
 	const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-	return getPeriod(document, date1, date2);
+	return getPeriod(schema, date1, date2);
 }
 
-const getDay = async (document,date) => {
+/**
+ * 
+ * @param {Schema} schema What schema to search in
+ * @param {Date} date A datetime inside the day you want to get
+ * @returns All values in the day
+ */
+const getDay = async (schema,date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
 
-	return getPeriod(document, date1, date2);
+	return getPeriod(schema, date1, date2);
 }
 
-const getPeriod = async (document,date1, date2) => {
-	const cursor = document.find({}).
+/**
+ * Gets all values between two dates
+ * @param {Schema} schema What schema to search in
+ * @param {Date} date1 Start of period
+ * @param {Date} date2 End of period
+ * @returns All values in the period
+ */
+const getPeriod = async (schema, date1, date2) => {
+	const cursor = schema.find({}).
 		where('date').gte(date1).lte(date2).
 		sort({ date: -1 }).
 		cursor();
@@ -131,8 +172,13 @@ const getPeriod = async (document,date1, date2) => {
 	return rv;
 }
 
-const getAll = async (document) => {
-	const cursor = document.find({}).cursor();
+/**
+ * Gets all values in the schema
+ * @param {Schema} schema What schema to search in
+ * @returns All values in the schema
+ */
+const getAll = async (schema) => {
+	const cursor = schema.find({}).cursor();
 	var rv = [];
 	for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
 		rv.push(doc);
@@ -140,8 +186,16 @@ const getAll = async (document) => {
 	return rv;
 }
 
-const getPeriodAvg = async (document,date1, date2, value) => {
-	const average = await document.aggregate([
+/**
+ * Gets the average value of a particular field, within the specified period
+ * @param {*} schema 
+ * @param {Date} date1 Start of period 
+ * @param {Date} date2 End of period 
+ * @param {string} value Specific value to get
+ * @returns Average value of the specified field
+ */
+const getPeriodAvg = async (schema, date1, date2, value) => {
+	const average = await schema.aggregate([
     { $match: { date: {
 					$gte: date1,
 					$lte: date2
@@ -156,21 +210,38 @@ const getPeriodAvg = async (document,date1, date2, value) => {
 	return average[0].average;
 }
 
-const getDayAverage = async (document, date1, date2, value) => {
+/**
+ * Gets the average value of a particular field, within a specified period, for each day in the period
+ * @param {Schema} schema What schema to search in
+ * @param {Date} date1 Start of period 
+ * @param {Date} date2 End of period 
+ * @param {string} value Specific value to get 
+ * @returns Average value of the specified field
+ */
+const getDayAverage = async (schema, date1, date2, value) => {
 	var dayValue = [];
 	for(var i = 0; i < days(date2, date1); i++){
 		var start = new Date(date1);
 		start.setDate(start.getDate() + i);
 		let end = new Date(start);
 		end.setDate(end.getDate() + 1);
-		dayValue.push(await getPeriodAvg(document, start, end, value));
+		dayValue.push(await getPeriodAvg(schema, start, end, value));
 	}
 
 	return dayValue;
 }
 
-const getNAverage = async (document, date1, date2, value, increment) => {
-	const averages = await document.aggregate([
+/**
+ * Gets the average value of a particular field, within a specified period, divided into a specified number of increments
+ * @param {Schema} schema What schema to search in
+ * @param {Date} date1 Start of period 
+ * @param {Date} date2 End of period 
+ * @param {string} value Specific value to get 
+ * @param {number} increment 
+ * @returns Average value of the specified field, separated into increments
+ */
+const getNAverage = async (schema, date1, date2, value, increment) => {
+	const averages = await schema.aggregate([
 		{
 			$match: {
 				date: {
@@ -199,16 +270,27 @@ const getNAverage = async (document, date1, date2, value, increment) => {
 	return averages;
 }
 
-const days = (date_1, date_2) =>{
-	let difference = date_1.getTime() - date_2.getTime();
+/**
+ * Counts the number of days between two dates
+ * @param {Date} date1 Start of period 
+ * @param {Date} date2 End of period 
+ * @returns Amount of days
+ */
+const days = (date1, date2) =>{
+	let difference = date1.getTime() - date2.getTime();
 	let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
 	return TotalDays;
 }
 
-const getMedian = async (document) => {
-	const median = await document.find({}).
+/**
+ * Gets the median value of a particular field, within the schema
+ * @param {Schema} schema What schema to search in
+ * @returns The median value
+ */
+const getMedian = async (schema) => {
+	const median = await schema.find({}).
 	sort({ value: 1 }).
-	skip(await document.countDocuments() / 2).
+	skip(await schema.countschemas() / 2).
 	limit(1);
 	return median[0].value;
 }
