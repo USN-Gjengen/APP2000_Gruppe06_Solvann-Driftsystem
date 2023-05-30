@@ -17,6 +17,7 @@ const getSolarValue = async () => {
     const data = await response.json();
     return data;
 }
+
 const getWaterInflux = async () => {
     const response = await fetch('https://solvann.azurewebsites.net/api/WaterInflux/');
     const data = await response.json();

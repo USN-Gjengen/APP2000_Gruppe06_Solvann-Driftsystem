@@ -90,7 +90,6 @@ const logGroupState = async () => {
 		const state = new GroupState({ money: gs.money, date: Date.now(), waterLevel: gs.waterLevel, environmentCost: gs.environmentCost });
 		state.save();
 	});
-	//mongoose.connection.close();
 }
 
 const getN = async (document, n) => {
@@ -105,18 +104,21 @@ const getN = async (document, n) => {
 
 	return rv;
 }
+
 const getMonth = async (document,date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
 	const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 	return getPeriod(document, date1, date2);
 }
+
 const getDay = async (document,date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
 
 	return getPeriod(document, date1, date2);
 }
+
 const getPeriod = async (document,date1, date2) => {
 	const cursor = document.find({}).
 		where('date').gte(date1).lte(date2).
@@ -128,6 +130,7 @@ const getPeriod = async (document,date1, date2) => {
 	}
 	return rv;
 }
+
 const getAll = async (document) => {
 	const cursor = document.find({}).cursor();
 	var rv = [];
@@ -136,6 +139,7 @@ const getAll = async (document) => {
 	}
 	return rv;
 }
+
 const getPeriodAvg = async (document,date1, date2, value) => {
 	const average = await document.aggregate([
     { $match: { date: {
@@ -151,6 +155,7 @@ const getPeriodAvg = async (document,date1, date2, value) => {
 
 	return average[0].average;
 }
+
 const getDayAverage = async (document, date1, date2, value) => {
 	var dayValue = [];
 	for(var i = 0; i < days(date2, date1); i++){
