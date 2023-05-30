@@ -62,7 +62,7 @@ const Turbine = () => {
 				"http://" + process.env.REACT_APP_FRONTEND_API_ADDRESS + "/api/powerprice/last"
 			);
 			const jsonData = await response.json();
-			
+
 			if (typeof jsonData === 'object' && jsonData !== null) {
 				const powerPrice = jsonData.value;
 				setPowerPrice(powerPrice);
@@ -105,9 +105,9 @@ const Turbine = () => {
 		}, 30000);
 
 		return () => clearInterval(interval);
-		
+
 	}, []);
-	
+
 
 
 	const handleTurbineForward = (e) => {
@@ -162,7 +162,7 @@ const Turbine = () => {
 	}, []);
 
 	return (
-		
+
 		<div className="turbinePage">
 			<div className="info-container">
 				<div className="waterInflux-info">
@@ -186,18 +186,18 @@ const Turbine = () => {
 						{solar.toFixed(2)} MWh
 					</span>
 					<div>
-					 	Solenergiverdi
+						Solenergiverdi
 					</div>
 				</div>
 			</div>
 			<div className="button-container">
-				<button className="btn" onClick={handleTurbineForward} style={{background:"linear-gradient(90deg, #00ff00 0%, transparent 45%, transparent 55%, #00ff00 100%)",}}>
+				<button className="btn" onClick={handleTurbineForward} style={{ background: "linear-gradient(90deg, #00ff00 0%, transparent 45%, transparent 55%, #00ff00 100%)", }}>
 					<span>Maks forover</span>
 				</button>
-				<button className="btn" onClick={handleTurbineOff}  style={{background:"linear-gradient(90deg, #ff0d00 0%, transparent 45%, transparent 55%, #ff0d00	 100%)",}}>
+				<button className="btn" onClick={handleTurbineOff} style={{ background: "linear-gradient(90deg, #ff0d00 0%, transparent 45%, transparent 55%, #ff0d00	 100%)", }}>
 					<span>Skru av</span>
 				</button>
-				<button className="btn" onClick={handleTurbineReverse} style={{background:"linear-gradient(50deg, #faa49d 20%, transparent 45%, transparent 55%, #faa49d 100%)",}}>
+				<button className="btn" onClick={handleTurbineReverse} style={{ background: "linear-gradient(50deg, #faa49d 20%, transparent 45%, transparent 55%, #faa49d 100%)", }}>
 					<span>Maks revers</span>
 				</button>
 			</div>
