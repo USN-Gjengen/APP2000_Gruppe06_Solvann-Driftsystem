@@ -65,6 +65,7 @@ li {
 	justify-content: center;
 	margin-top: -10px;
 }
+
 @media only screen and (max-width: 768px) {
 	.button-container {
 		margin-top: -350px;
@@ -145,7 +146,7 @@ li {
 	position: relative;
 	z-index: 0;
 	transition: background 0.3s ease;
-	box-shadow: 6px 28px 46px -6px #000;	
+	box-shadow: 6px 28px 46px -6px #000;
 }
 
 @media only screen and (max-width: 768px) {
@@ -189,6 +190,7 @@ li {
 	animation: 5s move infinite linear;
 	opacity: 1;
 }
+
 /* Dashboard main seksjon */
 
 .wrapper {
@@ -256,7 +258,7 @@ li {
 	position: relative;
 	z-index: 0;
 	transition: background 0.3s ease;
-	box-shadow: 6px 28px 46px -6px #000;	
+	box-shadow: 6px 28px 46px -6px #000;
 }
 
 .btn-dash-Weather::before,
@@ -343,7 +345,7 @@ li {
 
 @media only screen and (min-width: 768px) {
 
-	.trend-Dashboard{
+	.trend-Dashboard {
 		margin-top: 20px;
 		height: 100%;
 		display: flex;
@@ -357,7 +359,7 @@ li {
 
 @media only screen and (max-width: 768px) {
 
-	.trend-Dashboard{
+	.trend-Dashboard {
 		height: 80%;
 		display: flex;
 		align-items: center;
@@ -411,19 +413,19 @@ li {
 
 .boxes {
 	display: flex;
-	flex-wrap:	wrap;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
 .trend-Container {
-	background-color:#172838da;
+	background-color: #172838da;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
 	height: 400px;
-	margin-right:5px;
-	margin-left:5px;
+	margin-right: 5px;
+	margin-left: 5px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 	padding-top: 20px;
@@ -443,6 +445,7 @@ li {
 	.boxes {
 		flex-direction: column;
 	}
+
 	.trend-Container {
 		width: 80%;
 		margin: 10px auto;

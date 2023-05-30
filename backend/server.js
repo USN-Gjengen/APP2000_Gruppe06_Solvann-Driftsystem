@@ -402,7 +402,7 @@ if (process.env.NODE_ENV != "test") {
 		var waterLevel = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
 		var powerPrice = (await dbfunctions.getN(dbfunctions.PowerPrice, 1))[0];
 		var powerPriceMedian = await dbfunctions.getMedian(dbfunctions.PowerPrice);
-		
+
 		// If water level is above 40 meters, turn on all turbines
 		if (waterLevel.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
@@ -416,7 +416,7 @@ if (process.env.NODE_ENV != "test") {
 		// If we're within the safe limits, execute the purchase strategy
 		else {
 			// Good price!
-		 	if (powerPrice.value > powerPriceMedian * 1.3) {
+			if (powerPrice.value > powerPriceMedian * 1.3) {
 				console.log("Turbines on! Niceprice!");
 				functions.setAllTurbines(1);
 			}

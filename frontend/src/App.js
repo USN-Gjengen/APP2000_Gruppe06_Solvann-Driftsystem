@@ -10,35 +10,35 @@ import Settings from "./pages/Settings";
 
 
 function HeaderSectionFix() {
-  const location = useLocation();
+	const location = useLocation();
 
-  if (location.pathname === "/login") {
-    return null; // Hide header for the login page
-  }
+	if (location.pathname === "/login") {
+		return null; // Hide header for the login page
+	}
 
-  return (
-    <HeaderSection/>
-  );
+	return (
+		<HeaderSection />
+	);
 }
 
 
 function App() {
-  return (
-    <Router>
-      <div className="page">
-        <HeaderSectionFix />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/Trend" element={<Trend />} />
-          <Route path="/Turbine" element={<Turbine />} />
-          <Route path="/Logg" element={<Logg />} />
-          <Route path="/Innstillinger" element={<Settings />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+	return (
+		<Router>
+			<div className="page">
+				<HeaderSectionFix />
+				<Routes>
+					<Route path="/" element={<Login />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/Dashboard" element={<Dashboard />} />
+					<Route path="/Trend" element={<Trend />} />
+					<Route path="/Turbine" element={<Turbine />} />
+					<Route path="/Logg" element={<Logg />} />
+					<Route path="/Innstillinger" element={<Settings />} />
+				</Routes>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

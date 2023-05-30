@@ -133,7 +133,7 @@ const getN = async (schema, n) => {
  * @param {Date} date A datetime inside the month you want to get
  * @returns All values in the month
  */
-const getMonth = async (schema,date) => {
+const getMonth = async (schema, date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), 1);
 	const date2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
@@ -146,9 +146,9 @@ const getMonth = async (schema,date) => {
  * @param {Date} date A datetime inside the day you want to get
  * @returns All values in the day
  */
-const getDay = async (schema,date) => {
+const getDay = async (schema, date) => {
 	const date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
+	const date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
 
 	return getPeriod(schema, date1, date2);
 }
@@ -196,14 +196,18 @@ const getAll = async (schema) => {
  */
 const getPeriodAvg = async (schema, date1, date2, value) => {
 	const average = await schema.aggregate([
-    { $match: { date: {
+		{
+			$match: {
+				date: {
 					$gte: date1,
 					$lte: date2
-	} } },
+				}
+			}
+		},
 		{ $group: { _id: null, average: { $avg: "$" + value } } },
 	]).exec();
 
-  if(average.length == 0){
+	if (average.length == 0) {
 		return 0;
 	}
 
@@ -220,7 +224,7 @@ const getPeriodAvg = async (schema, date1, date2, value) => {
  */
 const getDayAverage = async (schema, date1, date2, value) => {
 	var dayValue = [];
-	for(var i = 0; i < days(date2, date1); i++){
+	for (var i = 0; i < days(date2, date1); i++) {
 		var start = new Date(date1);
 		start.setDate(start.getDate() + i);
 		let end = new Date(start);
@@ -276,7 +280,7 @@ const getNAverage = async (schema, date1, date2, value, increment) => {
  * @param {Date} date2 End of period 
  * @returns Amount of days
  */
-const days = (date1, date2) =>{
+const days = (date1, date2) => {
 	let difference = date1.getTime() - date2.getTime();
 	let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
 	return TotalDays;
@@ -289,9 +293,9 @@ const days = (date1, date2) =>{
  */
 const getMedian = async (schema) => {
 	const median = await schema.find({}).
-	sort({ value: 1 }).
-	skip(await schema.countschemas() / 2).
-	limit(1);
+		sort({ value: 1 }).
+		skip(await schema.countschemas() / 2).
+		limit(1);
 	return median[0].value;
 }
 

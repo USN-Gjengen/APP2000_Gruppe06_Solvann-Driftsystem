@@ -19,7 +19,7 @@
 .wrap-login {
 	width: 300px;
 	padding: 40px;
-	background: linear-gradient(79deg, #38268f67, #3664814f 48%, #6d97564f);;
+	background: linear-gradient(79deg, #38268f67, #3664814f 48%, #6d97564f);
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -72,12 +72,11 @@
 .title-container {
 	text-align: center;
 	margin-bottom: 1rem;
-  }
-  
-  .form-title-login {
+}
+
+.form-title-login {
 	display: block;
 	font-size: 39px;
 	color: white;
 	line-height: 1.2;
-  }
-  
+}

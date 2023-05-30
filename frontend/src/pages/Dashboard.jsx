@@ -54,9 +54,9 @@ const Dashboard = () => {
                     <div className="row">
                         <button className="btn-dash" onClick={handleTurbine}>
                             <div className="info">
-                                
+
                                 <div className="title">Driftskontroll av vannturbiner</div>
-                                <img src={turbineIMG} alt="Turbine" className="Turbine-dashboard"/>
+                                <img src={turbineIMG} alt="Turbine" className="Turbine-dashboard" />
                             </div>
                         </button>
 
@@ -64,10 +64,10 @@ const Dashboard = () => {
                             <div className="info">
                                 <div className="sub">Værmelding</div>
                                 <div className="weather">
-                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop"/>
-                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '50vh', border: 'none' }}/>
+                                    <img src="https://www.yr.no/nb/innhold/1-15183/meteogram.svg" alt="Værmelding" className="vær-Desktop" />
+                                    <iframe src="https://www.yr.no/nb/innhold/1-15183/card.html" title="VærmeldingMobil" className="vær-Mobil" style={{ width: '100%', height: '50vh', border: 'none' }} />
                                 </div>
-                                
+
                             </div>
                         </button>
 
@@ -77,21 +77,21 @@ const Dashboard = () => {
                         <button className='btn-dash' onClick={handleTrend}>
                             <div className="info trend-Dashboard">
                                 <div className="sub">Utforsk siste trender og analyser</div>
-                                <Graph 
+                                <Graph
                                     src={`http://${process.env.REACT_APP_FRONTEND_API_ADDRESS}/api/WaterInflux/lastHour`}
                                     title={`Vanntilstrømming m\u00b3/s`}
-                                    dateFormat = {{
+                                    dateFormat={{
                                         hour: "2-digit",
                                         minute: "2-digit",
                                     }}
-                                    />
+                                />
                             </div>
                         </button>
 
                         <button className='btn-dash' onClick={handleSettings}>
                             <div className="info">
                                 <div className="title">Innstillinger</div>
-                                
+
                             </div>
                         </button>
                     </div>
