@@ -294,7 +294,7 @@ const days = (date1, date2) => {
 const getMedian = async (schema) => {
 	const median = await schema.find({}).
 		sort({ value: 1 }).
-		skip(await schema.countschemas() / 2).
+		skip(await schema.countDocuments() / 2).
 		limit(1);
 	return median[0].value;
 }
