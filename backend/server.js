@@ -17,11 +17,13 @@ process.on('SIGINT', () => {
 });
 
 app.use((req, res, next) => {
+	// Before responding to each request, log it in the console with relevant data
 	let time = (new Date()).toISOString().replace("T", " ").split(".")[0];
-	console.log(time + " : Request received");
+	console.log(`[${req.ip}] ${time} : Request received on "${req.url}"`);
 	next();
 });
 
+// Basic route to check if the server functions
 app.get('/', (req, res) => {
 	try {
 		res.json({ "working": true });
@@ -50,6 +52,7 @@ app.get('/api/groupstates/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/waterLevel/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -61,7 +64,8 @@ app.get('/api/waterLevel/lastHour', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/money/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -73,7 +77,8 @@ app.get('/api/money/lastHour', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/environmentCost/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -85,7 +90,8 @@ app.get('/api/environmentCost/lastHour', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/waterLevel/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -97,7 +103,8 @@ app.get('/api/waterLevel/lastWeek', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/money/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -109,7 +116,8 @@ app.get('/api/money/lastWeek', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/environmentCost/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -121,7 +129,8 @@ app.get('/api/environmentCost/lastWeek', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/waterLevel/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -133,7 +142,8 @@ app.get('/api/waterLevel/lastMonth', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/money/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -145,7 +155,8 @@ app.get('/api/money/lastMonth', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/environmentCost/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -157,7 +168,8 @@ app.get('/api/environmentCost/lastMonth', async (req, res) => {
 		console.error(err.message);
 		res.status(500).send("Server Error");
 	}
-})
+});
+
 app.get('/api/PowerPrice/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.PowerPrice);
@@ -167,6 +179,7 @@ app.get('/api/PowerPrice/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/PowerPrice/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.PowerPrice, 1);
@@ -176,6 +189,7 @@ app.get('/api/PowerPrice/last', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/PowerPrice/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -188,6 +202,7 @@ app.get('/api/PowerPrice/lastWeek', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/PowerPrice/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -200,6 +215,7 @@ app.get('/api/PowerPrice/lastHour', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/PowerPrice/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -212,6 +228,7 @@ app.get('/api/PowerPrice/lastMonth', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/WaterInflux/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.WaterInflux);
@@ -221,6 +238,7 @@ app.get('/api/WaterInflux/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/WaterInflux/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.WaterInflux, 1);
@@ -230,6 +248,7 @@ app.get('/api/WaterInflux/last', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -242,6 +261,7 @@ app.get('/api/WaterInflux/lastWeek', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/WaterInflux/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -254,6 +274,7 @@ app.get('/api/WaterInflux/lastHour', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/WaterInflux/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -266,6 +287,7 @@ app.get('/api/WaterInflux/lastMonth', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/SolarValue/all', async (req, res) => {
 	try {
 		var states = await dbfunctions.getAll(dbfunctions.SolarValue);
@@ -275,6 +297,7 @@ app.get('/api/SolarValue/all', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/SolarValue/last', async (req, res) => {
 	try {
 		var states = await dbfunctions.getN(dbfunctions.SolarValue, 1);
@@ -284,6 +307,7 @@ app.get('/api/SolarValue/last', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/SolarValue/lastWeek', async (req, res) => {
 	try {
 		var start = new Date();
@@ -296,6 +320,7 @@ app.get('/api/SolarValue/lastWeek', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/SolarValue/lastHour', async (req, res) => {
 	try {
 		var start = new Date();
@@ -308,6 +333,7 @@ app.get('/api/SolarValue/lastHour', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/SolarValue/lastMonth', async (req, res) => {
 	try {
 		var start = new Date();
@@ -320,6 +346,7 @@ app.get('/api/SolarValue/lastMonth', async (req, res) => {
 		res.status(500).send("Server Error");
 	}
 });
+
 app.get('/api/turbines/all', async (req, res) => {
 	try {
 		var states = await functions.getTurbineStatus();
@@ -360,28 +387,49 @@ app.put('/api/turbine/:id', (req, res) => {
 	}
 });
 
+// Only log values if not in test mode (it will keep the test alive forever)
 if (process.env.NODE_ENV != "test") {
+	// Log values every minute
 	cron.schedule('0 * * * * *', async () => {
 		dbfunctions.logWaterInflux();
 		dbfunctions.logSolarValue();
 		dbfunctions.logPowerPrice();
 	});
 
+	// Log group state every 10 seconds
 	cron.schedule('0,10,20,30,40,50 * * * * *', async () => {
 		await dbfunctions.logGroupState();
-		var last = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
-		//console.log(last.waterLevel);
-		if (last.waterLevel > 40) {
+		var waterLevel = (await dbfunctions.getN(dbfunctions.GroupState, 1))[0];
+		var powerPrice = (await dbfunctions.getN(dbfunctions.PowerPrice, 1))[0];
+		var powerPriceMedian = await dbfunctions.getMedian(dbfunctions.PowerPrice);
+
+		// If water level is above 40 meters, turn on all turbines
+		if (waterLevel.waterLevel > 40) {
 			console.log("Turbines on! Level over 40 meters");
 			functions.setAllTurbines(1);
 		}
-		else if (last.waterLevel < 10) {
+		// If water level is below 10 meters, turn off all turbines
+		else if (waterLevel.waterLevel < 10) {
 			functions.setAllTurbines(0);
 			console.log("Turbines off! Level below 10 meters");
+		}
+		// If we're within the safe limits, execute the purchase strategy
+		else {
+			// Good price!
+			if (powerPrice.value > powerPriceMedian * 1.3) {
+				console.log("Turbines on! Niceprice!");
+				functions.setAllTurbines(1);
+			}
+			// Bad price!
+			else if (powerPrice.value < powerPriceMedian * 0.7) {
+				console.log("Turbines off! Badprice!");
+				functions.setAllTurbines(0);
+			}
 		}
 	});
 };
 
+// Start server and log what port it listens on
 const server = app.listen(port, () => {
 	console.log(`Solvann listening on port ${port}`);
 });

@@ -70,10 +70,10 @@ const Graph = (props) => {
 			let labels = [];
 			let values = [];
 			for (let i = 0; i < data.length; i++) {
-				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data[i]._id.max))); 
-				values.push(data[i].average); 
+				labels.push(Intl.DateTimeFormat("nb-NO", props.dateFormat).format(new Date(data[i]._id.max)));
+				values.push(data[i].average);
 			};
-			
+
 			setGraphPoints((prevState) => ({
 				labels: labels,
 				datasets: [
@@ -94,7 +94,7 @@ const Graph = (props) => {
 
 	return (
 		<div className="graph-Trend">
-			<Line data={graphPoints} options={options}/>
+			<Line data={graphPoints} options={options} />
 		</div>
 	);
 };

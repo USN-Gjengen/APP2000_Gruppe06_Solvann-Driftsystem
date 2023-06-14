@@ -1,40 +1,41 @@
 .turbinePage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 65vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 65vh;
 }
 
 .turbine {
-  animation: spin 1s linear infinite;
-  width: 6em;
-  height: auto;
-  margin: 0 auto;
+	animation: spin 1s linear infinite;
+	width: 6em;
+	height: auto;
+	margin: 0 auto;
 }
 
 .turbines-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 26em;
-  gap: 20px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 26em;
+	gap: 20px;
 }
 
 .turbinePageContent {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  margin-top: 50px;
-  gap: 10px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: center;
+	height: 50vh;
+	margin-top: 50px;
+	gap: 10px;
 }
 
 
 .value-info {
-  color: #4287f5;
+	color: #4287f5;
 }
+
 @media only screen and (max-width: 768px) {
 
   
@@ -43,44 +44,44 @@
     margin-top: 180px;
   }
 
-  .turbines-container {
-    width: 15em;
-  }
-  
-  .turbinePage {
-    height: 75vh;
-  }
+	.turbines-container {
+		width: 15em;
+	}
 
-  .info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 380px;
-    gap: 30px;
-  }
+	.turbinePage {
+		height: 75vh;
+	}
 
-  .value-info {
-    font-size: 1.2em;
-  }
+	.info-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin-bottom: 380px;
+		gap: 30px;
+	}
+
+	.value-info {
+		font-size: 1.2em;
+	}
 }
 
 @media only screen and (min-width: 768px) {
-  .turbines-container {
-    width: 37em;
-  }
+	.turbines-container {
+		width: 37em;
+	}
 
-  .turbine {
-    width: 10em;
-  }
+	.turbine {
+		width: 10em;
+	}
 
-  .info-container {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-    gap: 80px;
-  }
+	.info-container {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 30px;
+		gap: 80px;
+	}
 
-  .value-info {
-    font-size: 2em;
-  }
+	.value-info {
+		font-size: 2em;
+	}
 }
