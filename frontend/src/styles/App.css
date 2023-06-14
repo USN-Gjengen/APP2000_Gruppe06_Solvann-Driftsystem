@@ -1,6 +1,6 @@
 .page {
 	height: 100%;
-	min-height: 120vh;
+	min-height: 200vh;
 	/* Ensure that the height is at least equal to the viewport height */
 	background: linear-gradient(30deg, #151515 10%, #0e1822);
 	color: white;
@@ -53,7 +53,29 @@ li {
 @media only screen and (max-width: 768px) {
 
 	.center {
-		margin-bottom: 100px;
+		margin-bottom: 120px;
+	}
+
+	.info-container {
+		gap: 12px;
+	}
+
+}
+
+@media only screen and (max-width: 372px) {
+
+
+	.info-container {
+		display: flex;
+		flex-direction: column;
+		margin-top: 180px;
+		gap: 12px;
+	}
+
+	.button-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
 	}
 
 }
